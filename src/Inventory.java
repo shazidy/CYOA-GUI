@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Inventory {
+public class Inventory extends GUI{
     static ArrayList<String> inventory = new ArrayList<>();
     static String item;
    // static boolean isNumeric;
@@ -15,7 +15,7 @@ public class Inventory {
 
 
 
-
+//TODO: Rework inventory to work with GUI
 
         System.out.println("\nYou found " + item);
 

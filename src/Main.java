@@ -1,6 +1,6 @@
 import java.util.Calendar;
 
-public class Main {
+public class Main extends GUI {
 
 
 
@@ -8,6 +8,13 @@ public class Main {
 
 
     public static void main(String[] args) {
+        new Main();
+        GUI gui = new GUI();
+        Tower tower = new Tower();
+        gui.gui();
+        tower.start();
+
+
 
         System.out.println("   _____  ______________________________________ __________________  .____    .___  _________\n" +
                 "  /     \\ \\_   _____\\__    ___\\______   \\_____  \\\\______   \\_____  \\ |    |   |   |/   _____/\n" +
@@ -16,9 +23,7 @@ public class Main {
                 "\\____|__  /_______  / |____|   |____|_  \\_______  |____|   \\_______  |_______ |___/_______  /\n" +
                 "        \\/        \\/                  \\/        \\/                 \\/        \\/           \\/ ");
 
-         new Main();
-         GUI gui = new GUI();
-         gui.start();
+
 
 
         // Tower tower = new Tower();

@@ -1,12 +1,30 @@
 import javax.swing.*;
+import java.awt.*;
 
-public class Tower extends GUI{
-
-
+public class Tower extends GUI {
 
 
     public void start(){
-        dialogueTextArea.setText(charPict.maggi);
+chapterText.setText("_________   ___ ___    _____ __________________________________________  .___.___  \n" +
+        "\\_   ___ \\ /   |   \\  /  _  \\\\______   \\__    ___/\\_   _____/\\______   \\ |   |   | \n" +
+        "/    \\  \\//    ~    \\/  /_\\  \\|     ___/ |    |    |    __)_  |       _/ |   |   | \n" +
+        "\\     \\___\\    Y    /    |    \\    |     |    |    |        \\ |    |   \\ |   |   | \n" +
+        " \\______  /\\___|_  /\\____|__  /____|     |____|   /_______  / |____|_  / |___|___| \n" +
+        "        \\/       \\/         \\/                            \\/         \\/            \n" +
+        "______________ ______________ ___________________  __      _______________________ \n" +
+        "\\__    ___/   |   \\_   _____/ \\__    ___/\\_____  \\/  \\    /  \\_   _____/\\______   \\\n" +
+        "  |    | /    ~    \\    __)_    |    |    /   |   \\   \\/\\/   /|    __)_  |       _/\n" +
+        "  |    | \\    Y    /        \\   |    |   /    |    \\        / |        \\ |    |   \\\n" +
+        "  |____|  \\___|_  /_______  /   |____|   \\_______  /\\__/\\  / /_______  / |____|_  /\n" +
+        "                \\/        \\/                     \\/      \\/          \\/         \\/ ");
+
+chapterPanel.setVisible(false);
+
+        dialoguePicture.setText(Characters.maggi);
+        dialoguePicture2.setText(Characters.hero);
+        mainTextArea.setText("once upon a time");
+        GUI.chapterLabel.setText("sdfsdfsd");
+
         //dialogueTextArea.setText(charPict.hero);
         /*
         Inventory.inventory.add(Inventory.item = "Rusty Knife");
