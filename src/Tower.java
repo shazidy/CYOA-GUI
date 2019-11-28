@@ -1,7 +1,13 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.InputMismatchException;
 
 public class Tower extends GUI {
+
+
 
 
     public void start(){
@@ -24,6 +30,9 @@ chapterPanel.setVisible(false);
         dialoguePicture2.setText(Characters.hero);
         mainTextArea.setText("once upon a time");
         GUI.chapterLabel.setText("sdfsdfsd");
+
+
+
 
         //dialogueTextArea.setText(charPict.hero);
         /*
@@ -55,4 +64,8 @@ chapterPanel.setVisible(false);
         //Enemy enemy = new Enemy("Duck", 30,2,2,10,"Dagger", "SuperDead");
         //Battle.battleSetup();
     }
+    public void method(){
+mainTextArea.setText("sdfsdfsdfsfdsfs");
+    }
+
 }

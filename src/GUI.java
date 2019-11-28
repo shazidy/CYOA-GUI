@@ -20,6 +20,7 @@ public class GUI {
     public static Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
     public static Container container;
     public static Characters charPict;
+    public static String text;
 
 
     public void gui() {
@@ -182,13 +183,22 @@ public class GUI {
     }
 
     //TODO: Make input save string for choicehandler if-statements
-    String text;
+
 
     public void actionPerformed(ActionEvent evt) {
-
         text = inputTextArea.getText();
         inputTextArea.selectAll();
+        //inputTextArea.setText("");
+        System.out.println(text);
+
+    //    if(text.equals("I")){
+    //        mainTextArea.setText("slkjlrklvcj");
+    //    }
+
     }
+
+
+
 
 }
 
