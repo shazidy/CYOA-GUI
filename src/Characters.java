@@ -7,6 +7,7 @@ public class Characters {
         this.image = image;
     }
 
+
 */
 
 

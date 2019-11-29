@@ -1,37 +1,51 @@
-import javax.swing.*;
-import javax.swing.border.LineBorder;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.InputMismatchException;
+public class Tower extends UI{
 
-public class Tower extends GUI {
+Game game;
+UI ui;
+/*
+    public Tower(Game g, UI userInterface) {
+        game = g;
+        ui = userInterface;
+        start();
+    }
 
+ */
+    public void choice(String nextChoice){
+        switch (nextChoice){
+            case "1" : choice1(); break;
+            case "2" : choice2(); break;
+            case "3" : choice3(); break;
+            case "4" : choice4(); break;
+        }
 
+    }
 
+    public void start() {
 
-    public void start(){
-chapterText.setText("_________   ___ ___    _____ __________________________________________  .___.___  \n" +
-        "\\_   ___ \\ /   |   \\  /  _  \\\\______   \\__    ___/\\_   _____/\\______   \\ |   |   | \n" +
-        "/    \\  \\//    ~    \\/  /_\\  \\|     ___/ |    |    |    __)_  |       _/ |   |   | \n" +
-        "\\     \\___\\    Y    /    |    \\    |     |    |    |        \\ |    |   \\ |   |   | \n" +
-        " \\______  /\\___|_  /\\____|__  /____|     |____|   /_______  / |____|_  / |___|___| \n" +
-        "        \\/       \\/         \\/                            \\/         \\/            \n" +
-        "______________ ______________ ___________________  __      _______________________ \n" +
-        "\\__    ___/   |   \\_   _____/ \\__    ___/\\_____  \\/  \\    /  \\_   _____/\\______   \\\n" +
-        "  |    | /    ~    \\    __)_    |    |    /   |   \\   \\/\\/   /|    __)_  |       _/\n" +
-        "  |    | \\    Y    /        \\   |    |   /    |    \\        / |        \\ |    |   \\\n" +
-        "  |____|  \\___|_  /_______  /   |____|   \\_______  /\\__/\\  / /_______  / |____|_  /\n" +
-        "                \\/        \\/                     \\/      \\/          \\/         \\/ ");
+        chapterText.setText("_________   ___ ___    _____ __________________________________________  .___.___  \n" +
+                "\\_   ___ \\ /   |   \\  /  _  \\\\______   \\__    ___/\\_   _____/\\______   \\ |   |   | \n" +
+                "/    \\  \\//    ~    \\/  /_\\  \\|     ___/ |    |    |    __)_  |       _/ |   |   | \n" +
+                "\\     \\___\\    Y    /    |    \\    |     |    |    |        \\ |    |   \\ |   |   | \n" +
+                " \\______  /\\___|_  /\\____|__  /____|     |____|   /_______  / |____|_  / |___|___| \n" +
+                "        \\/       \\/         \\/                            \\/         \\/            \n" +
+                "______________ ______________ ___________________  __      _______________________ \n" +
+                "\\__    ___/   |   \\_   _____/ \\__    ___/\\_____  \\/  \\    /  \\_   _____/\\______   \\\n" +
+                "  |    | /    ~    \\    __)_    |    |    /   |   \\   \\/\\/   /|    __)_  |       _/\n" +
+                "  |    | \\    Y    /        \\   |    |   /    |    \\        / |        \\ |    |   \\\n" +
+                "  |____|  \\___|_  /_______  /   |____|   \\_______  /\\__/\\  / /_______  / |____|_  /\n" +
+                "                \\/        \\/                     \\/      \\/          \\/         \\/ ");
 
-chapterPanel.setVisible(false);
+        chapterPanel.setVisible(false);
 
         dialoguePicture.setText(Characters.maggi);
         dialoguePicture2.setText(Characters.hero);
         mainTextArea.setText("once upon a time");
-        GUI.chapterLabel.setText("sdfsdfsd");
+        chapterLabel.setText("sdfsdfsd");
 
-
+        choice1 = "1";
+        choice2 = "2";
+        choice3 = "3";
+        choice4 = "4";
 
 
         //dialogueTextArea.setText(charPict.hero);
@@ -64,8 +78,19 @@ chapterPanel.setVisible(false);
         //Enemy enemy = new Enemy("Duck", 30,2,2,10,"Dagger", "SuperDead");
         //Battle.battleSetup();
     }
-    public void method(){
-mainTextArea.setText("sdfsdfsdfsfdsfs");
+
+    public void choice1() {
+        mainTextArea.setText("choice1");
     }
+    public void choice2() {
+        mainTextArea.setText("choice2");
+    }
+    public void choice3() {
+        mainTextArea.setText("choice3");
+    }
+    public void choice4() {
+        mainTextArea.setText("choice55");
+    }
+
 
 }
