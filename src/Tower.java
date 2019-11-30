@@ -1,26 +1,14 @@
+import javax.swing.*;
+
 public class Tower extends UI{
+    public Tower(String s){
 
-Game game;
-//UI ui;
-/*
-    public Tower(Game g, UI userInterface) {
-        game = g;
-        ui = userInterface;
-        start();
+start(s);
     }
 
- */
-    public void choice(String nextChoice){
-        switch (nextChoice){
-            case "1" : choice1(); break;
-            case "2" : choice2(); break;
-            case "3" : choice3(); break;
-            case "4" : choice4(); break;
-        }
 
-    }
 
-    public void start() {
+    public void start(String s) {
 
         chapterText.setText("_________   ___ ___    _____ __________________________________________  .___.___  \n" +
                 "\\_   ___ \\ /   |   \\  /  _  \\\\______   \\__    ___/\\_   _____/\\______   \\ |   |   | \n" +
@@ -42,11 +30,13 @@ Game game;
         mainTextArea.setText("once upon a time");
         chapterLabel.setText("sdfsdfsd");
 
-        choice1 = "1";
-        choice2 = "2";
-        choice3 = "3";
-        choice4 = "4";
-        System.out.println(UI.choice1);
+        if (s.equals("choice1")) {
+            choice1(s);
+        }
+        if (s.equals("choice2")){
+            choice2();
+        }
+
 
         //dialogueTextArea.setText(charPict.hero);
         /*
@@ -79,8 +69,12 @@ Game game;
         //Battle.battleSetup();
     }
 
-    public void choice1() {
+    public void choice1(String s) {
         mainTextArea.setText("choice1");
+
+        if(s.equals("s")) {
+            start(s);
+        }
     }
     public void choice2() {
         mainTextArea.setText("choice2");

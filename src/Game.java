@@ -20,10 +20,10 @@ public class Game {
 
 
 
-        Tower tower = new Tower();
+        //Tower tower = new Tower();
         UI ui = new UI();
         ui.createUI();
-        tower.start();
+        //tower.start();
 
 
 /*

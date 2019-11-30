@@ -1,5 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,7 +9,7 @@ import java.awt.event.ActionListener;
 
 
 public class UI {
-    public static Tower tower = new Tower();
+    //public static Tower tower = new Tower(s);
 
     //TODO: make maintextarea to JLabel for HTML --- linewrap needs to be implemented
     public static JFrame window;
@@ -21,6 +23,8 @@ public class UI {
     public static Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
     public static Container container;
     public static Characters charPict;
+
+
     public static String text;
     public static String choice1, choice2, choice3, choice4;
 
@@ -119,14 +123,12 @@ public class UI {
         inputTextArea = new JTextField();
         inputTextArea.setBackground(Color.black);
         inputTextArea.setForeground(Color.white);
+        inputTextArea.setEnabled(true);
         inputTextArea.setFont(asciiFont);
         inputTextArea.setBorder(new LineBorder(Color.black));
         inputTextArea.addActionListener(this::actionPerformed);
 
-        inputTextArea.setActionCommand("c1");
-        inputTextArea.setActionCommand("c2");
-        inputTextArea.setActionCommand("c3");
-        inputTextArea.setActionCommand("c4");
+        //inputTextArea.getDocument().addDocumentListener(new MyDocumentListener());
 
         inputTextFieldPanel.add(inputTextArea);
         //TODO: Displays dialogue Panel --- needs frame for images and textarea
@@ -184,40 +186,32 @@ public class UI {
     //TODO: Make input save string for choicehandler if-statements
 
 /*
+    private class MyDocumentListener implements DocumentListener {
+        public void insertUpdate(DocumentEvent e) {
+            new Tower(inputTextArea.getText());
+        }
+
+        public void removeUpdate(DocumentEvent e) {
+            new Tower(inputTextArea.getText());
+        }
+
+        public void changedUpdate(DocumentEvent e) {}
+    }
+
+*/
     public void actionPerformed(ActionEvent evt) {
+        new Tower(inputTextArea.getText());
         text = inputTextArea.getText();
         inputTextArea.selectAll();
-
-        //System.out.println(text);
 
 
         //if(text.equals("I")){ mainTextArea.setText("I has been entered"); }
         //if(text.equals("K")){ mainTextArea.setText("K has been entered"); }
     }
-*/
-
-   //public class ChoiceHandler implements ActionListener {
-   //     @Override
-        public void actionPerformed(ActionEvent event) {
 
 
-            String nextChoice = event.getActionCommand();
 
-            String choice1 = inputTextArea.getText();
-            String choice2 = inputTextArea.getText();
-            String choice3 = inputTextArea.getText();
-            String choice4 = inputTextArea.getText();
-            inputTextArea.setText(""); //resets textfield
-            //inputTextArea.setActionCommand(nextChoice);
-            switch (nextChoice){
-                case "c1" : tower.choice(choice1); break;
-                case "c2" : tower.choice(choice2); break;
-                case "c3" : tower.choice(choice3); break;
-                case "c4" : tower.choice(choice4); break;
-            }
         }
-    }
-//}
 
 
 
