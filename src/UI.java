@@ -201,11 +201,14 @@ public class UI {
         public void actionPerformed(ActionEvent event) {
 
 
-            //String yourChoice = event.getActionCommand();
+            String nextChoice = event.getActionCommand();
 
-            String nextChoice = inputTextArea.getText();
+            String choice1 = inputTextArea.getText();
+            String choice2 = inputTextArea.getText();
+            String choice3 = inputTextArea.getText();
+            String choice4 = inputTextArea.getText();
             inputTextArea.setText(""); //resets textfield
-            inputTextArea.setActionCommand(nextChoice);
+            //inputTextArea.setActionCommand(nextChoice);
             switch (nextChoice){
                 case "c1" : tower.choice(choice1); break;
                 case "c2" : tower.choice(choice2); break;

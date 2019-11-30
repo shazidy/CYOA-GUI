@@ -1,7 +1,7 @@
 public class Tower extends UI{
 
 Game game;
-UI ui;
+//UI ui;
 /*
     public Tower(Game g, UI userInterface) {
         game = g;
@@ -46,7 +46,7 @@ UI ui;
         choice2 = "2";
         choice3 = "3";
         choice4 = "4";
-
+        System.out.println(UI.choice1);
 
         //dialogueTextArea.setText(charPict.hero);
         /*
