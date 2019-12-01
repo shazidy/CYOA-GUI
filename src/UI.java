@@ -1,34 +1,26 @@
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 public class UI {
-    //public static Tower tower = new Tower(s);
-
     //TODO: make maintextarea to JLabel for HTML --- linewrap needs to be implemented
-    public static JFrame window;
-    public static JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, chapterText;
-    public static JTextField inputTextArea;
-    public static JScrollPane scrollPane;
-    public static JPanel mainTextPanel, inputTextFieldPanel, infoPanel, dialoguePicturePanel, dialogueTextPanel, dialoguePicturePanel2, chapterPanel;
-    public static JLabel chapterLabel, legendInfo;
-    public static Font chapterFont = new Font("Lucida Console", Font.BOLD, 15);
-    public static Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
-    public static Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
-    public static Container container;
-    public static Characters charPict;
+    JFrame window;
+    JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, chapterText;
+    JScrollPane scrollPane;
+    JPanel mainTextPanel, choicePanel, infoPanel, dialoguePicturePanel, dialogueTextPanel, dialoguePicturePanel2, chapterPanel;
+    JLabel chapterLabel, legendInfo;
+    JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7;
+    Font chapterFont = new Font("Lucida Console", Font.BOLD, 15);
+    Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
+    Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
+    Container container;
 
 
-    public static String text;
-    public static String choice1, choice2, choice3, choice4;
 
-    public void createUI(/*Game.ChoiceHandler cHandler*/) {
+    public void createUI(Game.ChoiceHandler cHandler, Game.KeyHandler kHandler) {
 
         window = new JFrame();
         window.setSize(960, 720);
@@ -37,8 +29,11 @@ public class UI {
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.magenta);
         window.setResizable(true);
+        window.addKeyListener(kHandler);
+        window.requestFocus();
         window.setTitle("METROPOLIS");
         window.setLayout(null);
+
         container = window.getContentPane();
 
         //TODO: ChapterPanel
@@ -105,32 +100,89 @@ public class UI {
         mainTextArea.setLineWrap(true);
         mainTextArea.setEditable(true);
         mainTextPanel.add(mainTextArea);
-/////////////////////////
         mainTextPanel.add(scrollPane);
-        //scrollPane.setBounds(50,100,860,350);
-        //scrollPane.getViewport().setBackground(Color.black);
-
         scrollPane.getViewport().add(mainTextArea);
 
 
         //TODO: text input area --- must be visible, but invisible
-        inputTextFieldPanel = new JPanel();
-        inputTextFieldPanel.setBounds(30, 465, 870, 40);
-        inputTextFieldPanel.setBackground(Color.red);
-        inputTextFieldPanel.setLayout(new GridLayout(1, 1));
-        container.add(inputTextFieldPanel);
+        choicePanel = new JPanel();
+        choicePanel.setBounds(30, 465, 870, 40);
+        choicePanel.setBackground(Color.red);
+        choicePanel.setLayout(new GridLayout(1, 4));
+        container.add(choicePanel);
 
-        inputTextArea = new JTextField();
-        inputTextArea.setBackground(Color.black);
-        inputTextArea.setForeground(Color.white);
-        inputTextArea.setEnabled(true);
-        inputTextArea.setFont(asciiFont);
-        inputTextArea.setBorder(new LineBorder(Color.black));
-        inputTextArea.addActionListener(this::actionPerformed);
+        choice1 = new JButton();
+        choice1.setBackground(Color.black);
+        choice1.setForeground(Color.white);
+        choice1.setFont(asciiFont);
+        choice1.setFocusPainted(false);
+        choice1.addActionListener(cHandler);
+        choice1.setActionCommand("c1");
+        choice1.setBorderPainted(false);
+        choicePanel.add(choice1);
 
-        //inputTextArea.getDocument().addDocumentListener(new MyDocumentListener());
+        choice2 = new JButton();
+        choice2.setBackground(Color.black);
+        choice2.setForeground(Color.white);
+        choice2.setFont(asciiFont);
+        choice2.addActionListener(cHandler);
+        choice2.setActionCommand("c2");
+        choice2.setFocusPainted(false);
+        choice2.setBorderPainted(false);
+        choicePanel.add(choice2);
 
-        inputTextFieldPanel.add(inputTextArea);
+        choice3 = new JButton();
+        choice3.setBackground(Color.black);
+        choice3.setForeground(Color.white);
+        choice3.setFont(asciiFont);
+        choice3.addActionListener(cHandler);
+        choice3.setActionCommand("c3");
+        choice3.setFocusPainted(false);
+        choice3.setBorderPainted(false);
+        choicePanel.add(choice3);
+
+        choice4 = new JButton();
+        choice4.setBackground(Color.black);
+        choice4.setForeground(Color.white);
+        choice4.setFont(asciiFont);
+        choice4.addActionListener(cHandler);
+        choice4.setActionCommand("c4");
+        choice4.setFocusPainted(false);
+        choice4.setBorderPainted(false);
+        choicePanel.add(choice4);
+
+        choice5 = new JButton();
+        choice5.setBackground(Color.black);
+        choice5.setForeground(Color.white);
+        choice5.setFont(asciiFont);
+        choice5.addActionListener(cHandler);
+        choice5.setActionCommand("c5");
+        choice5.setFocusPainted(false);
+        choice5.setBorderPainted(false);
+        choicePanel.add(choice5);
+
+        choice6 = new JButton();
+        choice6.setBackground(Color.black);
+        choice6.setForeground(Color.white);
+        choice6.setFont(asciiFont);
+        choice6.addActionListener(cHandler);
+        choice6.setActionCommand("c6");
+        choice6.setFocusPainted(false);
+        choice6.setBorderPainted(false);
+        choicePanel.add(choice6);
+
+        choice7 = new JButton();
+        choice7.setBackground(Color.black);
+        choice7.setForeground(Color.white);
+        choice7.setFont(asciiFont);
+        choice7.addActionListener(cHandler);
+        choice7.setActionCommand("c7");
+        choice7.setFocusPainted(false);
+        choice7.setBorderPainted(false);
+        choicePanel.add(choice7);
+
+
+
         //TODO: Displays dialogue Panel --- needs frame for images and textarea
 
         dialoguePicturePanel = new JPanel();
@@ -177,41 +229,13 @@ public class UI {
 
 
         window.setVisible(true);
-        charPict = new Characters();
 
 
     }
 
-
-    //TODO: Make input save string for choicehandler if-statements
-
-/*
-    private class MyDocumentListener implements DocumentListener {
-        public void insertUpdate(DocumentEvent e) {
-            new Tower(inputTextArea.getText());
-        }
-
-        public void removeUpdate(DocumentEvent e) {
-            new Tower(inputTextArea.getText());
-        }
-
-        public void changedUpdate(DocumentEvent e) {}
-    }
-
-*/
-    public void actionPerformed(ActionEvent evt) {
-        new Tower(inputTextArea.getText());
-        text = inputTextArea.getText();
-        inputTextArea.selectAll();
+}
 
 
-        //if(text.equals("I")){ mainTextArea.setText("I has been entered"); }
-        //if(text.equals("K")){ mainTextArea.setText("K has been entered"); }
-    }
-
-
-
-        }
 
 
 
