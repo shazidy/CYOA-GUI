@@ -1,8 +1,7 @@
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+
 
 
 public class UI {
@@ -20,7 +19,7 @@ public class UI {
 
 
 
-    public void createUI(Game.ChoiceHandler cHandler, Game.KeyHandler kHandler) {
+    public void createUI(Game.ChoiceHandler cHandler, Game.MouseHandler mHandler, Game.MouseHover mHover) {
 
         window = new JFrame();
         window.setSize(960, 720);
@@ -29,8 +28,8 @@ public class UI {
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.magenta);
         window.setResizable(true);
-        window.addKeyListener(kHandler);
         window.requestFocus();
+
         window.setTitle("METROPOLIS");
         window.setLayout(null);
 
@@ -96,9 +95,10 @@ public class UI {
         mainTextArea = new JTextArea(17, 71);// works for some reason
         mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
-        mainTextArea.setFont(/*splashFont*/asciiFont);
+        mainTextArea.setFont(asciiFont);
         mainTextArea.setLineWrap(true);
-        mainTextArea.setEditable(true);
+        mainTextArea.setEditable(false);
+        mainTextArea.addMouseListener(mHandler);
         mainTextPanel.add(mainTextArea);
         mainTextPanel.add(scrollPane);
         scrollPane.getViewport().add(mainTextArea);
@@ -112,74 +112,83 @@ public class UI {
         container.add(choicePanel);
 
         choice1 = new JButton();
-        choice1.setBackground(Color.black);
-        choice1.setForeground(Color.white);
+        choice1.setBackground(Color.white);
+        choice1.setForeground(Color.black);
         choice1.setFont(asciiFont);
-        choice1.setFocusPainted(false);
         choice1.addActionListener(cHandler);
         choice1.setActionCommand("c1");
-        choice1.setBorderPainted(false);
+        choice1.setFocusPainted(false);
+        choice1.addMouseListener(mHover);
+        choice1.setBorder(BorderFactory.createLineBorder(Color.black, 3));
         choicePanel.add(choice1);
 
         choice2 = new JButton();
-        choice2.setBackground(Color.black);
-        choice2.setForeground(Color.white);
+        choice2.setBackground(Color.white);
+        choice2.setForeground(Color.black);
         choice2.setFont(asciiFont);
         choice2.addActionListener(cHandler);
         choice2.setActionCommand("c2");
         choice2.setFocusPainted(false);
-        choice2.setBorderPainted(false);
+        choice2.addMouseListener(mHover);
+        choice2.setBorder(BorderFactory.createLineBorder(Color.black, 4));
         choicePanel.add(choice2);
 
         choice3 = new JButton();
-        choice3.setBackground(Color.black);
-        choice3.setForeground(Color.white);
+        choice3.setBackground(Color.white);
+        choice3.setForeground(Color.black);
         choice3.setFont(asciiFont);
         choice3.addActionListener(cHandler);
         choice3.setActionCommand("c3");
         choice3.setFocusPainted(false);
-        choice3.setBorderPainted(false);
+        choice3.addMouseListener(mHover);
+        choice3.setBorder(BorderFactory.createLineBorder(Color.black, 4));
         choicePanel.add(choice3);
 
         choice4 = new JButton();
-        choice4.setBackground(Color.black);
-        choice4.setForeground(Color.white);
+        choice4.setBackground(Color.white);
+        choice4.setForeground(Color.black);
         choice4.setFont(asciiFont);
         choice4.addActionListener(cHandler);
         choice4.setActionCommand("c4");
         choice4.setFocusPainted(false);
-        choice4.setBorderPainted(false);
+        choice4.addMouseListener(mHover);
+        choice4.setBorder(BorderFactory.createLineBorder(Color.black, 4));
         choicePanel.add(choice4);
 
         choice5 = new JButton();
-        choice5.setBackground(Color.black);
-        choice5.setForeground(Color.white);
+        choice5.setBackground(Color.white);
+        choice5.setForeground(Color.black);
         choice5.setFont(asciiFont);
         choice5.addActionListener(cHandler);
         choice5.setActionCommand("c5");
         choice5.setFocusPainted(false);
-        choice5.setBorderPainted(false);
+        choice5.addMouseListener(mHover);
+        choice5.setBorder(BorderFactory.createLineBorder(Color.black, 4));
         choicePanel.add(choice5);
 
         choice6 = new JButton();
-        choice6.setBackground(Color.black);
-        choice6.setForeground(Color.white);
+        choice6.setBackground(Color.white);
+        choice6.setForeground(Color.black);
         choice6.setFont(asciiFont);
         choice6.addActionListener(cHandler);
         choice6.setActionCommand("c6");
         choice6.setFocusPainted(false);
-        choice6.setBorderPainted(false);
+        choice6.addMouseListener(mHover);
+        choice6.setBorder(BorderFactory.createLineBorder(Color.black, 4));
         choicePanel.add(choice6);
 
         choice7 = new JButton();
-        choice7.setBackground(Color.black);
-        choice7.setForeground(Color.white);
+        choice7.setBackground(Color.white);
+        choice7.setForeground(Color.black);
         choice7.setFont(asciiFont);
         choice7.addActionListener(cHandler);
         choice7.setActionCommand("c7");
         choice7.setFocusPainted(false);
-        choice7.setBorderPainted(false);
+        choice7.addMouseListener(mHover);
+        choice7.setBorder(BorderFactory.createLineBorder(Color.black, 4));
         choicePanel.add(choice7);
+
+
 
 
 

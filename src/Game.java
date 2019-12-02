@@ -1,20 +1,19 @@
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.security.Key;
+import java.awt.event.*;
 
 public class Game {
+    MouseHandler mHandler = new MouseHandler();
+    MouseHover mHover = new MouseHover();
     ChoiceHandler cHandler = new ChoiceHandler();
-    KeyHandler kHandler = new KeyHandler();
     Characters cp = new Characters();
     UI ui = new UI();
     Story story = new Story(this, ui, cp);
     String nextPosition1, nextPosition2, nextPosition3,
             nextPosition4, nextPosition5, nextPosition6,
             nextPosition7;
-    int buttonPosition = 1;
+    int buttonPosition = 1, i=0;
+    String storyText;
 
     public static void main(String[] args) {
         new Game();
@@ -22,9 +21,9 @@ public class Game {
 
     public Game(){
 
-        ui.createUI(cHandler, kHandler);
+        ui.createUI(cHandler, mHandler, mHover);
         story.start();
-        ui.window.requestFocus();
+        //ui.window.requestFocus();
     }
 
 
@@ -42,9 +41,63 @@ public class Game {
                 case "c5" : story.selecPosition(nextPosition5); break;
                 case "c6" : story.selecPosition(nextPosition6); break;
                 case "c7" : story.selecPosition(nextPosition7); break;
-
             }
         }
+    }
+
+
+
+    Timer timer = new Timer(10, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            char character[] = storyText.toCharArray();
+            int ArrayNumber = character.length;
+
+            String addedCharacter = "";
+            String blank = "";
+
+            addedCharacter = blank + character[i];
+            ui.mainTextArea.append(addedCharacter);
+
+            i++;
+
+            if (i == ArrayNumber) {
+                i = 0;
+                timer.stop();
+            }
+        }
+    });
+
+    public class MouseHandler implements MouseListener{
+        @Override public void mouseClicked(MouseEvent e){ }
+        @Override public void mousePressed(MouseEvent e){
+            timer.stop();
+            ui.mainTextArea.setText(storyText);
+            i = 0; }
+        @Override public void mouseReleased(MouseEvent e){}
+        @Override public void mouseEntered(MouseEvent e){ }
+        @Override public void mouseExited(MouseEvent e){
+
+        }
+    }
+    public class MouseHover implements MouseListener{
+        @Override public void mouseClicked(MouseEvent e){ }
+        @Override public void mousePressed(MouseEvent e){}
+        @Override public void mouseReleased(MouseEvent e){}
+        @Override public void mouseEntered(MouseEvent e) {
+                Component c = e.getComponent();
+                c.setBackground(Color.lightGray); }
+        @Override public void mouseExited(MouseEvent e){
+            Component c = e.getComponent();
+            c.setBackground(Color.white); }
+    }
+
+
+
+    public void prepareText(){
+        i = 0;
+        ui.mainTextArea.setText("");
+        timer.start();
     }
 
     public class KeyHandler implements KeyListener {
@@ -74,134 +127,15 @@ public class Game {
                     }
                     break;
             }
-            buttonHighlight();
         }
         @Override
         public void keyReleased (KeyEvent event){
-
         }
         @Override
         public void keyTyped(KeyEvent event){
-
         }
     }
-
-    public void buttonHighlight(){
-        switch (buttonPosition){
-            case 1 :
-                ui.window.getRootPane().setDefaultButton(ui.choice1);
-                ui.choice1.setBackground(Color.white);
-                ui.choice1.setForeground(Color.black);
-                ui.choice2.setBackground(Color.black);
-                ui.choice2.setForeground(Color.white);
-                ui.choice3.setBackground(Color.black);
-                ui.choice3.setForeground(Color.white);
-                ui.choice4.setBackground(Color.black);
-                ui.choice4.setForeground(Color.white);
-                ui.choice5.setBackground(Color.black);
-                ui.choice5.setForeground(Color.white);
-                ui.choice6.setBackground(Color.black);
-                ui.choice6.setForeground(Color.white);
-                ui.choice7.setBackground(Color.black);
-                ui.choice7.setForeground(Color.white); break;
-            case 2 :
-                ui.window.getRootPane().setDefaultButton(ui.choice2);
-                ui.choice1.setBackground(Color.black);
-                ui.choice1.setForeground(Color.white);
-                ui.choice2.setBackground(Color.white);
-                ui.choice2.setForeground(Color.black);
-                ui.choice3.setBackground(Color.black);
-                ui.choice3.setForeground(Color.white);
-                ui.choice4.setBackground(Color.black);
-                ui.choice4.setForeground(Color.white);
-                ui.choice5.setBackground(Color.black);
-                ui.choice5.setForeground(Color.white);
-                ui.choice6.setBackground(Color.black);
-                ui.choice6.setForeground(Color.white);
-                ui.choice7.setBackground(Color.black);
-                ui.choice7.setForeground(Color.white); break;
-            case 3 :
-                ui.window.getRootPane().setDefaultButton(ui.choice3);
-                ui.choice1.setBackground(Color.black);
-                ui.choice1.setForeground(Color.white);
-                ui.choice2.setBackground(Color.black);
-                ui.choice2.setForeground(Color.white);
-                ui.choice3.setBackground(Color.white);
-                ui.choice3.setForeground(Color.black);
-                ui.choice4.setBackground(Color.black);
-                ui.choice4.setForeground(Color.white);
-                ui.choice5.setBackground(Color.black);
-                ui.choice5.setForeground(Color.white);
-                ui.choice6.setBackground(Color.black);
-                ui.choice6.setForeground(Color.white);
-                ui.choice7.setBackground(Color.black);
-                ui.choice7.setForeground(Color.white); break;
-            case 4 :
-                ui.window.getRootPane().setDefaultButton(ui.choice4);
-                ui.choice1.setBackground(Color.black);
-                ui.choice1.setForeground(Color.white);
-                ui.choice2.setBackground(Color.black);
-                ui.choice2.setForeground(Color.white);
-                ui.choice3.setBackground(Color.black);
-                ui.choice3.setForeground(Color.white);
-                ui.choice4.setBackground(Color.white);
-                ui.choice4.setForeground(Color.black);
-                ui.choice5.setBackground(Color.black);
-                ui.choice5.setForeground(Color.white);
-                ui.choice6.setBackground(Color.black);
-                ui.choice6.setForeground(Color.white);
-                ui.choice7.setBackground(Color.black);
-                ui.choice7.setForeground(Color.white); break;
-            case 5 :
-                ui.window.getRootPane().setDefaultButton(ui.choice5);
-                ui.choice1.setBackground(Color.black);
-                ui.choice1.setForeground(Color.white);
-                ui.choice2.setBackground(Color.black);
-                ui.choice2.setForeground(Color.white);
-                ui.choice3.setBackground(Color.black);
-                ui.choice3.setForeground(Color.white);
-                ui.choice4.setBackground(Color.black);
-                ui.choice4.setForeground(Color.white);
-                ui.choice5.setBackground(Color.white);
-                ui.choice5.setForeground(Color.black);
-                ui.choice6.setBackground(Color.black);
-                ui.choice6.setForeground(Color.white);
-                ui.choice7.setBackground(Color.black);
-                ui.choice7.setForeground(Color.white); break;
-            case 6 :
-                ui.window.getRootPane().setDefaultButton(ui.choice6);
-                ui.choice1.setBackground(Color.black);
-                ui.choice1.setForeground(Color.white);
-                ui.choice2.setBackground(Color.black);
-                ui.choice2.setForeground(Color.white);
-                ui.choice3.setBackground(Color.black);
-                ui.choice3.setForeground(Color.white);
-                ui.choice4.setBackground(Color.black);
-                ui.choice4.setForeground(Color.white);
-                ui.choice5.setBackground(Color.black);
-                ui.choice5.setForeground(Color.white);
-                ui.choice6.setBackground(Color.white);
-                ui.choice6.setForeground(Color.black);
-                ui.choice7.setBackground(Color.black);
-                ui.choice7.setForeground(Color.white); break;
-            case 7 :
-                ui.window.getRootPane().setDefaultButton(ui.choice7);
-                ui.choice1.setBackground(Color.black);
-                ui.choice1.setForeground(Color.white);
-                ui.choice2.setBackground(Color.black);
-                ui.choice2.setForeground(Color.white);
-                ui.choice3.setBackground(Color.black);
-                ui.choice3.setForeground(Color.white);
-                ui.choice4.setBackground(Color.black);
-                ui.choice4.setForeground(Color.white);
-                ui.choice5.setBackground(Color.black);
-                ui.choice5.setForeground(Color.white);
-                ui.choice6.setBackground(Color.black);
-                ui.choice6.setForeground(Color.white);
-                ui.choice7.setBackground(Color.white);
-                ui.choice7.setForeground(Color.black); break;
-        }
-    }
-
 }
+
+
 
