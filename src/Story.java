@@ -37,23 +37,6 @@ public class Story {
                 "once upon a time, there was something something in the month of may" +
                 "once upon a time, there was something something in the month of may" +
                 "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
                 "";
         game.prepareText();
         ui.chapterLabel.setText("sdfsdfsd");
@@ -62,6 +45,8 @@ public class Story {
                 "lksdjflksdjflkjlko isoeohnjlm •\n" +
                 "lkjsdlfkjsdijlksdjflksdjflksjdflkdj •\n";
         game.prepareDialogue();
+
+        //Choices and their
         ui.choice1.setText("FOLLOW"); game.nextPosition1 = "choice1";
         ui.choice2.setText("2"); game.nextPosition2 = "choice2";
         ui.choice3.setText("3"); game.nextPosition3 = "choice3";

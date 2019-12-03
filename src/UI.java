@@ -9,7 +9,7 @@ public class UI {
     //TODO: make maintextarea to JLabel for HTML --- linewrap needs to be implemented
     JFrame window;
     JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, chapterText;
-    JScrollPane scrollPane;
+    JScrollPane mainScrollPane, dialogueScrollPane;
     JPanel mainTextPanel, choicePanel, infoPanel, dialoguePicturePanel, dialogueTextPanel, dialoguePicturePanel2, chapterPanel;
     JLabel chapterLabel, legendInfo;
     JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7;
@@ -18,7 +18,7 @@ public class UI {
     Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
     Container container;
 
-
+//TODO: add a dialoguebutton that reads continue or something
 
     public void createUI(Game.ChoiceHandler cHandler, Game.MouseHandler mHandler, Game.MouseHover mHover, Game.KeyHandler kHandler) {
 
@@ -71,11 +71,11 @@ public class UI {
         mainTextPanel.setBackground(Color.green);
         container.add(mainTextPanel);
 
-        scrollPane = new JScrollPane();
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setBorder(null);
-        scrollPane.getVerticalScrollBar().setBackground(Color.black);
-        scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+        mainScrollPane = new JScrollPane();
+        mainScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        mainScrollPane.setBorder(null);
+        mainScrollPane.getVerticalScrollBar().setBackground(Color.black);
+        mainScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
             @Override
             protected void configureScrollBarColors() {
                 this.thumbColor = Color.white;
@@ -92,6 +92,7 @@ public class UI {
             }
         });
 
+
         mainTextArea = new JTextArea(17, 71);// works for some reason
         DefaultCaret caret = (DefaultCaret) mainTextArea.getCaret(); //TODO: use for dialogue, when that has been implemented
         caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
@@ -103,8 +104,9 @@ public class UI {
         mainTextArea.setHighlighter(null);
         mainTextArea.addMouseListener(mHandler);
         mainTextPanel.add(mainTextArea);
-        mainTextPanel.add(scrollPane);
-        scrollPane.getViewport().add(mainTextArea);
+        mainTextPanel.add(mainScrollPane);
+        mainScrollPane.getViewport().add(mainTextArea);
+
 
 
         //TODO: text input area --- must be visible, but invisible
@@ -230,15 +232,39 @@ public class UI {
         dialogueTextPanel.setBackground(Color.yellow);
         container.add(dialogueTextPanel);
 
-        dialogueTextArea = new JTextArea();
-        dialogueTextArea.setBounds(190, 510, 550, 160);
+        dialogueScrollPane = new JScrollPane();
+        dialogueScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        dialogueScrollPane.setBorder(null);
+        dialogueScrollPane.getVerticalScrollBar().setBackground(Color.black);
+        dialogueScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = Color.white;
+            }
+            protected JButton createDecreaseButton(int orientation) {
+                JButton button = super.createDecreaseButton(orientation);
+                button.setBackground(Color.WHITE);
+                return button;
+            }
+            protected JButton createIncreaseButton(int orientation) {
+                JButton button = super.createDecreaseButton(orientation);
+                button.setBackground(Color.WHITE);
+                return button;
+            }
+        });
+
+        dialogueTextArea = new JTextArea(7, 44);// works for some reason
         dialogueTextArea.setBackground(Color.black);
         dialogueTextArea.setForeground(Color.white);
         dialogueTextArea.setFont(asciiFont);
         dialogueTextArea.setLineWrap(true);
         dialogueTextArea.setEditable(false);
         dialogueTextArea.addKeyListener(kHandler);
+        dialogueTextArea.setHighlighter(null);
+        dialogueTextArea.addMouseListener(mHandler);
         dialogueTextPanel.add(dialogueTextArea);
+        dialogueTextPanel.add(dialogueScrollPane);
+        dialogueScrollPane.getViewport().add(dialogueTextArea);
 
         window.setVisible(true);
 

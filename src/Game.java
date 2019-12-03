@@ -46,14 +46,13 @@ public class Game {
             }
         }
     });
-
+//TODO: somehow make the dialoguetext appear only when all the storytext has :S
     Timer dtimer = new Timer(10, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
 
                 char character[] = dialogueText.toCharArray();
                 int ArrayNumber = character.length;
-
 
                 String addedCharacter = "";
                 String blank = "";
@@ -107,7 +106,8 @@ public class Game {
         @Override public void mousePressed(MouseEvent e){
             timer.stop();
             ui.mainTextArea.setText(storyText);
-            i = 0; }
+            i = 0;
+        }
         @Override public void mouseReleased(MouseEvent e){ }
         @Override public void mouseEntered(MouseEvent e){ }
         @Override public void mouseExited(MouseEvent e){ }
