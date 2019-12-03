@@ -1,28 +1,15 @@
-
-
 public class Story {
     Game game;
     UI ui;
     Characters cp;
 
-
     public Story(Game g, UI userInterface, Characters cPict) {
         game = g;
         ui = userInterface;
         cp = cPict;
-
     }
 
-    public void selecPosition(String nextPosition) {
-        switch (nextPosition) {
-            case "choice1": choice1(); break;
-            case "choice2": choice2(); break;
-            case "choice3": choice3(); break;
-            case "choice4": choice4(); break;
-            case "room": room(); break;
-        }
 
-    }
 
 
     public void start() {
@@ -44,25 +31,44 @@ public class Story {
 
         ui.dialoguePicture.setText(cp.maggi);
         ui.dialoguePicture2.setText(cp.hero);
-        game.storyText = cp.hero;
-                //"once upon a time, there was something something in the month of may";
+        game.storyText = "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "once upon a time, there was something something in the month of may" +
+                "";
         game.prepareText();
         ui.chapterLabel.setText("sdfsdfsd");
-
-        ui.choice1.setText("FOLLOW");
-        game.nextPosition1 = "choice1";
-        ui.choice2.setText("2");
-        game.nextPosition2 = "choice2";
-        ui.choice3.setText("3");
-        game.nextPosition3 = "choice3";
-        ui.choice4.setText("4");
-        game.nextPosition4 = "choice4";
-        ui.choice5.setText("room");
-        game.nextPosition5 = "room";
-        ui.choice6.setText("");
-        game.nextPosition6 = "";
-        ui.choice7.setText("");
-        game.nextPosition7 = "";
+        //ui.dialogueTextArea.setText("dfdfgdfg\nsdfsdffsd\nsdfdsfds\nsdfdsfsdf\nskdjfhksdj\nskdjfsdjk\nsjfhksdjf");
+        game.dialogueText = "lkjsdkfjlkdsjfijemlkjflksjflskmlksmlkdjvlksmvljkklkfjlkjglkmlkdfj•\n" +
+                "lksdjflksdjflkjlko isoeohnjlm •\n" +
+                "lkjsdlfkjsdijlksdjflksdjflksjdflkdj •\n";
+        game.prepareDialogue();
+        ui.choice1.setText("FOLLOW"); game.nextPosition1 = "choice1";
+        ui.choice2.setText("2"); game.nextPosition2 = "choice2";
+        ui.choice3.setText("3"); game.nextPosition3 = "choice3";
+        ui.choice4.setText("4"); game.nextPosition4 = "choice4";
+        ui.choice5.setText("room"); game.nextPosition5 = "room";
+        ui.choice6.setText(""); game.nextPosition6 = "";
+        ui.choice7.setText(""); game.nextPosition7 = "";
 
     }
 
@@ -106,5 +112,14 @@ public class Story {
         game.prepareText();
     }
 
-
+    public void selecPosition(String nextPosition) {
+        switch (nextPosition) {
+            case "choice1": choice1(); break;
+            case "choice2": choice2(); break;
+            case "choice3": choice3(); break;
+            case "choice4": choice4(); break;
+            case "room": room(); break;
+        }
+    }
 }
+

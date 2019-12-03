@@ -11,7 +11,7 @@ public class Characters {
 */
 
 
-    public static String maggi =
+    public String maggi =
             " ████▀         ▄▀   ,`     ,⌐`      ¿'-;       █ ▌     ▄   \"¿  ▐ |j█  \"  ═      \\ )      █▀█ ▀▄ ▐██\n" +
             " ███\"         ƒ   ,^            ⌐,²╓  \" `     ▄▌/  ,  █  ∞^ ▀    ─█U     ▀       █ `      ▄▀█ └▄▄T█\n" +
             " ██▀         ▀   ^       `   ,ⁿ╒\"/'          ╒█      ╛ ▄ 4▀▀   ƒ,█▀        ▀      ▌    ╙  \"▄▀█╘ ▀ ▐\n" +

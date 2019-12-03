@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
 
 
@@ -19,7 +20,7 @@ public class UI {
 
 
 
-    public void createUI(Game.ChoiceHandler cHandler, Game.MouseHandler mHandler, Game.MouseHover mHover) {
+    public void createUI(Game.ChoiceHandler cHandler, Game.MouseHandler mHandler, Game.MouseHover mHover, Game.KeyHandler kHandler) {
 
         window = new JFrame();
         window.setSize(960, 720);
@@ -32,6 +33,7 @@ public class UI {
 
         window.setTitle("METROPOLIS");
         window.setLayout(null);
+
 
         container = window.getContentPane();
 
@@ -63,7 +65,7 @@ public class UI {
         legendInfo.setFont(asciiFont);
         legendInfo.setForeground(Color.white);
         infoPanel.add(legendInfo);
-        //TODO: Main text Panel for displaying story text --- needs scrolling
+
         mainTextPanel = new JPanel();
         mainTextPanel.setBounds(30, 100, 870, 365);
         mainTextPanel.setBackground(Color.green);
@@ -78,13 +80,11 @@ public class UI {
             protected void configureScrollBarColors() {
                 this.thumbColor = Color.white;
             }
-
             protected JButton createDecreaseButton(int orientation) {
                 JButton button = super.createDecreaseButton(orientation);
                 button.setBackground(Color.WHITE);
                 return button;
             }
-
             protected JButton createIncreaseButton(int orientation) {
                 JButton button = super.createDecreaseButton(orientation);
                 button.setBackground(Color.WHITE);
@@ -93,11 +93,14 @@ public class UI {
         });
 
         mainTextArea = new JTextArea(17, 71);// works for some reason
+        DefaultCaret caret = (DefaultCaret) mainTextArea.getCaret(); //TODO: use for dialogue, when that has been implemented
+        caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
         mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
         mainTextArea.setFont(asciiFont);
         mainTextArea.setLineWrap(true);
         mainTextArea.setEditable(false);
+        mainTextArea.setHighlighter(null);
         mainTextArea.addMouseListener(mHandler);
         mainTextPanel.add(mainTextArea);
         mainTextPanel.add(scrollPane);
@@ -227,15 +230,15 @@ public class UI {
         dialogueTextPanel.setBackground(Color.yellow);
         container.add(dialogueTextPanel);
 
-        dialogueTextArea = new JTextArea("dfdfgdfg\nsdfsdffsd\nsdfdsfds\nsdfdsfsdf\nskdjfhksdj\nskdjfsdjk\nsjfhksdjf");
+        dialogueTextArea = new JTextArea();
         dialogueTextArea.setBounds(190, 510, 550, 160);
         dialogueTextArea.setBackground(Color.black);
         dialogueTextArea.setForeground(Color.white);
         dialogueTextArea.setFont(asciiFont);
         dialogueTextArea.setLineWrap(true);
         dialogueTextArea.setEditable(false);
+        dialogueTextArea.addKeyListener(kHandler);
         dialogueTextPanel.add(dialogueTextArea);
-
 
         window.setVisible(true);
 
