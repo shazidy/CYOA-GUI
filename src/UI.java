@@ -1,18 +1,16 @@
 import javax.swing.*;
+import java.awt.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.DefaultCaret;
-import java.awt.*;
-
-
 
 public class UI {
     //TODO: make maintextarea to JLabel for HTML --- linewrap needs to be implemented
     JFrame window;
     JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, chapterText;
     JScrollPane mainScrollPane, dialogueScrollPane;
-    JPanel mainTextPanel, choicePanel, infoPanel, dialoguePicturePanel, dialogueTextPanel, dialoguePicturePanel2, chapterPanel;
+    JPanel mainTextPanel, choicePanel,nextPanel, infoPanel, dialoguePicturePanel, dialogueTextPanel, dialoguePicturePanel2, chapterPanel;
     JLabel chapterLabel, legendInfo;
-    JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7;
+    JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7, next;
     Font chapterFont = new Font("Lucida Console", Font.BOLD, 15);
     Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
     Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
@@ -20,7 +18,7 @@ public class UI {
 
 //TODO: add a dialoguebutton that reads continue or something
 
-    public void createUI(Game.ChoiceHandler cHandler, Game.MouseHandler mHandler, Game.MouseHover mHover, Game.KeyHandler kHandler) {
+    public void createUI(Game.ChoiceHandler cHandler, Game.MouseHandler mHandler, Game.MouseHover mHover, Game.MouseTimer mTimer) {
 
         window = new JFrame();
         window.setSize(960, 720);
@@ -30,10 +28,8 @@ public class UI {
         window.getContentPane().setBackground(Color.magenta);
         window.setResizable(true);
         window.requestFocus();
-
         window.setTitle("METROPOLIS");
         window.setLayout(null);
-
 
         container = window.getContentPane();
 
@@ -67,7 +63,7 @@ public class UI {
         infoPanel.add(legendInfo);
 
         mainTextPanel = new JPanel();
-        mainTextPanel.setBounds(30, 100, 870, 365);
+        mainTextPanel.setBounds(30, 100, 870, 325);
         mainTextPanel.setBackground(Color.green);
         container.add(mainTextPanel);
 
@@ -111,9 +107,9 @@ public class UI {
 
         //TODO: text input area --- must be visible, but invisible
         choicePanel = new JPanel();
-        choicePanel.setBounds(30, 465, 870, 40);
+        choicePanel.setBounds(30, 425, 870, 40);
         choicePanel.setBackground(Color.red);
-        choicePanel.setLayout(new GridLayout(1, 4));
+        choicePanel.setLayout(new GridLayout(1, 7));
         container.add(choicePanel);
 
         choice1 = new JButton();
@@ -124,7 +120,7 @@ public class UI {
         choice1.setActionCommand("c1");
         choice1.setFocusPainted(false);
         choice1.addMouseListener(mHover);
-        choice1.setBorder(BorderFactory.createLineBorder(Color.black, 3));
+        choice1.setBorder(BorderFactory.createLineBorder(Color.black, 4));
         choicePanel.add(choice1);
 
         choice2 = new JButton();
@@ -193,6 +189,23 @@ public class UI {
         choice7.setBorder(BorderFactory.createLineBorder(Color.black, 4));
         choicePanel.add(choice7);
 
+        nextPanel = new JPanel();
+        nextPanel.setBounds(365, 470, 200, 35);
+        nextPanel.setBackground(Color.orange);
+        nextPanel.setLayout(new GridLayout(1, 1));
+        nextPanel.setVisible(false);
+        container.add(nextPanel);
+
+        next = new JButton("Continue");
+        next.setBackground(Color.white);
+        next.setForeground(Color.black);
+        next.setFont(asciiFont);
+        next.setActionCommand("c1");
+        next.setFocusPainted(false);
+        next.addMouseListener(mHover);
+        next.addMouseListener(mTimer);
+        next.setBorder(BorderFactory.createLineBorder(Color.black, 3));
+        nextPanel.add(next);
 
 
 
@@ -201,7 +214,7 @@ public class UI {
 
         dialoguePicturePanel = new JPanel();
         dialoguePicturePanel.setBounds(30, 510, 160, 160);
-        dialoguePicturePanel.setBackground(Color.red);
+        dialoguePicturePanel.setBackground(Color.white);
         container.add(dialoguePicturePanel);
 
         dialoguePicture = new JTextArea();
@@ -215,7 +228,7 @@ public class UI {
 
         dialoguePicturePanel2 = new JPanel();
         dialoguePicturePanel2.setBounds(740, 510, 162, 160);
-        dialoguePicturePanel2.setBackground(Color.red);
+        dialoguePicturePanel2.setBackground(Color.white);
         container.add(dialoguePicturePanel2);
 
         dialoguePicture2 = new JTextArea();
@@ -230,6 +243,7 @@ public class UI {
         dialogueTextPanel = new JPanel();
         dialogueTextPanel.setBounds(190, 510, 550, 160);
         dialogueTextPanel.setBackground(Color.yellow);
+
         container.add(dialogueTextPanel);
 
         dialogueScrollPane = new JScrollPane();
@@ -259,9 +273,7 @@ public class UI {
         dialogueTextArea.setFont(asciiFont);
         dialogueTextArea.setLineWrap(true);
         dialogueTextArea.setEditable(false);
-        dialogueTextArea.addKeyListener(kHandler);
         dialogueTextArea.setHighlighter(null);
-        dialogueTextArea.addMouseListener(mHandler);
         dialogueTextPanel.add(dialogueTextArea);
         dialogueTextPanel.add(dialogueScrollPane);
         dialogueScrollPane.getViewport().add(dialogueTextArea);

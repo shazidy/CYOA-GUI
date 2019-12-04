@@ -1,16 +1,5 @@
 public class Characters {
 
-/*
-    private String name, image;
-    public Characters(String name, String image){
-        this.name = name;
-        this.image = image;
-    }
-
-
-*/
-
-
     public String maggi =
             " ████▀         ▄▀   ,`     ,⌐`      ¿'-;       █ ▌     ▄   \"¿  ▐ |j█  \"  ═      \\ )      █▀█ ▀▄ ▐██\n" +
             " ███\"         ƒ   ,^            ⌐,²╓  \" `     ▄▌/  ,  █  ∞^ ▀    ─█U     ▀       █ `      ▄▀█ └▄▄T█\n" +

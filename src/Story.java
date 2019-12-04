@@ -10,8 +10,6 @@ public class Story {
     }
 
 
-
-
     public void start() {
 
         ui.chapterText.setText("_________   ___ ___    _____ __________________________________________  .___.___  \n" +
@@ -58,43 +56,64 @@ public class Story {
     }
 
     public void choice1() {
-        game.storyText ="choice1";
+        game.storyText ="choice1choice1choice1choice1choice1choice1choice1choice1choice1choice14" +
+                "choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1" +
+                "choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1";
+        game.dialogueText = "HAllohallo hallo•\n" +
+                "HAllohallo hallo•\n" +
+                "HAllohallo hallo•\n" +
+                "HAllohallo hallo•\n";
         game.prepareText();
+        game.prepareDialogue();
     }
 
     public void choice2() {
-        game.storyText = "choice2";
+        game.storyText = "...";
+        game.dialogueText = "•\n";
         game.prepareText();
+        game.prepareDialogue();
     }
 
     public void choice3() {
         game.storyText = "choice3";
+        game.dialogueText = "•\n";
         game.prepareText();
+        game.prepareDialogue();
     }
 
     public void choice4() {
         game.storyText ="choice4";
+        game.dialogueText = "•\n";
         game.prepareText();
+        game.prepareDialogue();
     }
 
     public void room() {
         game.storyText = "room";
+        game.dialogueText = "•\n";
         game.prepareText();
+        game.prepareDialogue();
     }
 
     public void hall() {
         game.storyText ="hall";
+        game.dialogueText = "•\n";
         game.prepareText();
+        game.prepareDialogue();
     }
 
     public void office() {
         game.storyText = "office";
+        game.dialogueText = "•\n";
         game.prepareText();
+        game.prepareDialogue();
     }
 
     public void kitchen() {
         game.storyText = "kitchen";
+        game.dialogueText = "•\n";
         game.prepareText();
+        game.prepareDialogue();
     }
 
     public void selecPosition(String nextPosition) {

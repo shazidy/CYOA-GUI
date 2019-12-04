@@ -3,11 +3,13 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Game {
-    KeyHandler kHandler = new KeyHandler();
+
     MouseHandler mHandler = new MouseHandler();
     MouseHover mHover = new MouseHover();
+    MouseTimer mTimer = new MouseTimer();
     ChoiceHandler cHandler = new ChoiceHandler();
     Characters cp = new Characters();
+
     UI ui = new UI();
 
     int i=0, di = 0, iLength = 0;
@@ -20,10 +22,11 @@ public class Game {
     }
 
     public Game(){
-        ui.createUI(cHandler, mHandler, mHover, kHandler);
+        ui.createUI(cHandler, mHandler, mHover, mTimer);
         story.start();
         //tower.start();
     }
+    Story story = new Story(this, ui, cp);
 
     Timer timer = new Timer(10, new ActionListener() {
         @Override
@@ -41,6 +44,8 @@ public class Game {
             i++;
 
             if (i == ArrayNumber) {
+                ui.nextPanel.setVisible(true);
+                ui.dialogueTextPanel.setVisible(true);
                 i = 0;
                 timer.stop();
             }
@@ -66,7 +71,9 @@ public class Game {
                     dtimer.stop();
                 }
                 if (di == ArrayNumber) {
-                    i = 0;
+                    ui.nextPanel.setVisible(false);
+                    ui.dialogueTextArea.setText(dialogueText);
+                    di = 0;
                     dtimer.stop();
                 }
             }
@@ -79,27 +86,12 @@ public class Game {
     }
 
     public void prepareText(){
+        ui.nextPanel.setVisible(false);
+        ui.dialogueTextPanel.setVisible(false);
         i = 0;
         ui.mainTextArea.setText("");
         timer.start();
     }
-
-    public class KeyHandler implements KeyListener{
-        @Override
-        public void keyPressed(KeyEvent e){
-            switch (e.getKeyCode()){
-                case KeyEvent.VK_SPACE:
-                    dtimer.start();
-            }
-        }
-        @Override
-        public void keyReleased(KeyEvent e){
-        }
-        @Override
-        public void keyTyped(KeyEvent e){
-        }
-    }
-
 
     public class MouseHandler implements MouseListener{
         @Override public void mouseClicked(MouseEvent e){ }
@@ -107,6 +99,8 @@ public class Game {
             timer.stop();
             ui.mainTextArea.setText(storyText);
             i = 0;
+            ui.dialogueTextPanel.setVisible(true);
+            ui.nextPanel.setVisible(true);
         }
         @Override public void mouseReleased(MouseEvent e){ }
         @Override public void mouseEntered(MouseEvent e){ }
@@ -123,11 +117,19 @@ public class Game {
             Component c = e.getComponent();
             c.setBackground(Color.white); }
     }
+    public class MouseTimer implements MouseListener{
+        @Override public void mouseClicked(MouseEvent e){ }
+        @Override public void mousePressed(MouseEvent e){
+            dtimer.start();
+        }
+        @Override public void mouseReleased(MouseEvent e){ }
+        @Override public void mouseEntered(MouseEvent e){ }
+        @Override public void mouseExited(MouseEvent e){ }
+    }
 
 
-//For every new class, instantiate class here:
-    Story story = new Story(this, ui, cp);
-    Tower tower = new Tower(this, ui, cp);
+
+
 
     public class ChoiceHandler implements ActionListener{
         public void actionPerformed(ActionEvent event){
@@ -142,15 +144,6 @@ public class Game {
                 case "c5" : story.selecPosition(nextPosition5); break;
                 case "c6" : story.selecPosition(nextPosition6); break;
                 case "c7" : story.selecPosition(nextPosition7); break;
-            }
-            switch (yourChoice){
-                case "c1" : tower.selecPosition(nextPosition1); break;
-                case "c2" : tower.selecPosition(nextPosition2); break;
-                case "c3" : tower.selecPosition(nextPosition3); break;
-                case "c4" : tower.selecPosition(nextPosition4); break;
-                case "c5" : tower.selecPosition(nextPosition5); break;
-                case "c6" : tower.selecPosition(nextPosition6); break;
-                case "c7" : tower.selecPosition(nextPosition7); break;
             }
         }
     }
