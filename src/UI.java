@@ -25,7 +25,7 @@ public class UI {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         window.setLocation(dim.width / 2 - window.getSize().width / 2, dim.height / 2 - window.getSize().height / 2);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        window.getContentPane().setBackground(Color.magenta);
+        window.getContentPane().setBackground(Color.gray);
         window.setResizable(true);
         window.requestFocus();
         window.setTitle("METROPOLIS");
@@ -48,23 +48,23 @@ public class UI {
 
         //TODO: needs reworking to display relevant information --- maybe legend or inventory
         infoPanel = new JPanel();
-        infoPanel.setBounds(30, 15, 870, 70);
+        infoPanel.setBounds(30, 15, 620, 70);
         infoPanel.setBackground(Color.black);
-        infoPanel.setLayout(new GridLayout(1, 1));
+        infoPanel.setLayout(new GridLayout(1, 2));
         container.add(infoPanel);
 
-        chapterLabel = new JLabel("<HTML>CHAPTER I:<BR/>THE TOWER</HTML>");
+        chapterLabel = new JLabel();
         chapterLabel.setFont(asciiFont);
         chapterLabel.setForeground(Color.WHITE);
         infoPanel.add(chapterLabel);
-        legendInfo = new JLabel("Various Legends");
+        legendInfo = new JLabel();
         legendInfo.setFont(asciiFont);
         legendInfo.setForeground(Color.white);
         infoPanel.add(legendInfo);
 
         mainTextPanel = new JPanel();
-        mainTextPanel.setBounds(30, 100, 870, 325);
-        mainTextPanel.setBackground(Color.green);
+        mainTextPanel.setBounds(30, 100, 620, 325);
+        mainTextPanel.setBackground(Color.black);
         container.add(mainTextPanel);
 
         mainScrollPane = new JScrollPane();
@@ -89,7 +89,7 @@ public class UI {
         });
 
 
-        mainTextArea = new JTextArea(17, 71);// works for some reason
+        mainTextArea = new JTextArea(15, 50);// works for some reason
         DefaultCaret caret = (DefaultCaret) mainTextArea.getCaret(); //TODO: use for dialogue, when that has been implemented
         caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
         mainTextArea.setBackground(Color.black);

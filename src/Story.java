@@ -29,15 +29,29 @@ public class Story {
 
         ui.dialoguePicture.setText(cp.maggi);
         ui.dialoguePicture2.setText(cp.hero);
-        game.storyText = "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
-                "once upon a time, there was something something in the month of may" +
+        game.storyText = "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
                 "";
         game.prepareText();
-        ui.chapterLabel.setText("sdfsdfsd");
+        ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
+        ui.legendInfo.setText("<HTML><P align=right>LOCATION<BR/>Room</HTML>");
         //ui.dialogueTextArea.setText("dfdfgdfg\nsdfsdffsd\nsdfdsfds\nsdfdsfsdf\nskdjfhksdj\nskdjfsdjk\nsjfhksdjf");
         game.dialogueText = "lkjsdkfjlkdsjfijemlkjflksjflskmlksmlkdjvlksmvljkklkfjlkjglkmlkdfj•\n" +
                 "lksdjflksdjflkjlko isoeohnjlm •\n" +
