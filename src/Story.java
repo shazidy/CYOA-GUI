@@ -12,53 +12,51 @@ public class Story {
 
     public void start() {
 
-        ui.chapterText.setText("_________   ___ ___    _____ __________________________________________  .___.___  \n" +
-                "\\_   ___ \\ /   |   \\  /  _  \\\\______   \\__    ___/\\_   _____/\\______   \\ |   |   | \n" +
-                "/    \\  \\//    ~    \\/  /_\\  \\|     ___/ |    |    |    __)_  |       _/ |   |   | \n" +
-                "\\     \\___\\    Y    /    |    \\    |     |    |    |        \\ |    |   \\ |   |   | \n" +
-                " \\______  /\\___|_  /\\____|__  /____|     |____|   /_______  / |____|_  / |___|___| \n" +
-                "        \\/       \\/         \\/                            \\/         \\/            \n" +
-                "______________ ______________ ___________________  __      _______________________ \n" +
-                "\\__    ___/   |   \\_   _____/ \\__    ___/\\_____  \\/  \\    /  \\_   _____/\\______   \\\n" +
-                "  |    | /    ~    \\    __)_    |    |    /   |   \\   \\/\\/   /|    __)_  |       _/\n" +
-                "  |    | \\    Y    /        \\   |    |   /    |    \\        / |        \\ |    |   \\\n" +
-                "  |____|  \\___|_  /_______  /   |____|   \\_______  /\\__/\\  / /_______  / |____|_  /\n" +
-                "                \\/        \\/                     \\/      \\/          \\/         \\/ ");
-
+        ui.chapterText.setText(cp.chapter2);
         ui.chapterPanel.setVisible(false);
 
         ui.dialoguePicture.setText(cp.maggi);
         ui.dialoguePicture2.setText(cp.hero);
-        game.storyText = "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "";
-        game.prepareText();
         ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
         ui.legendInfo.setText("<HTML><P align=right>LOCATION<BR/>Room</HTML>");
-        //ui.dialogueTextArea.setText("dfdfgdfg\nsdfsdffsd\nsdfdsfds\nsdfdsfsdf\nskdjfhksdj\nskdjfsdjk\nsjfhksdjf");
-        game.dialogueText = "lkjsdkfjlkdsjfijemlkjflksjflskmlksmlkdjvlksmvljkklkfjlkjglkmlkdfj•\n" +
-                "lksdjflksdjflkjlko isoeohnjlm •\n" +
-                "lkjsdlfkjsdijlksdjflksdjflksjdflkdj •\n";
-        game.prepareDialogue();
+        //story-part of method
+        game.storyText =
+                "> once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "\n> " +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "\n> " +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                "once upon a time, there was something something i" +
+                " •";
 
-        //Choices and their
+        //dialogue-part of method
+        game.dialogueText =
+                "lkjsdkfjlkdsjfijemlkjflksjflskmlksmlkdjvlksmvljkklkfjlkjglkmlkdfj\n" +
+                "> lksdjflksdjflkjlko isoeohnjlm \n" +
+                "> lkjsdlfkjsdijlksdjflksdjflksjdflkdj" +
+                " <\n" +
+                "> yrteycjyyuifhiuvusfr \n" +
+                "> ipwåokvkrælkjlfkgjlm \n" +
+                "> lkirmvrirkmlvsr \n" +
+                "> åpeoitjbtbmn" +
+                " <\n" +
+                "> yrteycjyyuifhiuvusfr \n" +
+                "> ipwåokvkrælkjlfkgjlm \n" +
+                "> lkirmvrirkmlvsr \n" +
+                "> åpeoitjbtbmn" +
+                " <\n";
+        game.prepareText();
+
+        //Choices and their method-calls
         ui.choice1.setText("FOLLOW"); game.nextPosition1 = "choice1";
         ui.choice2.setText("2"); game.nextPosition2 = "choice2";
         ui.choice3.setText("3"); game.nextPosition3 = "choice3";
@@ -72,13 +70,14 @@ public class Story {
     public void choice1() {
         game.storyText ="choice1choice1choice1choice1choice1choice1choice1choice1choice1choice14" +
                 "choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1" +
-                "choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1";
-        game.dialogueText = "HAllohallo hallo•\n" +
-                "HAllohallo hallo•\n" +
-                "HAllohallo hallo•\n" +
-                "HAllohallo hallo•\n";
+                "choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1" +
+                "\n>";
+        game.dialogueText = "> HAllohallo hallo\n" +
+                "> HAllohallo hallo\n" +
+                "> HAllohallo hallo\n" +
+                "> HAllohallo hallo" +
+                " •";
         game.prepareText();
-        game.prepareDialogue();
     }
 
     public void choice2() {

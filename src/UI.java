@@ -25,7 +25,7 @@ public class UI {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         window.setLocation(dim.width / 2 - window.getSize().width / 2, dim.height / 2 - window.getSize().height / 2);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        window.getContentPane().setBackground(Color.gray);
+        window.getContentPane().setBackground(Color.black);
         window.setResizable(true);
         window.requestFocus();
         window.setTitle("METROPOLIS");
@@ -63,8 +63,8 @@ public class UI {
         infoPanel.add(legendInfo);
 
         mainTextPanel = new JPanel();
-        mainTextPanel.setBounds(30, 100, 620, 325);
-        mainTextPanel.setBackground(Color.black);
+        mainTextPanel.setBounds(30, 100, 622, 325);
+        mainTextPanel.setBackground(Color.white);
         container.add(mainTextPanel);
 
         mainScrollPane = new JScrollPane();
@@ -98,6 +98,7 @@ public class UI {
         mainTextArea.setLineWrap(true);
         mainTextArea.setEditable(false);
         mainTextArea.setHighlighter(null);
+        mainTextArea.setMargin(new Insets(3,3,0,0));
         mainTextArea.addMouseListener(mHandler);
         mainTextPanel.add(mainTextArea);
         mainTextPanel.add(mainScrollPane);
@@ -227,7 +228,7 @@ public class UI {
         dialoguePicturePanel.add(dialoguePicture);
 
         dialoguePicturePanel2 = new JPanel();
-        dialoguePicturePanel2.setBounds(740, 510, 162, 160);
+        dialoguePicturePanel2.setBounds(742, 510, 162, 160);
         dialoguePicturePanel2.setBackground(Color.white);
         container.add(dialoguePicturePanel2);
 
@@ -241,8 +242,8 @@ public class UI {
         dialoguePicturePanel2.add(dialoguePicture2);
 
         dialogueTextPanel = new JPanel();
-        dialogueTextPanel.setBounds(190, 510, 550, 160);
-        dialogueTextPanel.setBackground(Color.yellow);
+        dialogueTextPanel.setBounds(190, 510, 552, 160);
+        dialogueTextPanel.setBackground(Color.white);
 
         container.add(dialogueTextPanel);
 
@@ -274,6 +275,7 @@ public class UI {
         dialogueTextArea.setLineWrap(true);
         dialogueTextArea.setEditable(false);
         dialogueTextArea.setHighlighter(null);
+        dialogueTextArea.setMargin(new Insets(3,3,0,0));
         dialogueTextPanel.add(dialogueTextArea);
         dialogueTextPanel.add(dialogueScrollPane);
         dialogueScrollPane.getViewport().add(dialogueTextArea);

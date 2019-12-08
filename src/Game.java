@@ -2,6 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/** dialogue and story-text work as follow: the one preceding the other does not have the symbol ">" in front of its
+ * first paragraph. IF dialogue comes before story, story has the symbol ">" in front of its first entry. To reset
+ * both dialogue and story, put the symbol "•" at the end of either. If there is more story at the end of a piece of
+ * dialogue mark the break by using the symbol"<" at the end of the dialogue paragraph to switch to more story.
+ *
+ */
+
 public class Game {
 
     MouseHandler mHandler = new MouseHandler();
@@ -42,13 +49,30 @@ public class Game {
             ui.mainTextArea.append(addedCharacter);
 
             i++;
-
-            if (i == ArrayNumber) {
-                ui.nextPanel.setVisible(true);
-                ui.dialogueTextPanel.setVisible(true);
-                i = 0;
+            if (addedCharacter.equals(">")) {
                 timer.stop();
+                dtimer.start();
+                ui.dialogueTextPanel.setVisible(true);
+                ui.nextPanel.setVisible(true);
             }
+            if (addedCharacter.equals("•")) {
+                timer.stop();
+                dtimer.stop();
+                i = 0;
+                ui.nextPanel.setVisible(false);
+                ui.choicePanel.setVisible(true);
+            }
+
+
+          //  if (i == ArrayNumber) {
+          //      ui.nextPanel.setVisible(true);
+          //      ui.dialogueTextPanel.setVisible(true);
+          //      i = 0;
+          //      timer.stop();
+          //      dtimer.start();
+          //  }
+
+
         }
     });
 //TODO: somehow make the dialoguetext appear only when all the storytext has :S
@@ -67,40 +91,58 @@ public class Game {
 
                 di++;
 
-                if (addedCharacter.equals("•")) {
-                    dtimer.stop();
-                }
-                if (di == ArrayNumber) {
-                    ui.nextPanel.setVisible(false);
-                    ui.dialogueTextArea.setText(dialogueText);
-                    di = 0;
-                    dtimer.stop();
-                }
+            if (addedCharacter.equals(">")) {
+                dtimer.stop();
             }
+
+            if (addedCharacter.equals("<")) {
+                dtimer.stop();
+                ui.nextPanel.setVisible(false);
+                if (iLength != i)
+                timer.start();
+            }
+            if (addedCharacter.equals("•")){
+                dtimer.stop();
+                timer.stop();
+                ui.nextPanel.setVisible(false);
+                ui.choicePanel.setVisible(true);
+            }
+           // if (di == ArrayNumber) {
+           //     ui.nextPanel.setVisible(false);
+           //     ui.dialogueTextArea.setText(dialogueText);
+           //     di = 0;
+           //     dtimer.stop();
+           // }
+        }
     });
 
     public void prepareDialogue(){
-        di = 0;
-        ui.dialogueTextArea.setText("");
-        dtimer.start();
+        //di = 0;
+        //ui.dialogueTextArea.setText("");
+        //dtimer.start();
     }
 
     public void prepareText(){
-        ui.nextPanel.setVisible(false);
-        ui.dialogueTextPanel.setVisible(false);
+        ui.choicePanel.setVisible(false);
+        di = 0;
         i = 0;
+        ui.nextPanel.setVisible(false);
+        ui.dialogueTextPanel.setVisible(true);
         ui.mainTextArea.setText("");
+        ui.dialogueTextArea.setText("");
         timer.start();
+        //dtimer.start();
     }
 
     public class MouseHandler implements MouseListener{
         @Override public void mouseClicked(MouseEvent e){ }
         @Override public void mousePressed(MouseEvent e){
-            timer.stop();
-            ui.mainTextArea.setText(storyText);
-            i = 0;
-            ui.dialogueTextPanel.setVisible(true);
-            ui.nextPanel.setVisible(true);
+           // timer.stop();
+           // ui.mainTextArea.setText(storyText);
+           // i = 0;
+           // ui.dialogueTextPanel.setVisible(true);
+           // ui.nextPanel.setVisible(true);
+
         }
         @Override public void mouseReleased(MouseEvent e){ }
         @Override public void mouseEntered(MouseEvent e){ }
