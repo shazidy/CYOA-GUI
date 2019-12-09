@@ -3,15 +3,15 @@ import java.awt.*;
 import java.awt.event.*;
 
 /** dialogue and story-text work as follow: the one preceding the other does not have the symbol ">" in front of its
- * first paragraph. IF dialogue comes before story, story has the symbol ">" in front of its first entry. To reset
- * both dialogue and story, put the symbol "•" at the end of either. If there is more story at the end of a piece of
- * dialogue mark the break by using the symbol"<" at the end of the dialogue paragraph to switch to more story.
+ * first paragraph. IF dialogue comes before story, story has the symbol ">" in front of its first entry and dialogue
+ * has the symbol "►". To reset both dialogue and story, put the symbol "•" at the end of either. If there is more
+ * story at the end of a piece of dialogue mark the break by using the symbol"<" at the end of the dialogue paragraph
+ * to switch to more story. If there is more dialogue after af story-paragraph, mark it with the symbol ">".
  *
  */
 
 public class Game {
 
-    MouseHandler mHandler = new MouseHandler();
     MouseHover mHover = new MouseHover();
     MouseTimer mTimer = new MouseTimer();
     ChoiceHandler cHandler = new ChoiceHandler();
@@ -29,7 +29,7 @@ public class Game {
     }
 
     public Game(){
-        ui.createUI(cHandler, mHandler, mHover, mTimer);
+        ui.createUI(cHandler, mHover, mTimer);
         story.start();
         //tower.start();
     }
@@ -75,7 +75,7 @@ public class Game {
 
         }
     });
-//TODO: somehow make the dialoguetext appear only when all the storytext has :S
+// typewriter text for dialogue that switches to story when needed
     Timer dtimer = new Timer(10, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -107,21 +107,9 @@ public class Game {
                 ui.nextPanel.setVisible(false);
                 ui.choicePanel.setVisible(true);
             }
-           // if (di == ArrayNumber) {
-           //     ui.nextPanel.setVisible(false);
-           //     ui.dialogueTextArea.setText(dialogueText);
-           //     di = 0;
-           //     dtimer.stop();
-           // }
         }
     });
-
-    public void prepareDialogue(){
-        //di = 0;
-        //ui.dialogueTextArea.setText("");
-        //dtimer.start();
-    }
-
+// resets the values for the text to start from scratch
     public void prepareText(){
         ui.choicePanel.setVisible(false);
         di = 0;
@@ -131,19 +119,11 @@ public class Game {
         ui.mainTextArea.setText("");
         ui.dialogueTextArea.setText("");
         timer.start();
-        //dtimer.start();
     }
 
     public class MouseHandler implements MouseListener{
         @Override public void mouseClicked(MouseEvent e){ }
-        @Override public void mousePressed(MouseEvent e){
-           // timer.stop();
-           // ui.mainTextArea.setText(storyText);
-           // i = 0;
-           // ui.dialogueTextPanel.setVisible(true);
-           // ui.nextPanel.setVisible(true);
-
-        }
+        @Override public void mousePressed(MouseEvent e){ }
         @Override public void mouseReleased(MouseEvent e){ }
         @Override public void mouseEntered(MouseEvent e){ }
         @Override public void mouseExited(MouseEvent e){ }
@@ -153,11 +133,11 @@ public class Game {
         @Override public void mousePressed(MouseEvent e){ }
         @Override public void mouseReleased(MouseEvent e){ }
         @Override public void mouseEntered(MouseEvent e) {
-                Component c = e.getComponent();
-                c.setBackground(Color.lightGray); }
+                 Component c = e.getComponent();
+                 c.setBackground(Color.lightGray); }
         @Override public void mouseExited(MouseEvent e){
-            Component c = e.getComponent();
-            c.setBackground(Color.white); }
+                 Component c = e.getComponent();
+                 c.setBackground(Color.white); }
     }
     public class MouseTimer implements MouseListener{
         @Override public void mouseClicked(MouseEvent e){ }

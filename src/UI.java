@@ -4,11 +4,11 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.DefaultCaret;
 
 public class UI {
-    //TODO: make maintextarea to JLabel for HTML --- linewrap needs to be implemented
+    //TODO: make maintextarea to JLabel for HTML (is it necessary?)
     JFrame window;
     JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, chapterText;
     JScrollPane mainScrollPane, dialogueScrollPane;
-    JPanel mainTextPanel, choicePanel,nextPanel, infoPanel, dialoguePicturePanel, dialogueTextPanel, dialoguePicturePanel2, chapterPanel;
+    JPanel mainTextPanel, choicePanel,nextPanel, infoPanel, dialoguePicturePanel, dialogueTextPanel, dialoguePicturePanel2, chapterPanel, optionTextPanel;
     JLabel chapterLabel, legendInfo;
     JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7, next;
     Font chapterFont = new Font("Lucida Console", Font.BOLD, 15);
@@ -16,9 +16,8 @@ public class UI {
     Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
     Container container;
 
-//TODO: add a dialoguebutton that reads continue or something
 
-    public void createUI(Game.ChoiceHandler cHandler, Game.MouseHandler mHandler, Game.MouseHover mHover, Game.MouseTimer mTimer) {
+    public void createUI(Game.ChoiceHandler cHandler, Game.MouseHover mHover, Game.MouseTimer mTimer) {
 
         window = new JFrame();
         window.setSize(960, 720);
@@ -96,14 +95,18 @@ public class UI {
         mainTextArea.setForeground(Color.white);
         mainTextArea.setFont(asciiFont);
         mainTextArea.setLineWrap(true);
+        mainTextArea.setWrapStyleWord(true);
         mainTextArea.setEditable(false);
         mainTextArea.setHighlighter(null);
         mainTextArea.setMargin(new Insets(3,3,0,0));
-        mainTextArea.addMouseListener(mHandler);
         mainTextPanel.add(mainTextArea);
         mainTextPanel.add(mainScrollPane);
         mainScrollPane.getViewport().add(mainTextArea);
 
+        optionTextPanel = new JPanel();
+        optionTextPanel.setBounds(622, 100, 248, 325);
+        optionTextPanel.setBackground(Color.white);
+        container.add(optionTextPanel);
 
 
         //TODO: text input area --- must be visible, but invisible
@@ -211,7 +214,7 @@ public class UI {
 
 
 
-        //TODO: Displays dialogue Panel --- needs frame for images and textarea
+        //TODO: something is wrong with the format from machine to machine ... "pictures" are formatted differently
 
         dialoguePicturePanel = new JPanel();
         dialoguePicturePanel.setBounds(30, 510, 160, 160);
@@ -273,6 +276,7 @@ public class UI {
         dialogueTextArea.setForeground(Color.white);
         dialogueTextArea.setFont(asciiFont);
         dialogueTextArea.setLineWrap(true);
+        dialogueTextArea.setWrapStyleWord(true);
         dialogueTextArea.setEditable(false);
         dialogueTextArea.setHighlighter(null);
         dialogueTextArea.setMargin(new Insets(3,3,0,0));

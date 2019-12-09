@@ -21,26 +21,24 @@ public class Story {
         ui.legendInfo.setText("<HTML><P align=right>LOCATION<BR/>Room</HTML>");
         //story-part of method
         game.storyText =
-                "> once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
+                "> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et" +
+                " dolore magna aliqua. Egestas egestas fringilla phasellus faucibus scelerisque. Sit amet consectetur" +
+                " adipiscing elit. Pellentesque massa placerat duis ultricies lacus sed." +
                 "\n> " +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
+                "At imperdiet dui accumsan sit" +
+                " amet nulla facilisi. Nisi lacus sed viverra tellus. Sagittis orci a scelerisque purus semper eget" +
+                " duis. Dignissim convallis aenean et tortor at risus. Proin fermentum leo vel orci porta non." +
                 "\n> " +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
-                "once upon a time, there was something something i" +
+                " Risus viverra adipiscing at in tellus integer feugiat. Donec pretium vulputate sapien nec sagittis" +
+                " aliquam. Morbi tristique senectus et netus et malesuada. Dui nunc mattis enim ut. Aliquet risus feugiat" +
+                " in ante metus dictum at tempor commodo. Tempor commodo ullamcorper a lacus vestibulum sed arcu non." +
+                " Nibh venenatis cras sed felis eget velit aliquet." +
+
                 " •";
 
         //dialogue-part of method
         game.dialogueText =
-                "lkjsdkfjlkdsjfijemlkjflksjflskmlksmlkdjvlksmvljkklkfjlkjglkmlkdfj\n" +
+                "► lkjsdkfjlkdsjfijemlkjflksjflskmlksmlkdjvlksmvljkklkfjlkjglkmlkdfj\n" +
                 "> lksdjflksdjflkjlko isoeohnjlm \n" +
                 "> lkjsdlfkjsdijlksdjflksdjflksjdflkdj" +
                 " <\n" +
@@ -68,9 +66,12 @@ public class Story {
     }
 
     public void choice1() {
-        game.storyText ="choice1choice1choice1choice1choice1choice1choice1choice1choice1choice14" +
-                "choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1" +
-                "choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1choice1" +
+        game.storyText ="► choice1choi ce1choice1choice1choi ce1ch oice1c hoice1choice1 choi ce1choice14" +
+                "choice 1choic e1choi ce1choice1c hoice1c hoice1choi ce1choice1 ch ice1 cho ice1c hoice1choice1" +
+                "choice1c hoice1ch oice1c hoice1choi ce1choice1cho ice1choice1cho ice1ch oice1cho ice 1choice1" +
+                "\n>" +
+                "ksjd fhkjs dhfkksjdf hkjsdh fkksjdfhkj sdhfkk sjdfhkj sdhfk ksjdfhk j sdhfkksjdf hkjsdhfk" +
+                "ksjdf hkjsdhfkk sjdfhk jsdhfkks jdfhkj sdhfkk sjdfhkjs dhfkksjdfhkjsdhfk" +
                 "\n>";
         game.dialogueText = "> HAllohallo hallo\n" +
                 "> HAllohallo hallo\n" +
@@ -84,49 +85,49 @@ public class Story {
         game.storyText = "...";
         game.dialogueText = "•\n";
         game.prepareText();
-        game.prepareDialogue();
+
     }
 
     public void choice3() {
         game.storyText = "choice3";
         game.dialogueText = "•\n";
         game.prepareText();
-        game.prepareDialogue();
+
     }
 
     public void choice4() {
         game.storyText ="choice4";
         game.dialogueText = "•\n";
         game.prepareText();
-        game.prepareDialogue();
+
     }
 
     public void room() {
         game.storyText = "room";
         game.dialogueText = "•\n";
         game.prepareText();
-        game.prepareDialogue();
+
     }
 
     public void hall() {
         game.storyText ="hall";
         game.dialogueText = "•\n";
         game.prepareText();
-        game.prepareDialogue();
+
     }
 
     public void office() {
         game.storyText = "office";
         game.dialogueText = "•\n";
         game.prepareText();
-        game.prepareDialogue();
+
     }
 
     public void kitchen() {
         game.storyText = "kitchen";
         game.dialogueText = "•\n";
         game.prepareText();
-        game.prepareDialogue();
+
     }
 
     public void selecPosition(String nextPosition) {
