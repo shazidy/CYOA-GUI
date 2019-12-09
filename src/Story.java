@@ -33,12 +33,11 @@ public class Story {
                 " aliquam. Morbi tristique senectus et netus et malesuada. Dui nunc mattis enim ut. Aliquet risus feugiat" +
                 " in ante metus dictum at tempor commodo. Tempor commodo ullamcorper a lacus vestibulum sed arcu non." +
                 " Nibh venenatis cras sed felis eget velit aliquet." +
-
                 " •";
 
         //dialogue-part of method
         game.dialogueText =
-                "► lkjsdkfjlkdsjfijemlkjflksjflskmlksmlkdjvlksmvljkklkfjlkjglkmlkdfj\n" +
+                "► lkjsdkfjlkdsj fije mlkjfl ksjfl skmlksm lkdjvlk smvljk klk fjlk jglkm lkdfj\n" +
                 "> lksdjflksdjflkjlko isoeohnjlm \n" +
                 "> lkjsdlfkjsdijlksdjflksdjflksjdflkdj" +
                 " <\n" +

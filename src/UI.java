@@ -6,8 +6,8 @@ import javax.swing.text.DefaultCaret;
 public class UI {
     //TODO: make maintextarea to JLabel for HTML (is it necessary?)
     JFrame window;
-    JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, chapterText;
-    JScrollPane mainScrollPane, dialogueScrollPane;
+    JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, chapterText, optionTextArea;
+    JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane;
     JPanel mainTextPanel, choicePanel,nextPanel, infoPanel, dialoguePicturePanel, dialogueTextPanel, dialoguePicturePanel2, chapterPanel, optionTextPanel;
     JLabel chapterLabel, legendInfo;
     JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7, next;
@@ -104,15 +104,48 @@ public class UI {
         mainScrollPane.getViewport().add(mainTextArea);
 
         optionTextPanel = new JPanel();
-        optionTextPanel.setBounds(622, 100, 248, 325);
+        optionTextPanel.setBounds(652, 100, 252, 325);
         optionTextPanel.setBackground(Color.white);
         container.add(optionTextPanel);
 
+        optionScrollPane = new JScrollPane();
+        optionScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        optionScrollPane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        optionScrollPane.setBorder(null);
+        optionScrollPane.getVerticalScrollBar().setBackground(Color.black);
+        optionScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = Color.white;
+            }
+            protected JButton createDecreaseButton(int orientation) {
+                JButton button = super.createDecreaseButton(orientation);
+                button.setBackground(Color.WHITE);
+                return button;
+            }
+            protected JButton createIncreaseButton(int orientation) {
+                JButton button = super.createDecreaseButton(orientation);
+                button.setBackground(Color.WHITE);
+                return button;
+            }
+        });
 
-        //TODO: text input area --- must be visible, but invisible
+        optionTextArea = new JTextArea(15, 19);// works for some reason
+        optionTextArea.setBackground(Color.black);
+        optionTextArea.setForeground(Color.white);
+        optionTextArea.setFont(asciiFont);
+        optionTextArea.setLineWrap(true);
+        optionTextArea.setWrapStyleWord(true);
+        optionTextArea.setEditable(false);
+        optionTextArea.setHighlighter(null);
+        optionTextArea.setMargin(new Insets(3,3,0,0));
+        optionTextPanel.add(optionTextArea);
+        optionTextPanel.add(optionScrollPane);
+        optionScrollPane.getViewport().add(optionTextArea);
+
         choicePanel = new JPanel();
-        choicePanel.setBounds(30, 425, 870, 40);
-        choicePanel.setBackground(Color.red);
+        choicePanel.setBounds(30, 435, 874, 35);
+        choicePanel.setBackground(Color.black);
         choicePanel.setLayout(new GridLayout(1, 7));
         container.add(choicePanel);
 
@@ -194,7 +227,7 @@ public class UI {
         choicePanel.add(choice7);
 
         nextPanel = new JPanel();
-        nextPanel.setBounds(365, 470, 200, 35);
+        nextPanel.setBounds(365, 435, 200, 35);
         nextPanel.setBackground(Color.orange);
         nextPanel.setLayout(new GridLayout(1, 1));
         nextPanel.setVisible(false);
@@ -217,12 +250,12 @@ public class UI {
         //TODO: something is wrong with the format from machine to machine ... "pictures" are formatted differently
 
         dialoguePicturePanel = new JPanel();
-        dialoguePicturePanel.setBounds(30, 510, 160, 160);
+        dialoguePicturePanel.setBounds(30, 480, 160, 160);
         dialoguePicturePanel.setBackground(Color.white);
         container.add(dialoguePicturePanel);
 
         dialoguePicture = new JTextArea();
-        dialoguePicture.setBounds(30, 510, 160, 160);
+        dialoguePicture.setBounds(30, 480, 160, 160);
         dialoguePicture.setBackground(Color.black);
         dialoguePicture.setForeground(Color.white);
         dialoguePicture.setFont(dialogueAsciiFont);
@@ -231,12 +264,12 @@ public class UI {
         dialoguePicturePanel.add(dialoguePicture);
 
         dialoguePicturePanel2 = new JPanel();
-        dialoguePicturePanel2.setBounds(742, 510, 162, 160);
+        dialoguePicturePanel2.setBounds(742, 480, 162, 160);
         dialoguePicturePanel2.setBackground(Color.white);
         container.add(dialoguePicturePanel2);
 
         dialoguePicture2 = new JTextArea();
-        dialoguePicture2.setBounds(740, 510, 162, 160);
+        dialoguePicture2.setBounds(740, 480, 162, 160);
         dialoguePicture2.setBackground(Color.black);
         dialoguePicture2.setForeground(Color.white);
         dialoguePicture2.setFont(dialogueAsciiFont);
@@ -245,7 +278,7 @@ public class UI {
         dialoguePicturePanel2.add(dialoguePicture2);
 
         dialogueTextPanel = new JPanel();
-        dialogueTextPanel.setBounds(190, 510, 552, 160);
+        dialogueTextPanel.setBounds(190, 480, 552, 160);
         dialogueTextPanel.setBackground(Color.white);
 
         container.add(dialogueTextPanel);
