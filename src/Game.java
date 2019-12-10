@@ -16,8 +16,8 @@ public class Game {
     MouseTimer mTimer = new MouseTimer();
     ChoiceHandler cHandler = new ChoiceHandler();
     Characters cp = new Characters();
-
     UI ui = new UI();
+    Story story = new Story(this, ui, cp);
 
     int i=0, di = 0, iLength = 0;
     String nextPosition1, nextPosition2, nextPosition3,
@@ -33,7 +33,7 @@ public class Game {
         story.start();
         //tower.start();
     }
-    Story story = new Story(this, ui, cp);
+
 
     Timer timer = new Timer(10, new ActionListener() {
         @Override
@@ -155,9 +155,7 @@ public class Game {
 
     public class ChoiceHandler implements ActionListener{
         public void actionPerformed(ActionEvent event){
-
             String yourChoice = event.getActionCommand();
-
             switch (yourChoice){
                 case "c1" : story.selecPosition(nextPosition1); break;
                 case "c2" : story.selecPosition(nextPosition2); break;

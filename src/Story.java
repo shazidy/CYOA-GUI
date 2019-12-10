@@ -129,6 +129,7 @@ public class Story {
 
     }
 
+
     public void selecPosition(String nextPosition) {
         switch (nextPosition) {
             case "choice1": choice1(); break;
