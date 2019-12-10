@@ -59,8 +59,7 @@ public class Story {
         ui.choice3.setText("3"); game.nextPosition3 = "choice3";
         ui.choice4.setText("4"); game.nextPosition4 = "choice4";
         ui.choice5.setText("room"); game.nextPosition5 = "room";
-        ui.choice6.setText(""); game.nextPosition6 = "";
-        ui.choice7.setText(""); game.nextPosition7 = "";
+
 
     }
 
@@ -130,14 +129,5 @@ public class Story {
     }
 
 
-    public void selecPosition(String nextPosition) {
-        switch (nextPosition) {
-            case "choice1": choice1(); break;
-            case "choice2": choice2(); break;
-            case "choice3": choice3(); break;
-            case "choice4": choice4(); break;
-            case "room": room(); break;
-        }
-    }
 }
 

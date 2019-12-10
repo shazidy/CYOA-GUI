@@ -150,23 +150,31 @@ public class Game {
     }
 
 
-
-
-
     public class ChoiceHandler implements ActionListener{
         public void actionPerformed(ActionEvent event){
             String yourChoice = event.getActionCommand();
             switch (yourChoice){
-                case "c1" : story.selecPosition(nextPosition1); break;
-                case "c2" : story.selecPosition(nextPosition2); break;
-                case "c3" : story.selecPosition(nextPosition3); break;
-                case "c4" : story.selecPosition(nextPosition4); break;
-                case "c5" : story.selecPosition(nextPosition5); break;
-                case "c6" : story.selecPosition(nextPosition6); break;
-                case "c7" : story.selecPosition(nextPosition7); break;
+                case "c1" : selecPosition(nextPosition1); break;
+                case "c2" : selecPosition(nextPosition2); break;
+                case "c3" : selecPosition(nextPosition3); break;
+                case "c4" : selecPosition(nextPosition4); break;
+                case "c5" : selecPosition(nextPosition5); break;
+                case "c6" : selecPosition(nextPosition6); break;
+                case "c7" : selecPosition(nextPosition7); break;
+            }
+        }
+        public void selecPosition(String nextPosition) {
+            switch (nextPosition) {
+                case "choice1": story.choice1(); break;
+                case "choice2": story.choice2(); break;
+                case "choice3": story.choice3(); break;
+                case "choice4": story.choice4(); break;
+                case "room": story.room(); break;
             }
         }
     }
+
+
 }
 
 
