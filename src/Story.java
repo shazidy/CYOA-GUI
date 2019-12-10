@@ -8,7 +8,22 @@ public class Story {
         ui = userInterface;
         cp = cPict;
     }
-
+/* Template
+    game.storyText =
+            "> " +
+            "\n> " +
+            "" +
+            "\n> " +
+            "" +
+            " •";
+    game.dialogueText =
+            "► " +
+            "> " +
+            " <\n" +
+            "> " +
+            "> " +
+            " <\n";
+ */
 
     public void start() {
 

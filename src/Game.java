@@ -31,11 +31,10 @@ public class Game {
     public Game(){
         ui.createUI(cHandler, mHover, mTimer);
         story.start();
-        //tower.start();
     }
 
-
-    Timer timer = new Timer(10, new ActionListener() {
+// typewriter text for story that switches to dialogue when needed
+    Timer timer = new Timer(5, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             char character[] = storyText.toCharArray();
@@ -62,17 +61,6 @@ public class Game {
                 ui.nextPanel.setVisible(false);
                 ui.choicePanel.setVisible(true);
             }
-
-
-          //  if (i == ArrayNumber) {
-          //      ui.nextPanel.setVisible(true);
-          //      ui.dialogueTextPanel.setVisible(true);
-          //      i = 0;
-          //      timer.stop();
-          //      dtimer.start();
-          //  }
-
-
         }
     });
 // typewriter text for dialogue that switches to story when needed
@@ -119,14 +107,6 @@ public class Game {
         ui.mainTextArea.setText("");
         ui.dialogueTextArea.setText("");
         timer.start();
-    }
-
-    public class MouseHandler implements MouseListener{
-        @Override public void mouseClicked(MouseEvent e){ }
-        @Override public void mousePressed(MouseEvent e){ }
-        @Override public void mouseReleased(MouseEvent e){ }
-        @Override public void mouseEntered(MouseEvent e){ }
-        @Override public void mouseExited(MouseEvent e){ }
     }
     public class MouseHover implements MouseListener{
         @Override public void mouseClicked(MouseEvent e){ }
