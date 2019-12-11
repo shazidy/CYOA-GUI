@@ -98,6 +98,15 @@ public class Game {
         }
     });
 // resets the values for the text to start from scratch
+
+    public void singleUse(){
+        ui.mainScrollPane.setVisible(false);
+        ui.singleScrollPane.setVisible(true);
+        storyText ="•";
+        dialogueText ="•";
+        prepareText();
+        //TODO: set return button visible that reverses visibility
+    }
     public void prepareText(){
         ui.choicePanel.setVisible(false);
         di = 0;

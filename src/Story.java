@@ -27,6 +27,7 @@ public class Story {
 
     public void start() {
 
+
         ui.chapterText.setText(cp.chapter2);
         ui.chapterPanel.setVisible(false);
 
@@ -37,17 +38,13 @@ public class Story {
         //story-part of method
         game.storyText =
                 "> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et" +
-                " dolore magna aliqua. Egestas egestas fringilla phasellus faucibus scelerisque. Sit amet consectetur" +
-                " adipiscing elit. Pellentesque massa placerat duis ultricies lacus sed." +
+
                 "\n> " +
                 "At imperdiet dui accumsan sit" +
-                " amet nulla facilisi. Nisi lacus sed viverra tellus. Sagittis orci a scelerisque purus semper eget" +
-                " duis. Dignissim convallis aenean et tortor at risus. Proin fermentum leo vel orci porta non." +
+
                 "\n> " +
                 " Risus viverra adipiscing at in tellus integer feugiat. Donec pretium vulputate sapien nec sagittis" +
-                " aliquam. Morbi tristique senectus et netus et malesuada. Dui nunc mattis enim ut. Aliquet risus feugiat" +
-                " in ante metus dictum at tempor commodo. Tempor commodo ullamcorper a lacus vestibulum sed arcu non." +
-                " Nibh venenatis cras sed felis eget velit aliquet." +
+
                 " •";
 
         //dialogue-part of method
@@ -95,9 +92,10 @@ public class Story {
     }
 
     public void choice2() {
-        game.storyText = "...";
-        game.dialogueText = "•\n";
-        game.prepareText();
+        ui.singleTextArea.setText("this is single use");
+        game.singleUse();
+//TODO: needs return button that
+
 
     }
 

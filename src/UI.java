@@ -6,8 +6,8 @@ import javax.swing.text.DefaultCaret;
 public class UI {
     //TODO: make maintextarea to JLabel for HTML (is it necessary?)
     JFrame window;
-    JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, chapterText, optionTextArea;
-    JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane;
+    JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, chapterText, optionTextArea, singleTextArea;
+    JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane;
     JPanel mainTextPanel, choicePanel,nextPanel, infoPanel, dialoguePicturePanel, dialogueTextPanel, dialoguePicturePanel2, chapterPanel, optionTextPanel;
     JLabel chapterLabel, legendInfo;
     JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7, next;
@@ -87,7 +87,6 @@ public class UI {
             }
         });
 
-
         mainTextArea = new JTextArea(15, 50);// works for some reason
         DefaultCaret caret = (DefaultCaret) mainTextArea.getCaret(); //TODO: use for dialogue, when that has been implemented
         caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
@@ -99,9 +98,45 @@ public class UI {
         mainTextArea.setEditable(false);
         mainTextArea.setHighlighter(null);
         mainTextArea.setMargin(new Insets(3,3,0,0));
-        mainTextPanel.add(mainTextArea);
         mainTextPanel.add(mainScrollPane);
         mainScrollPane.getViewport().add(mainTextArea);
+
+
+        singleScrollPane = new JScrollPane();
+        singleScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        singleScrollPane.setBorder(null);
+        singleScrollPane.getVerticalScrollBar().setBackground(Color.black);
+        singleScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = Color.white;
+            }
+            protected JButton createDecreaseButton(int orientation) {
+                JButton button = super.createDecreaseButton(orientation);
+                button.setBackground(Color.WHITE);
+                return button;
+            }
+            protected JButton createIncreaseButton(int orientation) {
+                JButton button = super.createDecreaseButton(orientation);
+                button.setBackground(Color.WHITE);
+                return button;
+            }
+        });
+
+
+        singleTextArea = new JTextArea(15, 50);// works for some reason
+        singleTextArea.setBackground(Color.black);
+        singleTextArea.setForeground(Color.white);
+        singleTextArea.setFont(asciiFont);
+        singleTextArea.setLineWrap(true);
+        singleTextArea.setWrapStyleWord(true);
+        singleTextArea.setEditable(false);
+        singleTextArea.setHighlighter(null);
+        singleTextArea.setMargin(new Insets(3,3,0,0));
+        mainTextPanel.add(singleScrollPane);
+        singleScrollPane.getViewport().add(singleTextArea);
+
+
 
         optionTextPanel = new JPanel();
         optionTextPanel.setBounds(652, 100, 252, 325);
