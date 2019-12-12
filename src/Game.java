@@ -14,6 +14,7 @@ public class Game {
 
     MouseHover mHover = new MouseHover();
     MouseTimer mTimer = new MouseTimer();
+    returnClick rClick = new returnClick();
     ChoiceHandler cHandler = new ChoiceHandler();
     Characters cp = new Characters();
     UI ui = new UI();
@@ -29,7 +30,7 @@ public class Game {
     }
 
     public Game(){
-        ui.createUI(cHandler, mHover, mTimer);
+        ui.createUI(cHandler, mHover, mTimer, rClick);
         story.start();
     }
 
@@ -102,11 +103,12 @@ public class Game {
     public void singleUse(){
         ui.mainScrollPane.setVisible(false);
         ui.singleScrollPane.setVisible(true);
-        storyText ="•";
-        dialogueText ="•";
-        prepareText();
+        ui.choicePanel.setVisible(false);
+        ui.nextPanel.setVisible(false);
+        ui.returnPanel.setVisible(true);
         //TODO: set return button visible that reverses visibility
     }
+    public void noteViewer(){}
     public void prepareText(){
         ui.choicePanel.setVisible(false);
         di = 0;
@@ -137,8 +139,18 @@ public class Game {
         @Override public void mouseEntered(MouseEvent e){ }
         @Override public void mouseExited(MouseEvent e){ }
     }
-
-
+    public class returnClick implements MouseListener{
+        @Override public void mouseClicked(MouseEvent e){ }
+        @Override public void mousePressed(MouseEvent e){
+            ui.returnPanel.setVisible(false);
+            ui.choicePanel.setVisible(true);
+            ui.singleScrollPane.setVisible(false);
+            ui.mainScrollPane.setVisible(true);
+        }
+        @Override public void mouseReleased(MouseEvent e){ }
+        @Override public void mouseEntered(MouseEvent e){ }
+        @Override public void mouseExited(MouseEvent e){ }
+    }
     public class ChoiceHandler implements ActionListener{
         public void actionPerformed(ActionEvent event){
             String yourChoice = event.getActionCommand();

@@ -8,16 +8,16 @@ public class UI {
     JFrame window;
     JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, chapterText, optionTextArea, singleTextArea;
     JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane;
-    JPanel mainTextPanel, choicePanel,nextPanel, infoPanel, dialoguePicturePanel, dialogueTextPanel, dialoguePicturePanel2, chapterPanel, optionTextPanel;
+    JPanel mainTextPanel, choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialogueTextPanel, dialoguePicturePanel2, chapterPanel, optionTextPanel;
     JLabel chapterLabel, legendInfo;
-    JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7, next;
+    JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7, next, returnB;
     Font chapterFont = new Font("Lucida Console", Font.BOLD, 15);
     Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
     Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
     Container container;
 
 
-    public void createUI(Game.ChoiceHandler cHandler, Game.MouseHover mHover, Game.MouseTimer mTimer) {
+    public void createUI(Game.ChoiceHandler cHandler, Game.MouseHover mHover, Game.MouseTimer mTimer, Game.returnClick rClick) {
 
         window = new JFrame();
         window.setSize(960, 720);
@@ -34,15 +34,20 @@ public class UI {
 
         //TODO: ChapterPanel
         chapterPanel = new JPanel();
-        chapterPanel.setBounds(0, 180, 960, 280);
+        //chapterPanel.setBounds(0, 180, 960, 280);
+        chapterPanel.setBounds(300, 30, 320, 400);
         chapterPanel.setBackground(Color.white);
+        chapterPanel.setBorder(BorderFactory.createLineBorder(Color.gray, 4));
         container.add(chapterPanel);
 
-        chapterText = new JTextArea();
+        chapterText = new JTextArea(15,30);
         chapterText.setBackground(Color.white);
         chapterText.setForeground(Color.black);
         chapterText.setFont(chapterFont);
         chapterText.setEditable(false);
+        chapterText.setLineWrap(true);
+        chapterText.setWrapStyleWord(true);
+        chapterText.setMargin(new Insets(20,20,20,20));
         chapterPanel.add(chapterText);
 
         //TODO: needs reworking to display relevant information --- maybe legend or inventory
@@ -61,6 +66,7 @@ public class UI {
         legendInfo.setForeground(Color.white);
         infoPanel.add(legendInfo);
 
+//main text panel
         mainTextPanel = new JPanel();
         mainTextPanel.setBounds(30, 100, 622, 325);
         mainTextPanel.setBackground(Color.white);
@@ -87,8 +93,8 @@ public class UI {
             }
         });
 
-        mainTextArea = new JTextArea(15, 50);// works for some reason
-        DefaultCaret caret = (DefaultCaret) mainTextArea.getCaret(); //TODO: use for dialogue, when that has been implemented
+        mainTextArea = new JTextArea(15, 50);
+        DefaultCaret caret = (DefaultCaret) mainTextArea.getCaret();
         caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
         mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
@@ -101,7 +107,7 @@ public class UI {
         mainTextPanel.add(mainScrollPane);
         mainScrollPane.getViewport().add(mainTextArea);
 
-
+//single use text area
         singleScrollPane = new JScrollPane();
         singleScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         singleScrollPane.setBorder(null);
@@ -123,7 +129,6 @@ public class UI {
             }
         });
 
-
         singleTextArea = new JTextArea(15, 50);// works for some reason
         singleTextArea.setBackground(Color.black);
         singleTextArea.setForeground(Color.white);
@@ -136,8 +141,7 @@ public class UI {
         mainTextPanel.add(singleScrollPane);
         singleScrollPane.getViewport().add(singleTextArea);
 
-
-
+//option panel
         optionTextPanel = new JPanel();
         optionTextPanel.setBounds(652, 100, 252, 325);
         optionTextPanel.setBackground(Color.white);
@@ -178,6 +182,7 @@ public class UI {
         optionTextPanel.add(optionScrollPane);
         optionScrollPane.getViewport().add(optionTextArea);
 
+//choice buttons
         choicePanel = new JPanel();
         choicePanel.setBounds(30, 435, 874, 35);
         choicePanel.setBackground(Color.black);
@@ -261,6 +266,7 @@ public class UI {
         choice7.setBorder(BorderFactory.createLineBorder(Color.black, 4));
         choicePanel.add(choice7);
 
+//continue button to progress story and dialogue
         nextPanel = new JPanel();
         nextPanel.setBounds(365, 435, 200, 35);
         nextPanel.setBackground(Color.orange);
@@ -272,18 +278,32 @@ public class UI {
         next.setBackground(Color.white);
         next.setForeground(Color.black);
         next.setFont(asciiFont);
-        next.setActionCommand("c1");
         next.setFocusPainted(false);
         next.addMouseListener(mHover);
         next.addMouseListener(mTimer);
         next.setBorder(BorderFactory.createLineBorder(Color.black, 3));
         nextPanel.add(next);
 
+//returnbutton from single use textarea
+        returnPanel = new JPanel();
+        returnPanel.setBounds(365, 435, 200, 35);
+        returnPanel.setBackground(Color.orange);
+        returnPanel.setLayout(new GridLayout(1, 1));
+        returnPanel.setVisible(false);
+        container.add(returnPanel);
 
-
+        returnB = new JButton("Return");
+        returnB.setBackground(Color.white);
+        returnB.setForeground(Color.black);
+        returnB.setFont(asciiFont);
+        returnB.setFocusPainted(false);
+        returnB.addMouseListener(mHover);
+        returnB.addMouseListener(rClick);
+        returnB.setBorder(BorderFactory.createLineBorder(Color.black, 3));
+        returnPanel.add(returnB);
 
         //TODO: something is wrong with the format from machine to machine ... "pictures" are formatted differently
-
+//dialogue-picture 1
         dialoguePicturePanel = new JPanel();
         dialoguePicturePanel.setBounds(30, 480, 160, 160);
         dialoguePicturePanel.setBackground(Color.white);
@@ -297,7 +317,7 @@ public class UI {
         dialoguePicture.setLineWrap(true);
         dialoguePicture.setEditable(false);
         dialoguePicturePanel.add(dialoguePicture);
-
+//dialogue-picture 2
         dialoguePicturePanel2 = new JPanel();
         dialoguePicturePanel2.setBounds(742, 480, 162, 160);
         dialoguePicturePanel2.setBackground(Color.white);
@@ -311,11 +331,10 @@ public class UI {
         dialoguePicture2.setLineWrap(true);
         dialoguePicture2.setEditable(false);
         dialoguePicturePanel2.add(dialoguePicture2);
-
+// dialogue
         dialogueTextPanel = new JPanel();
         dialogueTextPanel.setBounds(190, 480, 552, 160);
         dialogueTextPanel.setBackground(Color.white);
-
         container.add(dialogueTextPanel);
 
         dialogueScrollPane = new JScrollPane();

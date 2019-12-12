@@ -28,8 +28,9 @@ public class Story {
     public void start() {
 
 
-        ui.chapterText.setText(cp.chapter2);
-        ui.chapterPanel.setVisible(false);
+        //ui.chapterText.setText(cp.chapter2);
+       ui.chapterText.setText("klsjdhkjsdhkjfh kjf jklshkj kjskj kjshdkdh kjskj ");
+        ui.chapterPanel.setVisible(true);
 
         ui.dialoguePicture.setText(cp.maggi);
         ui.dialoguePicture2.setText(cp.hero);
@@ -94,48 +95,45 @@ public class Story {
     public void choice2() {
         ui.singleTextArea.setText("this is single use");
         game.singleUse();
-//TODO: needs return button that
-
-
     }
 
     public void choice3() {
-        game.storyText = "choice3";
+        game.storyText = "choice3•";
         game.dialogueText = "•\n";
         game.prepareText();
 
     }
 
     public void choice4() {
-        game.storyText ="choice4";
+        game.storyText ="choice4•";
         game.dialogueText = "•\n";
         game.prepareText();
 
     }
 
     public void room() {
-        game.storyText = "room";
+        game.storyText = "room•";
         game.dialogueText = "•\n";
         game.prepareText();
 
     }
 
     public void hall() {
-        game.storyText ="hall";
+        game.storyText ="hall•";
         game.dialogueText = "•\n";
         game.prepareText();
 
     }
 
     public void office() {
-        game.storyText = "office";
+        game.storyText = "office•";
         game.dialogueText = "•\n";
         game.prepareText();
 
     }
 
     public void kitchen() {
-        game.storyText = "kitchen";
+        game.storyText = "kitchen•";
         game.dialogueText = "•\n";
         game.prepareText();
 
