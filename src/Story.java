@@ -2,6 +2,7 @@ public class Story {
     Game game;
     UI ui;
     Characters cp;
+    Notes no = new Notes();
 
     public Story(Game g, UI userInterface, Characters cPict) {
         game = g;
@@ -29,8 +30,8 @@ public class Story {
 
 
         //ui.chapterText.setText(cp.chapter2);
-       ui.chapterText.setText("klsjdhkjsdhkjfh kjf jklshkj kjskj kjshdkdh kjskj ");
-        ui.chapterPanel.setVisible(true);
+        //ui.noteText.setText(no.firstNote);
+        //game.noteViewer();
 
         ui.dialoguePicture.setText(cp.maggi);
         ui.dialoguePicture2.setText(cp.hero);
@@ -72,8 +73,6 @@ public class Story {
         ui.choice3.setText("3"); game.nextPosition3 = "choice3";
         ui.choice4.setText("4"); game.nextPosition4 = "choice4";
         ui.choice5.setText("room"); game.nextPosition5 = "room";
-
-
     }
 
     public void choice1() {
@@ -95,13 +94,12 @@ public class Story {
     public void choice2() {
         ui.singleTextArea.setText("this is single use");
         game.singleUse();
+
     }
 
     public void choice3() {
-        game.storyText = "choice3•";
-        game.dialogueText = "•\n";
-        game.prepareText();
-
+        ui.noteText.setText(no.firstNote);
+        game.noteViewer();
     }
 
     public void choice4() {

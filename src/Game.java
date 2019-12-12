@@ -12,6 +12,7 @@ import java.awt.event.*;
 
 public class Game {
 
+    ItemHover iHover = new ItemHover();
     MouseHover mHover = new MouseHover();
     MouseTimer mTimer = new MouseTimer();
     returnClick rClick = new returnClick();
@@ -19,7 +20,6 @@ public class Game {
     Characters cp = new Characters();
     UI ui = new UI();
     Story story = new Story(this, ui, cp);
-
     int i=0, di = 0, iLength = 0;
     String nextPosition1, nextPosition2, nextPosition3,
     nextPosition4, nextPosition5, nextPosition6,
@@ -30,11 +30,21 @@ public class Game {
     }
 
     public Game(){
-        ui.createUI(cHandler, mHover, mTimer, rClick);
+        ui.createUI();
+        ui.info();
+        ui.options();
+        ui.mainArea();
+        ui.singleUse();
+        ui.choiceButtons(cHandler, mHover);
+        ui.nextButton(mHover, mTimer);
+        ui.inventory(cHandler, iHover);
+        ui.dialogue();
+        ui.returnButtons(mHover, rClick);
         story.start();
+        buttonVisibility();
     }
 
-// typewriter text for story that switches to dialogue when needed
+
     Timer timer = new Timer(5, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -64,7 +74,6 @@ public class Game {
             }
         }
     });
-// typewriter text for dialogue that switches to story when needed
     Timer dtimer = new Timer(10, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -98,17 +107,7 @@ public class Game {
             }
         }
     });
-// resets the values for the text to start from scratch
 
-    public void singleUse(){
-        ui.mainScrollPane.setVisible(false);
-        ui.singleScrollPane.setVisible(true);
-        ui.choicePanel.setVisible(false);
-        ui.nextPanel.setVisible(false);
-        ui.returnPanel.setVisible(true);
-        //TODO: set return button visible that reverses visibility
-    }
-    public void noteViewer(){}
     public void prepareText(){
         ui.choicePanel.setVisible(false);
         di = 0;
@@ -118,6 +117,46 @@ public class Game {
         ui.mainTextArea.setText("");
         ui.dialogueTextArea.setText("");
         timer.start();
+    }
+    public void buttonVisibility(){
+        if (ui.choice1.getText().equals("")){ ui.choice1.setVisible(false); }
+        if (ui.choice2.getText().equals("")){ ui.choice2.setVisible(false); }
+        if (ui.choice3.getText().equals("")){ ui.choice3.setVisible(false); }
+        if (ui.choice4.getText().equals("")){ ui.choice4.setVisible(false); }
+        if (ui.choice5.getText().equals("")){ ui.choice5.setVisible(false); }
+        if (ui.choice6.getText().equals("")){ ui.choice6.setVisible(false); }
+        if (ui.choice7.getText().equals("")){ ui.choice7.setVisible(false); }
+        if (ui.item0.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount0.setVisible(false);}
+        if (ui.item1.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount1.setVisible(false);}
+        if (ui.item2.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount2.setVisible(false);}
+        if (ui.item3.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount3.setVisible(false);}
+        if (ui.item4.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount4.setVisible(false);}
+        if (ui.item5.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount5.setVisible(false);}
+        if (ui.item6.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount6.setVisible(false);}
+        if (ui.item7.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount7.setVisible(false);}
+        if (ui.item8.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount8.setVisible(false);}
+        if (ui.item9.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount9.setVisible(false);}
+    }
+    public void singleUse(){
+        ui.mainScrollPane.setVisible(false);
+        ui.singleScrollPane.setVisible(true);
+        ui.choicePanel.setVisible(false);
+        ui.nextPanel.setVisible(false);
+        ui.returnPanel.setVisible(true);
+        //TODO: set return button visible that reverses visibility
+    }
+    public void noteViewer(){
+        ui.notePanel.setVisible(true);
+        ui.choicePanel.setVisible(false);
+        ui.returnPanel.setVisible(false);
+        ui.nextPanel.setVisible(false);
+        ui.dialogueScrollPane.getVerticalScrollBar().setEnabled(false);
+        ui.dialogueScrollPane.setWheelScrollingEnabled(false);
+        ui.mainScrollPane.getVerticalScrollBar().setEnabled(false);
+        ui.mainScrollPane.setWheelScrollingEnabled(false);
+        //ui.optionScrollPane.getVerticalScrollBar().setEnabled(false);
+        //ui.optionScrollPane.setWheelScrollingEnabled(false);
+
     }
     public class MouseHover implements MouseListener{
         @Override public void mouseClicked(MouseEvent e){ }
@@ -129,6 +168,19 @@ public class Game {
         @Override public void mouseExited(MouseEvent e){
                  Component c = e.getComponent();
                  c.setBackground(Color.white); }
+    }
+    public class ItemHover implements MouseListener{
+        @Override public void mouseClicked(MouseEvent e){ }
+        @Override public void mousePressed(MouseEvent e){ }
+        @Override public void mouseReleased(MouseEvent e){ }
+        @Override public void mouseEntered(MouseEvent e) {
+            if (!ui.notePanel.isVisible()){
+            Component c = e.getComponent();
+            c.setBackground(Color.lightGray); }}
+        @Override public void mouseExited(MouseEvent e){
+            if (!ui.notePanel.isVisible()){
+            Component c = e.getComponent();
+            c.setBackground(Color.darkGray); }}
     }
     public class MouseTimer implements MouseListener{
         @Override public void mouseClicked(MouseEvent e){ }
@@ -145,7 +197,15 @@ public class Game {
             ui.returnPanel.setVisible(false);
             ui.choicePanel.setVisible(true);
             ui.singleScrollPane.setVisible(false);
+            ui.notePanel.setVisible(false);
             ui.mainScrollPane.setVisible(true);
+            ui.dialogueScrollPane.getVerticalScrollBar().setEnabled(true);
+            ui.dialogueScrollPane.setWheelScrollingEnabled(true);
+            ui.mainScrollPane.getVerticalScrollBar().setEnabled(true);
+            ui.mainScrollPane.setWheelScrollingEnabled(true);
+            //ui.optionScrollPane.getVerticalScrollBar().setEnabled(true);
+            //ui.optionScrollPane.setWheelScrollingEnabled(true);
+
         }
         @Override public void mouseReleased(MouseEvent e){ }
         @Override public void mouseEntered(MouseEvent e){ }
@@ -155,16 +215,16 @@ public class Game {
         public void actionPerformed(ActionEvent event){
             String yourChoice = event.getActionCommand();
             switch (yourChoice){
-                case "c1" : selecPosition(nextPosition1); break;
-                case "c2" : selecPosition(nextPosition2); break;
-                case "c3" : selecPosition(nextPosition3); break;
-                case "c4" : selecPosition(nextPosition4); break;
-                case "c5" : selecPosition(nextPosition5); break;
-                case "c6" : selecPosition(nextPosition6); break;
-                case "c7" : selecPosition(nextPosition7); break;
+                case "c1" : selectPosition(nextPosition1); break;
+                case "c2" : selectPosition(nextPosition2); break;
+                case "c3" : selectPosition(nextPosition3); break;
+                case "c4" : selectPosition(nextPosition4); break;
+                case "c5" : selectPosition(nextPosition5); break;
+                case "c6" : selectPosition(nextPosition6); break;
+                case "c7" : selectPosition(nextPosition7); break;
             }
         }
-        public void selecPosition(String nextPosition) {
+        public void selectPosition(String nextPosition) {
             switch (nextPosition) {
                 case "choice1": story.choice1(); break;
                 case "choice2": story.choice2(); break;
@@ -174,8 +234,6 @@ public class Game {
             }
         }
     }
-
-
 }
 
 

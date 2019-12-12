@@ -60,7 +60,7 @@ public class Enemy {
         System.out.print(" " + Enemy.HP);
         if (Enemy.HP < 1) {
             System.out.println("\nYou Win!!!\n\n");
-            Inventory.inventory.add(Inventory.item = Enemy.ITM);
+            Inventory1.inventory.add(Inventory1.item = Enemy.ITM);
             System.out.println("You found " + Enemy.ITM);
             //Location.inventory.add(Location.enemySetup.getITM());
             //System.out.println("\nYou found " + Location.enemySetup.getITM());
