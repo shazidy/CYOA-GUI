@@ -62,7 +62,7 @@ public class Game {
             if (addedCharacter.equals(">")) {
                 timer.stop();
                 dtimer.start();
-                ui.dialogueTextPanel.setVisible(true);
+                ui.dialogueScrollPane.setVisible(true);
                 ui.nextPanel.setVisible(true);
             }
             if (addedCharacter.equals("•")) {
@@ -113,7 +113,7 @@ public class Game {
         di = 0;
         i = 0;
         ui.nextPanel.setVisible(false);
-        ui.dialogueTextPanel.setVisible(true);
+        ui.dialogueScrollPane.setVisible(true);
         ui.mainTextArea.setText("");
         ui.dialogueTextArea.setText("");
         timer.start();
