@@ -12,17 +12,12 @@ import java.awt.event.*;
 
 public class Game {
 
-    ItemHover iHover = new ItemHover();
-    MouseHover mHover = new MouseHover();
-    MouseTimer mTimer = new MouseTimer();
-    returnClick rClick = new returnClick();
-    InventoryHandler iHandler = new InventoryHandler();
-    ChoiceHandler cHandler = new ChoiceHandler();
-    Notes no = new Notes();
+
+    UI ui = new UI(this);
     Characters cp = new Characters();
-    UI ui = new UI();
-    Items items = new Items(this, ui);
-    Story story = new Story(this, ui, cp, no, items);
+    Notes no = new Notes();
+    Items items = new Items(ui);
+    ChoiceHandler cHandler = new ChoiceHandler();
     int i=0, di = 0, iLength = 0;
 
     String nextPosition1, nextPosition2, nextPosition3,
@@ -30,26 +25,15 @@ public class Game {
     nextPosition7, storyText, dialogueText;
 
     public static void main(String[] args) {
-        new Game();
+        new UI(new Game());
     }
 
     public Game(){
-        ui.createUI();
-        ui.noteViewer();
-        ui.info();
-        ui.options();
-        ui.mainArea();
-        ui.singleUse();
-        ui.choiceButtons(cHandler, mHover);
-        ui.nextButton(mHover, mTimer);
-        ui.inventory(iHandler, iHover);
-        ui.dialogue();
-        ui.returnButtons(mHover, rClick);
+        ui.choiceButtons(cHandler);
         story.start();
-        buttonVisibility();
         ui.window.setVisible(true);
+        buttonVisibility();
     }
-
 
     Timer timer = new Timer(5, new ActionListener() {
         @Override
@@ -67,20 +51,20 @@ public class Game {
             i++;
             if (addedCharacter.equals(">")) {
                 timer.stop();
-                dtimer.start();
+                dTimer.start();
                 ui.dialogueScrollPane.setVisible(true);
                 ui.nextPanel.setVisible(true);
             }
             if (addedCharacter.equals("•")) {
                 timer.stop();
-                dtimer.stop();
+                dTimer.stop();
                 i = 0;
                 ui.nextPanel.setVisible(false);
                 ui.choicePanel.setVisible(true);
             }
         }
     });
-    Timer dtimer = new Timer(10, new ActionListener() {
+    Timer dTimer = new Timer(10, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
 
@@ -96,17 +80,17 @@ public class Game {
                 di++;
 
             if (addedCharacter.equals(">")) {
-                dtimer.stop();
+                dTimer.stop();
             }
 
             if (addedCharacter.equals("<")) {
-                dtimer.stop();
+                dTimer.stop();
                 ui.nextPanel.setVisible(false);
                 if (iLength != i)
                 timer.start();
             }
             if (addedCharacter.equals("•")){
-                dtimer.stop();
+                dTimer.stop();
                 timer.stop();
                 ui.nextPanel.setVisible(false);
                 ui.choicePanel.setVisible(true);
@@ -132,26 +116,26 @@ public class Game {
         if (ui.choice5.getText().equals("")){ ui.choice5.setVisible(false); }
         if (ui.choice6.getText().equals("")){ ui.choice6.setVisible(false); }
         if (ui.choice7.getText().equals("")){ ui.choice7.setVisible(false); }
-        items.playerItem[0] = "Potion";
-        items.playerItem[1] = "Potion";
-        items.playerItem[2] = "Potion";
-        items.playerItem[3] = "Potion";
-        items.playerItem[4] = "Potion";
-        items.playerItem[5] = "Potion";
-        items.playerItem[6] = "";
-        items.playerItem[7] = "";
-        items.playerItem[8] = "";
-        items.playerItem[9] = "";
-        ui.item0.setText(items.playerItem[0]);
-        ui.item1.setText(items.playerItem[1]);
-        ui.item2.setText(items.playerItem[2]);
-        ui.item3.setText(items.playerItem[3]);
-        ui.item4.setText(items.playerItem[4]);
-        ui.item5.setText(items.playerItem[5]);
-        ui.item6.setText(items.playerItem[6]);
-        ui.item7.setText(items.playerItem[7]);
-        ui.item8.setText(items.playerItem[8]);
-        ui.item9.setText(items.playerItem[9]);
+        items.playerItem.add(0, "Potion0");
+        items.playerItem.add(1, "Potion1");
+        items.playerItem.add(2, "Potion2");
+        items.playerItem.add(3, "Potion3");
+        items.playerItem.add(4, "Potion4");
+        items.playerItem.add(5, "Potion5");
+        items.playerItem.add(6, "");
+        items.playerItem.add(7, "");
+        items.playerItem.add(8, "");
+        items.playerItem.add(9, "");
+        ui.item0.setText(items.playerItem.get(0));
+        ui.item1.setText(items.playerItem.get(1));
+        ui.item2.setText(items.playerItem.get(2));
+        ui.item3.setText(items.playerItem.get(3));
+        ui.item4.setText(items.playerItem.get(4));
+        ui.item5.setText(items.playerItem.get(5));
+        ui.item6.setText(items.playerItem.get(6));
+        ui.item7.setText(items.playerItem.get(7));
+        ui.item8.setText(items.playerItem.get(8));
+        ui.item9.setText(items.playerItem.get(9));
         if (ui.item0.getText().equals("")){ ui.item0.setVisible(false); }
         if (ui.item1.getText().equals("")){ ui.item1.setVisible(false); }
         if (ui.item2.getText().equals("")){ ui.item2.setVisible(false); }
@@ -162,6 +146,10 @@ public class Game {
         if (ui.item7.getText().equals("")){ ui.item7.setVisible(false); }
         if (ui.item8.getText().equals("")){ ui.item8.setVisible(false); }
         if (ui.item9.getText().equals("")){ ui.item9.setVisible(false); }
+
+
+
+
     }
     public void singleUse(){
         ui.mainScrollPane.setVisible(false);
@@ -183,79 +171,8 @@ public class Game {
         //ui.optionScrollPane.setWheelScrollingEnabled(false);
 
     }
-    public class MouseHover implements MouseListener{
-        @Override public void mouseClicked(MouseEvent e){ }
-        @Override public void mousePressed(MouseEvent e){ }
-        @Override public void mouseReleased(MouseEvent e){ }
-        @Override public void mouseEntered(MouseEvent e) {
-                 Component c = e.getComponent();
-                 c.setBackground(Color.lightGray); }
-        @Override public void mouseExited(MouseEvent e){
-                 Component c = e.getComponent();
-                 c.setBackground(Color.white); }
-    }
-    public class ItemHover implements MouseListener{
-        @Override public void mouseClicked(MouseEvent e){ }
-        @Override public void mousePressed(MouseEvent e){ }
-        @Override public void mouseReleased(MouseEvent e){ }
-        @Override public void mouseEntered(MouseEvent e) {
-            //if (!ui.notePanel.isVisible()){
-            Component c = e.getComponent();
-            c.setBackground(Color.lightGray); }
-        //}
-        @Override public void mouseExited(MouseEvent e){
-            //if (!ui.notePanel.isVisible()){
-            Component c = e.getComponent();
-            c.setBackground(Color.darkGray); }
-        //}
-    }
-    public class MouseTimer implements MouseListener{
-        @Override public void mouseClicked(MouseEvent e){ }
-        @Override public void mousePressed(MouseEvent e){
-            dtimer.start();
-        }
-        @Override public void mouseReleased(MouseEvent e){ }
-        @Override public void mouseEntered(MouseEvent e){ }
-        @Override public void mouseExited(MouseEvent e){ }
-    }
-    public class returnClick implements MouseListener{
-        @Override public void mouseClicked(MouseEvent e){ }
-        @Override public void mousePressed(MouseEvent e){
-            ui.returnPanel.setVisible(false);
-            ui.choicePanel.setVisible(true);
-            ui.singleScrollPane.setVisible(false);
-            ui.notePanel.setVisible(false);
-            ui.mainScrollPane.setVisible(true);
-            ui.dialogueScrollPane.getVerticalScrollBar().setEnabled(true);
-            ui.dialogueScrollPane.setWheelScrollingEnabled(true);
-            ui.mainScrollPane.getVerticalScrollBar().setEnabled(true);
-            ui.mainScrollPane.setWheelScrollingEnabled(true);
-            //ui.optionScrollPane.getVerticalScrollBar().setEnabled(true);
-            //ui.optionScrollPane.setWheelScrollingEnabled(true);
 
-        }
-        @Override public void mouseReleased(MouseEvent e){ }
-        @Override public void mouseEntered(MouseEvent e){ }
-        @Override public void mouseExited(MouseEvent e){ }
-    }
-    public class InventoryHandler implements ActionListener{
-        public void actionPerformed(ActionEvent event){
-            String yourChoice = event.getActionCommand();
-            switch (yourChoice){
-                case "item0" : items.itemUsed(0); break;
-                case "item1" : items.itemUsed(1); break;
-                case "item2" : items.itemUsed(2); break;
-                case "item3" : items.itemUsed(3); break;
-                case "item4" : items.itemUsed(4); break;
-                case "item5" : items.itemUsed(5); break;
-                case "item6" : items.itemUsed(6); break;
-                case "item7" : items.itemUsed(7); break;
-                case "item8" : items.itemUsed(8); break;
-                case "item9" : items.itemUsed(9); break;
-            }
-        }
-
-    } //has all inventory effects in Items
+    Story story = new Story(this, ui, cp, no, items);
     public class ChoiceHandler implements ActionListener{
         public void actionPerformed(ActionEvent event){
             String yourChoice = event.getActionCommand();

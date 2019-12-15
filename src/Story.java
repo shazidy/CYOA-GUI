@@ -12,6 +12,8 @@ public class Story {
         no = notes;
         items = item;
     }
+
+
 /* Template
     game.storyText =
             "> " +
@@ -31,20 +33,15 @@ public class Story {
 
     public void start() {
 
+
+
+
         //ui.noteText.setText(no.firstNote);
         //game.noteViewer();
-        /*
-        game.playerItem[0] = "Potion";
-        game.playerItem[1] = "";
-        game.playerItem[2] = "";
-        game.playerItem[3] = "";
-        game.playerItem[4] = "";
-
-         */
 
         ui.dialoguePicture.setText(cp.maggi);
         ui.dialoguePicture2.setText(cp.hero);
-        //ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
+        ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
         ui.legendInfo.setText("<HTML><P align=right>LOCATION<BR/>Room</HTML>");
         //story-part of method
         game.storyText =
@@ -110,6 +107,8 @@ public class Story {
     }
 
     public void choice3() {
+        items.item = "pølse";
+        items.addItem();
         ui.noteText.setText(no.firstNote);
         game.noteViewer();
     }

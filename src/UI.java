@@ -1,10 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.DefaultCaret;
 
 public class UI{
+    Game game;
     JFrame window;
     JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea;
     JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane;
@@ -16,6 +20,28 @@ public class UI{
     Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
     Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
     Container container;
+
+
+    ItemHover iHover = new ItemHover();
+    MouseHover mHover = new MouseHover();
+    MouseTimer mTimer = new MouseTimer();
+    ReturnClick rClick = new ReturnClick();
+    InventoryHandler iHandler = new InventoryHandler();
+    public UI(Game g){
+        game = g;
+        createUI();
+        noteViewer();
+        info();
+        options();
+        mainArea();
+        singleUse();
+        nextButton();
+        inventory();
+        dialogue();
+        returnButtons();
+
+    }
+
     public void createUI() {
         window = new JFrame();
         window.setSize(960, 720);
@@ -120,7 +146,7 @@ public class UI{
         optionPanel = new JPanel();
         optionPanel.setPreferredSize(new Dimension(227, 317));
         optionPanel.setBackground(Color.black);
-        optionPanel.setLayout(new GridLayout(10,1));
+       // optionPanel.setLayout(new GridLayout(10,1));
         optionScrollPane.getViewport().add(optionPanel);
 
     }
@@ -198,7 +224,7 @@ public class UI{
         singleTextArea.setMargin(new Insets(3,3,0,0));
         singleScrollPane.getViewport().add(singleTextArea);
     }
-    public void choiceButtons(Game.ChoiceHandler cHandler, Game.MouseHover mHover){
+    public void choiceButtons(Game.ChoiceHandler cHandler){
         //choice buttons
         choicePanel = new JPanel();
         choicePanel.setBounds(30, 435, 874, 35);
@@ -283,7 +309,7 @@ public class UI{
         choice7.setBorder(BorderFactory.createLineBorder(Color.black, 4));
         choicePanel.add(choice7);
     }
-    public void nextButton(Game.MouseHover mHover, Game.MouseTimer mTimer){
+    public void nextButton(){
         nextPanel = new JPanel();
         nextPanel.setBounds(230, 435, 200, 35);
         nextPanel.setBackground(Color.orange);
@@ -300,7 +326,7 @@ public class UI{
         next.addMouseListener(mTimer);
         next.setBorder(BorderFactory.createLineBorder(Color.black, 3));
         nextPanel.add(next);}
-    public void returnButtons(Game.MouseHover mHover, Game.returnClick rClick){
+    public void returnButtons(){
         //returnbutton from single use textarea
         returnPanel = new JPanel();
         returnPanel.setBounds(230, 435, 200, 35);
@@ -398,8 +424,7 @@ public class UI{
         dialogueTextArea.setMargin(new Insets(3,3,0,0));
         dialogueScrollPane.getViewport().add(dialogueTextArea);
     }
-    public void inventory(Game.InventoryHandler iHandler,Game.ItemHover mHover){
-//TODO: ideally make 99 buttons and a scrollpane to fit them
+    public void inventory(){
 
         item0 = new JButton();
         item0.setBackground(Color.darkGray);
@@ -407,12 +432,11 @@ public class UI{
         item0.setFont(asciiFont);
         item0.addActionListener(iHandler);
         item0.setActionCommand("item0");
-        item0.addMouseListener(mHover);
+        item0.addMouseListener(iHover);
         item0.setFocusPainted(false);
         item0.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item0.setPreferredSize(new Dimension(190, 26));
+        item0.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20, 26));
         item0.setHorizontalAlignment(SwingConstants.LEFT);
-
         optionPanel.add(item0);
 
         item1 = new JButton();
@@ -421,10 +445,10 @@ public class UI{
         item1.setFont(asciiFont);
         item1.addActionListener(iHandler);
         item1.setActionCommand("item1");
-        item1.addMouseListener(mHover);
+        item1.addMouseListener(iHover);
         item1.setFocusPainted(false);
         item1.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item1.setPreferredSize(new Dimension(190,26));
+        item1.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
         item1.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item1);
 
@@ -434,10 +458,10 @@ public class UI{
         item2.setFont(asciiFont);
         item2.addActionListener(iHandler);
         item2.setActionCommand("item2");
-        item2.addMouseListener(mHover);
+        item2.addMouseListener(iHover);
         item2.setFocusPainted(false);
         item2.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item2.setPreferredSize(new Dimension(190,26));
+        item2.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
         item2.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item2);
 
@@ -447,10 +471,10 @@ public class UI{
         item3.setFont(asciiFont);
         item3.addActionListener(iHandler);
         item3.setActionCommand("item3");
-        item3.addMouseListener(mHover);
+        item3.addMouseListener(iHover);
         item3.setFocusPainted(false);
         item3.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item3.setPreferredSize(new Dimension(190,26));
+        item3.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
         item3.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item3);
 
@@ -460,10 +484,10 @@ public class UI{
         item4.setFont(asciiFont);
         item4.addActionListener(iHandler);
         item4.setActionCommand("item4");
-        item4.addMouseListener(mHover);
+        item4.addMouseListener(iHover);
         item4.setFocusPainted(false);
         item4.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item4.setPreferredSize(new Dimension(190,26));
+        item4.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
         item4.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item4);
 
@@ -473,10 +497,10 @@ public class UI{
         item5.setFont(asciiFont);
         item5.addActionListener(iHandler);
         item5.setActionCommand("item5");
-        item5.addMouseListener(mHover);
+        item5.addMouseListener(iHover);
         item5.setFocusPainted(false);
         item5.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item5.setPreferredSize(new Dimension(190,26));
+        item5.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
         item5.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item5);
 
@@ -486,10 +510,10 @@ public class UI{
         item6.setFont(asciiFont);
         item6.addActionListener(iHandler);
         item6.setActionCommand("item6");
-        item6.addMouseListener(mHover);
+        item6.addMouseListener(iHover);
         item6.setFocusPainted(false);
         item6.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item6.setPreferredSize(new Dimension(190,26));
+        item6.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
         item6.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item6);
 
@@ -499,10 +523,10 @@ public class UI{
         item7.setFont(asciiFont);
         item7.addActionListener(iHandler);
         item7.setActionCommand("item7");
-        item7.addMouseListener(mHover);
+        item7.addMouseListener(iHover);
         item7.setFocusPainted(false);
         item7.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item7.setPreferredSize(new Dimension(190,26));
+        item7.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
         item7.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item7);
 
@@ -512,10 +536,10 @@ public class UI{
         item8.setFont(asciiFont);
         item8.addActionListener(iHandler);
         item8.setActionCommand("item8");
-        item8.addMouseListener(mHover);
+        item8.addMouseListener(iHover);
         item8.setFocusPainted(false);
         item8.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item8.setPreferredSize(new Dimension(190,26));
+        item8.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
         item8.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item8);
 
@@ -525,14 +549,88 @@ public class UI{
         item9.setFont(asciiFont);
         item9.addActionListener(iHandler);
         item9.setActionCommand("item9");
-        item9.addMouseListener(mHover);
+        item9.addMouseListener(iHover);
         item9.setFocusPainted(false);
         item9.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item9.setPreferredSize(new Dimension(190,26));
+        item9.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
         item9.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item9);
-
     }
+
+
+    public class MouseHover implements MouseListener {
+        @Override public void mouseClicked(MouseEvent e){ }
+        @Override public void mousePressed(MouseEvent e){ }
+        @Override public void mouseReleased(MouseEvent e){ }
+        @Override public void mouseEntered(MouseEvent e) {
+            Component c = e.getComponent();
+            c.setBackground(Color.lightGray); }
+        @Override public void mouseExited(MouseEvent e){
+            Component c = e.getComponent();
+            c.setBackground(Color.white); }
+    }
+    public class ItemHover implements MouseListener{
+        @Override public void mouseClicked(MouseEvent e){ }
+        @Override public void mousePressed(MouseEvent e){ }
+        @Override public void mouseReleased(MouseEvent e){ }
+        @Override public void mouseEntered(MouseEvent e) {
+            //if (!ui.notePanel.isVisible()){
+            Component c = e.getComponent();
+            c.setBackground(Color.lightGray); }
+        //}
+        @Override public void mouseExited(MouseEvent e){
+            //if (!ui.notePanel.isVisible()){
+            Component c = e.getComponent();
+            c.setBackground(Color.darkGray); }
+        //}
+    }
+    public class MouseTimer implements MouseListener{
+        @Override public void mouseClicked(MouseEvent e){ }
+        @Override public void mousePressed(MouseEvent e){
+            game.dTimer.start();
+        }
+        @Override public void mouseReleased(MouseEvent e){ }
+        @Override public void mouseEntered(MouseEvent e){ }
+        @Override public void mouseExited(MouseEvent e){ }
+    }
+    public class ReturnClick implements MouseListener{
+        @Override public void mouseClicked(MouseEvent e){ }
+        @Override public void mousePressed(MouseEvent e){
+            returnPanel.setVisible(false);
+            choicePanel.setVisible(true);
+            singleScrollPane.setVisible(false);
+            notePanel.setVisible(false);
+            mainScrollPane.setVisible(true);
+            dialogueScrollPane.getVerticalScrollBar().setEnabled(true);
+            dialogueScrollPane.setWheelScrollingEnabled(true);
+            mainScrollPane.getVerticalScrollBar().setEnabled(true);
+            mainScrollPane.setWheelScrollingEnabled(true);
+            //ui.optionScrollPane.getVerticalScrollBar().setEnabled(true);
+            //ui.optionScrollPane.setWheelScrollingEnabled(true);
+
+        }
+        @Override public void mouseReleased(MouseEvent e){ }
+        @Override public void mouseEntered(MouseEvent e){ }
+        @Override public void mouseExited(MouseEvent e){ }
+    }
+    public class InventoryHandler implements ActionListener {
+        public void actionPerformed(ActionEvent event){
+            String yourChoice = event.getActionCommand();
+            switch (yourChoice){
+                case "item0" : game.items.itemUsed(0); break;
+                case "item1" : game.items.itemUsed(1); break;
+                case "item2" : game.items.itemUsed(2); break;
+                case "item3" : game.items.itemUsed(3); break;
+                case "item4" : game.items.itemUsed(4); break;
+                case "item5" : game.items.itemUsed(5); break;
+                case "item6" : game.items.itemUsed(6); break;
+                case "item7" : game.items.itemUsed(7); break;
+                case "item8" : game.items.itemUsed(8); break;
+                case "item9" : game.items.itemUsed(9); break;
+            }
+        }
+
+    } //has all inventory effects in Items
 }
 
 
