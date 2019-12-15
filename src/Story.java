@@ -38,10 +38,10 @@ public class Story {
 
         //ui.noteText.setText(no.firstNote);
         //game.noteViewer();
-
+        items.addItem("Potion");
         ui.dialoguePicture.setText(cp.maggi);
         ui.dialoguePicture2.setText(cp.hero);
-        ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
+        //ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
         ui.legendInfo.setText("<HTML><P align=right>LOCATION<BR/>Room</HTML>");
         //story-part of method
         game.storyText =
@@ -107,10 +107,9 @@ public class Story {
     }
 
     public void choice3() {
-        items.item = "pølse";
-        items.addItem();
+        items.addItem("Potion");
         ui.noteText.setText(no.firstNote);
-        game.noteViewer();
+        no.noteViewer();
     }
 
     public void choice4() {

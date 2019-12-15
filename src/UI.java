@@ -11,7 +11,7 @@ public class UI{
     Game game;
     JFrame window;
     JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea;
-    JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane;
+    JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane, glassScrollPane;
     JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel, optionPanel;
     JLabel chapterLabel, legendInfo;
     JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7, next, returnB, returnNote,
@@ -146,9 +146,8 @@ public class UI{
         optionPanel = new JPanel();
         optionPanel.setPreferredSize(new Dimension(227, 317));
         optionPanel.setBackground(Color.black);
-       // optionPanel.setLayout(new GridLayout(10,1));
+        // optionPanel.setLayout(new GridLayout(10,1));
         optionScrollPane.getViewport().add(optionPanel);
-
     }
     public void mainArea(){
         mainScrollPane = new JScrollPane();
@@ -555,6 +554,8 @@ public class UI{
         item9.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
         item9.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item9);
+
+
     }
 
 
@@ -605,6 +606,17 @@ public class UI{
             dialogueScrollPane.setWheelScrollingEnabled(true);
             mainScrollPane.getVerticalScrollBar().setEnabled(true);
             mainScrollPane.setWheelScrollingEnabled(true);
+            item0.setEnabled(true);
+            item1.setEnabled(true);
+            item2.setEnabled(true);
+            item3.setEnabled(true);
+            item4.setEnabled(true);
+            item5.setEnabled(true);
+            item6.setEnabled(true);
+            item7.setEnabled(true);
+            item8.setEnabled(true);
+            item9.setEnabled(true);
+
             //ui.optionScrollPane.getVerticalScrollBar().setEnabled(true);
             //ui.optionScrollPane.setWheelScrollingEnabled(true);
 

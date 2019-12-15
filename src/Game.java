@@ -15,7 +15,7 @@ public class Game {
 
     UI ui = new UI(this);
     Characters cp = new Characters();
-    Notes no = new Notes();
+    Notes no = new Notes(ui);
     Items items = new Items(ui);
     ChoiceHandler cHandler = new ChoiceHandler();
     int i=0, di = 0, iLength = 0;
@@ -33,6 +33,7 @@ public class Game {
         story.start();
         ui.window.setVisible(true);
         buttonVisibility();
+        items.check();
     }
 
     Timer timer = new Timer(5, new ActionListener() {
@@ -116,40 +117,6 @@ public class Game {
         if (ui.choice5.getText().equals("")){ ui.choice5.setVisible(false); }
         if (ui.choice6.getText().equals("")){ ui.choice6.setVisible(false); }
         if (ui.choice7.getText().equals("")){ ui.choice7.setVisible(false); }
-        items.playerItem.add(0, "Potion0");
-        items.playerItem.add(1, "Potion1");
-        items.playerItem.add(2, "Potion2");
-        items.playerItem.add(3, "Potion3");
-        items.playerItem.add(4, "Potion4");
-        items.playerItem.add(5, "Potion5");
-        items.playerItem.add(6, "");
-        items.playerItem.add(7, "");
-        items.playerItem.add(8, "");
-        items.playerItem.add(9, "");
-        ui.item0.setText(items.playerItem.get(0));
-        ui.item1.setText(items.playerItem.get(1));
-        ui.item2.setText(items.playerItem.get(2));
-        ui.item3.setText(items.playerItem.get(3));
-        ui.item4.setText(items.playerItem.get(4));
-        ui.item5.setText(items.playerItem.get(5));
-        ui.item6.setText(items.playerItem.get(6));
-        ui.item7.setText(items.playerItem.get(7));
-        ui.item8.setText(items.playerItem.get(8));
-        ui.item9.setText(items.playerItem.get(9));
-        if (ui.item0.getText().equals("")){ ui.item0.setVisible(false); }
-        if (ui.item1.getText().equals("")){ ui.item1.setVisible(false); }
-        if (ui.item2.getText().equals("")){ ui.item2.setVisible(false); }
-        if (ui.item3.getText().equals("")){ ui.item3.setVisible(false); }
-        if (ui.item4.getText().equals("")){ ui.item4.setVisible(false); }
-        if (ui.item5.getText().equals("")){ ui.item5.setVisible(false); }
-        if (ui.item6.getText().equals("")){ ui.item6.setVisible(false); }
-        if (ui.item7.getText().equals("")){ ui.item7.setVisible(false); }
-        if (ui.item8.getText().equals("")){ ui.item8.setVisible(false); }
-        if (ui.item9.getText().equals("")){ ui.item9.setVisible(false); }
-
-
-
-
     }
     public void singleUse(){
         ui.mainScrollPane.setVisible(false);
@@ -158,19 +125,7 @@ public class Game {
         ui.nextPanel.setVisible(false);
         ui.returnPanel.setVisible(true);
     }
-    public void noteViewer(){
-        ui.notePanel.setVisible(true);
-        ui.choicePanel.setVisible(false);
-        ui.returnPanel.setVisible(false);
-        ui.nextPanel.setVisible(false);
-        ui.dialogueScrollPane.getVerticalScrollBar().setEnabled(false);
-        ui.dialogueScrollPane.setWheelScrollingEnabled(false);
-        ui.mainScrollPane.getVerticalScrollBar().setEnabled(false);
-        ui.mainScrollPane.setWheelScrollingEnabled(false);
-        //ui.optionScrollPane.getVerticalScrollBar().setEnabled(false);
-        //ui.optionScrollPane.setWheelScrollingEnabled(false);
 
-    }
 
     Story story = new Story(this, ui, cp, no, items);
     public class ChoiceHandler implements ActionListener{
