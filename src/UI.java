@@ -1,25 +1,21 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.DefaultCaret;
 
-public class UI {
-    //TODO: make maintextarea to JLabel for HTML (is it necessary?)
+public class UI{
     JFrame window;
-    JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, optionTextArea, singleTextArea;
+    JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea;
     JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane;
-    JPanel mainTextPanel, choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialogueTextPanel, dialoguePicturePanel2, notePanel, optionPanel;
-    JLabel chapterLabel, legendInfo, itemCount0, itemCount1, itemCount2, itemCount3, itemCount4, itemCount5, itemCount6, itemCount7, itemCount8, itemCount9;
+    JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel, optionPanel;
+    JLabel chapterLabel, legendInfo;
     JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7, next, returnB, returnNote,
-            item0, item1, item2, item3, item4, item5, item6, item7, item8, item9, item11;
+            item0, item1, item2, item3, item4, item5, item6, item7, item8, item9;
     Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
     Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
     Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
     Container container;
-   // ArrayList <JButton> iButtons = new ArrayList<JButton>(5);
-    GridBagConstraints gbc = new GridBagConstraints();
-
-
     public void createUI() {
         window = new JFrame();
         window.setSize(960, 720);
@@ -31,12 +27,11 @@ public class UI {
         window.requestFocus();
         window.setTitle("METROPOLIS");
         window.setLayout(null);
-
         container = window.getContentPane();
-
-        //TODO: ChapterPanel
+    }
+    public void noteViewer(){
         notePanel = new JPanel();
-        notePanel.setBounds(450, 30, 425, 580);
+        notePanel.setBounds(100, 30, 425, 580);
         notePanel.setBackground(Color.white);
         notePanel.setBorder(BorderFactory.createLineBorder(Color.gray, 4));
         notePanel.setVisible(false);
@@ -44,6 +39,7 @@ public class UI {
 
         noteScrollPane = new JScrollPane();
         noteScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        noteScrollPane.isForegroundSet();
         noteScrollPane.setBorder(null);
         noteScrollPane.getVerticalScrollBar().setBackground(Color.white);
         noteScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
@@ -76,11 +72,6 @@ public class UI {
         notePanel.add(noteText);
         notePanel.add(noteScrollPane);
         noteScrollPane.getViewport().add(noteText);
-
-
-        window.setVisible(true);
-
-
     }
     public void info(){
         //TODO: needs reworking to display relevant information --- maybe legend or inventory
@@ -104,10 +95,8 @@ public class UI {
         optionScrollPane = new JScrollPane();
         optionScrollPane.setBounds(652, 100, 252, 325);
         optionScrollPane.setBackground(Color.white);
-        optionScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        //optionScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        optionScrollPane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-
+        //optionScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        //optionScrollPane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         optionScrollPane.setBorder(BorderFactory.createLineBorder(Color.white, 4));
         optionScrollPane.getVerticalScrollBar().setBackground(Color.black);
         optionScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
@@ -129,10 +118,11 @@ public class UI {
         container.add(optionScrollPane);
 
         optionPanel = new JPanel();
-        optionPanel.setPreferredSize(new Dimension(227, 320));
-        //optionPanel.setBounds(652, 100, 252, 325);
+        optionPanel.setPreferredSize(new Dimension(227, 317));
         optionPanel.setBackground(Color.black);
+        optionPanel.setLayout(new GridLayout(10,1));
         optionScrollPane.getViewport().add(optionPanel);
+
     }
     public void mainArea(){
         mainScrollPane = new JScrollPane();
@@ -346,7 +336,8 @@ public class UI {
         //dialogue-picture 1
         dialoguePicturePanel = new JPanel();
         dialoguePicturePanel.setBounds(30, 480, 160, 160);
-        dialoguePicturePanel.setBackground(Color.white);
+        dialoguePicturePanel.setBackground(Color.black);
+        dialoguePicturePanel.setBorder(BorderFactory.createLineBorder(Color.red, 4));
         container.add(dialoguePicturePanel);
 
         dialoguePicture = new JTextArea();
@@ -360,7 +351,8 @@ public class UI {
 //dialogue-picture 2
         dialoguePicturePanel2 = new JPanel();
         dialoguePicturePanel2.setBounds(740, 480, 160, 160);
-        dialoguePicturePanel2.setBackground(Color.white);
+        dialoguePicturePanel2.setBackground(Color.black);
+        dialoguePicturePanel2.setBorder(BorderFactory.createLineBorder(Color.red, 4));
         container.add(dialoguePicturePanel2);
 
         dialoguePicture2 = new JTextArea();
@@ -406,188 +398,140 @@ public class UI {
         dialogueTextArea.setMargin(new Insets(3,3,0,0));
         dialogueScrollPane.getViewport().add(dialogueTextArea);
     }
-    public void inventory(Game.ChoiceHandler cHandler, Game.ItemHover mHover){
+    public void inventory(Game.InventoryHandler iHandler,Game.ItemHover mHover){
 //TODO: ideally make 99 buttons and a scrollpane to fit them
 
-        item0 = new JButton("item0");
+        item0 = new JButton();
         item0.setBackground(Color.darkGray);
         item0.setForeground(Color.white);
         item0.setFont(asciiFont);
-        item0.addActionListener(cHandler);
+        item0.addActionListener(iHandler);
+        item0.setActionCommand("item0");
         item0.addMouseListener(mHover);
         item0.setFocusPainted(false);
-        item0.setBorder(BorderFactory.createLineBorder(Color.black, 0));
-        item0.setPreferredSize(new Dimension(190,27));
+        item0.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        item0.setPreferredSize(new Dimension(190, 26));
         item0.setHorizontalAlignment(SwingConstants.LEFT);
+
         optionPanel.add(item0);
 
-        itemCount0 = new JLabel("##");
-        itemCount0.setPreferredSize(new Dimension(25,27));
-        itemCount0.setHorizontalAlignment(SwingConstants.RIGHT);
-        itemCount0.setFont(asciiFont);
-        optionPanel.add(itemCount0);
-
-        item1 = new JButton("item1");
+        item1 = new JButton();
         item1.setBackground(Color.darkGray);
         item1.setForeground(Color.white);
         item1.setFont(asciiFont);
-        item1.addActionListener(cHandler);
+        item1.addActionListener(iHandler);
+        item1.setActionCommand("item1");
         item1.addMouseListener(mHover);
         item1.setFocusPainted(false);
-        item1.setBorder(BorderFactory.createLineBorder(Color.black, 0));
-        item1.setPreferredSize(new Dimension(190,27));
+        item1.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        item1.setPreferredSize(new Dimension(190,26));
         item1.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item1);
 
-        itemCount1 = new JLabel("##");
-        itemCount1.setPreferredSize(new Dimension(25,27));
-        itemCount1.setHorizontalAlignment(SwingConstants.RIGHT);
-        itemCount1.setFont(asciiFont);
-        optionPanel.add(itemCount1);
-
-        item2 = new JButton("item2");
+        item2 = new JButton();
         item2.setBackground(Color.darkGray);
         item2.setForeground(Color.white);
         item2.setFont(asciiFont);
-        item2.addActionListener(cHandler);
+        item2.addActionListener(iHandler);
+        item2.setActionCommand("item2");
         item2.addMouseListener(mHover);
         item2.setFocusPainted(false);
-        item2.setBorder(BorderFactory.createLineBorder(Color.black, 0));
-        item2.setPreferredSize(new Dimension(190,27));
+        item2.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        item2.setPreferredSize(new Dimension(190,26));
         item2.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item2);
 
-        itemCount2 = new JLabel("##");
-        itemCount2.setPreferredSize(new Dimension(25,27));
-        itemCount2.setHorizontalAlignment(SwingConstants.RIGHT);
-        itemCount2.setFont(asciiFont);
-        optionPanel.add(itemCount2);
-
-        item3 = new JButton("item3");
+        item3 = new JButton();
         item3.setBackground(Color.darkGray);
         item3.setForeground(Color.white);
         item3.setFont(asciiFont);
-        item3.addActionListener(cHandler);
+        item3.addActionListener(iHandler);
+        item3.setActionCommand("item3");
         item3.addMouseListener(mHover);
         item3.setFocusPainted(false);
-        item3.setBorder(BorderFactory.createLineBorder(Color.black, 0));
-        item3.setPreferredSize(new Dimension(190,27));
+        item3.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        item3.setPreferredSize(new Dimension(190,26));
         item3.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item3);
 
-        itemCount3 = new JLabel("##");
-        itemCount3.setPreferredSize(new Dimension(25,27));
-        itemCount3.setHorizontalAlignment(SwingConstants.RIGHT);
-        itemCount3.setFont(asciiFont);
-        optionPanel.add(itemCount3);
-
-        item4 = new JButton("item4");
+        item4 = new JButton();
         item4.setBackground(Color.darkGray);
         item4.setForeground(Color.white);
         item4.setFont(asciiFont);
-        item4.addActionListener(cHandler);
+        item4.addActionListener(iHandler);
+        item4.setActionCommand("item4");
         item4.addMouseListener(mHover);
         item4.setFocusPainted(false);
-        item4.setBorder(BorderFactory.createLineBorder(Color.black, 0));
-        item4.setPreferredSize(new Dimension(190,27));
+        item4.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        item4.setPreferredSize(new Dimension(190,26));
         item4.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item4);
 
-        itemCount4 = new JLabel("##");
-        itemCount4.setPreferredSize(new Dimension(25,27));
-        itemCount4.setHorizontalAlignment(SwingConstants.RIGHT);
-        itemCount4.setFont(asciiFont);
-        optionPanel.add(itemCount4);
-
-        item5 = new JButton("item5");
+        item5 = new JButton();
         item5.setBackground(Color.darkGray);
         item5.setForeground(Color.white);
         item5.setFont(asciiFont);
-        item5.addActionListener(cHandler);
+        item5.addActionListener(iHandler);
+        item5.setActionCommand("item5");
         item5.addMouseListener(mHover);
         item5.setFocusPainted(false);
-        item5.setBorder(BorderFactory.createLineBorder(Color.black, 0));
-        item5.setPreferredSize(new Dimension(190,27));
+        item5.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        item5.setPreferredSize(new Dimension(190,26));
         item5.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item5);
 
-        itemCount5 = new JLabel("##");
-        itemCount5.setPreferredSize(new Dimension(25,27));
-        itemCount5.setHorizontalAlignment(SwingConstants.RIGHT);
-        itemCount5.setFont(asciiFont);
-        optionPanel.add(itemCount5);
-
-        item6 = new JButton("item6");
+        item6 = new JButton();
         item6.setBackground(Color.darkGray);
         item6.setForeground(Color.white);
         item6.setFont(asciiFont);
-        item6.addActionListener(cHandler);
+        item6.addActionListener(iHandler);
+        item6.setActionCommand("item6");
         item6.addMouseListener(mHover);
         item6.setFocusPainted(false);
-        item6.setBorder(BorderFactory.createLineBorder(Color.black, 0));
-        item6.setPreferredSize(new Dimension(190,25));
+        item6.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        item6.setPreferredSize(new Dimension(190,26));
         item6.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item6);
 
-        itemCount6 = new JLabel("##");
-        itemCount6.setPreferredSize(new Dimension(25,27));
-        itemCount6.setHorizontalAlignment(SwingConstants.RIGHT);
-        itemCount6.setFont(asciiFont);
-        optionPanel.add(itemCount6);
-
-        item7 = new JButton("item7");
+        item7 = new JButton();
         item7.setBackground(Color.darkGray);
         item7.setForeground(Color.white);
         item7.setFont(asciiFont);
-        item7.addActionListener(cHandler);
+        item7.addActionListener(iHandler);
+        item7.setActionCommand("item7");
         item7.addMouseListener(mHover);
         item7.setFocusPainted(false);
-        item7.setBorder(BorderFactory.createLineBorder(Color.black, 0));
-        item7.setPreferredSize(new Dimension(190,27));
+        item7.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        item7.setPreferredSize(new Dimension(190,26));
         item7.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item7);
 
-        itemCount7 = new JLabel("##");
-        itemCount7.setPreferredSize(new Dimension(25,27));
-        itemCount7.setHorizontalAlignment(SwingConstants.RIGHT);
-        itemCount7.setFont(asciiFont);
-        optionPanel.add(itemCount7);
-
-        item8 = new JButton("item8");
+        item8 = new JButton();
         item8.setBackground(Color.darkGray);
         item8.setForeground(Color.white);
         item8.setFont(asciiFont);
-        item8.addActionListener(cHandler);
+        item8.addActionListener(iHandler);
+        item8.setActionCommand("item8");
         item8.addMouseListener(mHover);
         item8.setFocusPainted(false);
-        item8.setBorder(BorderFactory.createLineBorder(Color.black, 0));
-        item8.setPreferredSize(new Dimension(190,27));
+        item8.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        item8.setPreferredSize(new Dimension(190,26));
         item8.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item8);
 
-        itemCount8 = new JLabel("##");
-        itemCount8.setPreferredSize(new Dimension(25,27));
-        itemCount8.setHorizontalAlignment(SwingConstants.RIGHT);
-        itemCount8.setFont(asciiFont);
-        optionPanel.add(itemCount8);
-
-        item9 = new JButton("item9");
+        item9 = new JButton();
         item9.setBackground(Color.darkGray);
         item9.setForeground(Color.white);
         item9.setFont(asciiFont);
-        item9.addActionListener(cHandler);
+        item9.addActionListener(iHandler);
+        item9.setActionCommand("item9");
         item9.addMouseListener(mHover);
         item9.setFocusPainted(false);
-        item9.setBorder(BorderFactory.createLineBorder(Color.black, 0));
-        item9.setPreferredSize(new Dimension(190,27));
+        item9.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        item9.setPreferredSize(new Dimension(190,26));
         item9.setHorizontalAlignment(SwingConstants.LEFT);
         optionPanel.add(item9);
 
-        itemCount9 = new JLabel("##");
-        itemCount9.setPreferredSize(new Dimension(25,30));
-        itemCount9.setHorizontalAlignment(SwingConstants.RIGHT);
-        itemCount9.setFont(asciiFont);
-        optionPanel.add(itemCount9);
     }
 }
 

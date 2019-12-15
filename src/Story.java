@@ -27,15 +27,32 @@ public class Story {
  */
 
     public void start() {
+        game.playerItem[0] = "Potion";
+        game.playerItem[1] = "Potion";
+        game.playerItem[2] = "Potion";
+        game.playerItem[3] = "Potion";
+        game.playerItem[4] = "Potion";
+        game.playerItem[5] = "Potion";
+        game.playerItem[6] = "";
+        game.playerItem[7] = "";
+        game.playerItem[8] = "";
+        game.playerItem[9] = "";
 
 
-        //ui.chapterText.setText(cp.chapter2);
         //ui.noteText.setText(no.firstNote);
         //game.noteViewer();
+        /*
+        game.playerItem[0] = "Potion";
+        game.playerItem[1] = "";
+        game.playerItem[2] = "";
+        game.playerItem[3] = "";
+        game.playerItem[4] = "";
+
+         */
 
         ui.dialoguePicture.setText(cp.maggi);
         ui.dialoguePicture2.setText(cp.hero);
-        ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
+        //ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
         ui.legendInfo.setText("<HTML><P align=right>LOCATION<BR/>Room</HTML>");
         //story-part of method
         game.storyText =
@@ -94,6 +111,9 @@ public class Story {
     public void choice2() {
         ui.singleTextArea.setText("this is single use");
         game.singleUse();
+
+       // ui.optionPanel.remove();
+        
 
     }
 

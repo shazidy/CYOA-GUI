@@ -16,11 +16,16 @@ public class Game {
     MouseHover mHover = new MouseHover();
     MouseTimer mTimer = new MouseTimer();
     returnClick rClick = new returnClick();
+    InventoryHandler iHandler = new InventoryHandler();
     ChoiceHandler cHandler = new ChoiceHandler();
+
     Characters cp = new Characters();
     UI ui = new UI();
     Story story = new Story(this, ui, cp);
+    //Items items = new Items(this, ui);
     int i=0, di = 0, iLength = 0;
+    String[] playerItem = new String[10];
+
     String nextPosition1, nextPosition2, nextPosition3,
     nextPosition4, nextPosition5, nextPosition6,
     nextPosition7, storyText, dialogueText;
@@ -31,17 +36,19 @@ public class Game {
 
     public Game(){
         ui.createUI();
+        ui.noteViewer();
         ui.info();
         ui.options();
         ui.mainArea();
         ui.singleUse();
         ui.choiceButtons(cHandler, mHover);
         ui.nextButton(mHover, mTimer);
-        ui.inventory(cHandler, iHover);
+        ui.inventory(iHandler, iHover);
         ui.dialogue();
         ui.returnButtons(mHover, rClick);
         story.start();
         buttonVisibility();
+        ui.window.setVisible(true);
     }
 
 
@@ -126,17 +133,36 @@ public class Game {
         if (ui.choice5.getText().equals("")){ ui.choice5.setVisible(false); }
         if (ui.choice6.getText().equals("")){ ui.choice6.setVisible(false); }
         if (ui.choice7.getText().equals("")){ ui.choice7.setVisible(false); }
-        if (ui.item0.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount0.setVisible(false);}
-        if (ui.item1.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount1.setVisible(false);}
-        if (ui.item2.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount2.setVisible(false);}
-        if (ui.item3.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount3.setVisible(false);}
-        if (ui.item4.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount4.setVisible(false);}
-        if (ui.item5.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount5.setVisible(false);}
-        if (ui.item6.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount6.setVisible(false);}
-        if (ui.item7.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount7.setVisible(false);}
-        if (ui.item8.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount8.setVisible(false);}
-        if (ui.item9.getText().equals("")){ ui.item0.setVisible(false); ui.itemCount9.setVisible(false);}
+        ui.item0.setText(playerItem[0]);
+        ui.item1.setText(playerItem[1]);
+        ui.item2.setText(playerItem[2]);
+        ui.item3.setText(playerItem[3]);
+        ui.item4.setText(playerItem[4]);
+        ui.item5.setText(playerItem[5]);
+        ui.item6.setText(playerItem[6]);
+        ui.item7.setText(playerItem[7]);
+        ui.item8.setText(playerItem[8]);
+        ui.item9.setText(playerItem[9]);
+        if (ui.item0.getText().equals("")){ ui.item0.setVisible(false); }
+        if (ui.item1.getText().equals("")){ ui.item1.setVisible(false); }
+        if (ui.item2.getText().equals("")){ ui.item2.setVisible(false); }
+        if (ui.item3.getText().equals("")){ ui.item3.setVisible(false); }
+        if (ui.item4.getText().equals("")){ ui.item4.setVisible(false); }
+        if (ui.item5.getText().equals("")){ ui.item5.setVisible(false); }
+        if (ui.item6.getText().equals("")){ ui.item6.setVisible(false); }
+        if (ui.item7.getText().equals("")){ ui.item7.setVisible(false); }
+        if (ui.item8.getText().equals("")){ ui.item8.setVisible(false); }
+        if (ui.item9.getText().equals("")){ ui.item9.setVisible(false); }
+
+
+
+
+
+
+
     }
+
+
     public void singleUse(){
         ui.mainScrollPane.setVisible(false);
         ui.singleScrollPane.setVisible(true);
@@ -174,13 +200,15 @@ public class Game {
         @Override public void mousePressed(MouseEvent e){ }
         @Override public void mouseReleased(MouseEvent e){ }
         @Override public void mouseEntered(MouseEvent e) {
-            if (!ui.notePanel.isVisible()){
+            //if (!ui.notePanel.isVisible()){
             Component c = e.getComponent();
-            c.setBackground(Color.lightGray); }}
+            c.setBackground(Color.lightGray); }
+        //}
         @Override public void mouseExited(MouseEvent e){
-            if (!ui.notePanel.isVisible()){
+            //if (!ui.notePanel.isVisible()){
             Component c = e.getComponent();
-            c.setBackground(Color.darkGray); }}
+            c.setBackground(Color.darkGray); }
+        //}
     }
     public class MouseTimer implements MouseListener{
         @Override public void mouseClicked(MouseEvent e){ }
@@ -210,6 +238,28 @@ public class Game {
         @Override public void mouseReleased(MouseEvent e){ }
         @Override public void mouseEntered(MouseEvent e){ }
         @Override public void mouseExited(MouseEvent e){ }
+    }
+    public class InventoryHandler implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+            String yourChoice = event.getActionCommand();
+            switch (yourChoice){
+                case "item0" : itemUsed(0); break;
+                case "item1" : itemUsed(1); break;
+                case "item2" : itemUsed(2); break;
+                case "item3" : itemUsed(3); break;
+                case "item4" : itemUsed(4); break;
+                case "item5" : itemUsed(5); break;
+                case "item6" : itemUsed(6); break;
+                case "item7" : itemUsed(7); break;
+                case "item8" : itemUsed(8); break;
+                case "item9" : itemUsed(9); break;
+            }
+        }
+        public void itemUsed(int slotNumber){
+            switch(playerItem[slotNumber]){
+                case "Potion" : ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
+            }
+        }
     }
     public class ChoiceHandler implements ActionListener{
         public void actionPerformed(ActionEvent event){
