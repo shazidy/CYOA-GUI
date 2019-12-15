@@ -3,14 +3,14 @@ public class Story {
     UI ui;
     Characters cp;
     Notes no;
-    Items item;
+    Items items;
 
-    public Story(Game g, UI userInterface, Characters cPict, Notes notes, Items items) {
+    public Story(Game g, UI userInterface, Characters cPict, Notes notes, Items item) {
         game = g;
         ui = userInterface;
         cp = cPict;
         no = notes;
-        item = items;
+        items = item;
     }
 /* Template
     game.storyText =
@@ -30,17 +30,6 @@ public class Story {
  */
 
     public void start() {
-        item.playerItem[0] = "Potion";
-        item.playerItem[1] = "Potion";
-        item.playerItem[2] = "Potion";
-        item.playerItem[3] = "Potion";
-        item.playerItem[4] = "Potion";
-        item.playerItem[5] = "Potion";
-        item.playerItem[6] = "";
-        item.playerItem[7] = "";
-        item.playerItem[8] = "";
-        item.playerItem[9] = "";
-
 
         //ui.noteText.setText(no.firstNote);
         //game.noteViewer();

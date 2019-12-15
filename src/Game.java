@@ -24,7 +24,6 @@ public class Game {
     Items items = new Items(this, ui);
     Story story = new Story(this, ui, cp, no, items);
     int i=0, di = 0, iLength = 0;
-    //String[] playerItem = new String[10];
 
     String nextPosition1, nextPosition2, nextPosition3,
     nextPosition4, nextPosition5, nextPosition6,
@@ -133,6 +132,16 @@ public class Game {
         if (ui.choice5.getText().equals("")){ ui.choice5.setVisible(false); }
         if (ui.choice6.getText().equals("")){ ui.choice6.setVisible(false); }
         if (ui.choice7.getText().equals("")){ ui.choice7.setVisible(false); }
+        items.playerItem[0] = "Potion";
+        items.playerItem[1] = "Potion";
+        items.playerItem[2] = "Potion";
+        items.playerItem[3] = "Potion";
+        items.playerItem[4] = "Potion";
+        items.playerItem[5] = "Potion";
+        items.playerItem[6] = "";
+        items.playerItem[7] = "";
+        items.playerItem[8] = "";
+        items.playerItem[9] = "";
         ui.item0.setText(items.playerItem[0]);
         ui.item1.setText(items.playerItem[1]);
         ui.item2.setText(items.playerItem[2]);
@@ -154,7 +163,6 @@ public class Game {
         if (ui.item8.getText().equals("")){ ui.item8.setVisible(false); }
         if (ui.item9.getText().equals("")){ ui.item9.setVisible(false); }
     }
-
     public void singleUse(){
         ui.mainScrollPane.setVisible(false);
         ui.singleScrollPane.setVisible(true);
