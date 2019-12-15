@@ -18,11 +18,10 @@ public class Game {
     returnClick rClick = new returnClick();
     InventoryHandler iHandler = new InventoryHandler();
     ChoiceHandler cHandler = new ChoiceHandler();
-
     Characters cp = new Characters();
     UI ui = new UI();
     Story story = new Story(this, ui, cp);
-    //Items items = new Items(this, ui);
+    Items items = new Items(this, ui);
     int i=0, di = 0, iLength = 0;
     String[] playerItem = new String[10];
 
@@ -161,8 +160,6 @@ public class Game {
 
 
     }
-
-
     public void singleUse(){
         ui.mainScrollPane.setVisible(false);
         ui.singleScrollPane.setVisible(true);
@@ -243,24 +240,20 @@ public class Game {
         public void actionPerformed(ActionEvent event){
             String yourChoice = event.getActionCommand();
             switch (yourChoice){
-                case "item0" : itemUsed(0); break;
-                case "item1" : itemUsed(1); break;
-                case "item2" : itemUsed(2); break;
-                case "item3" : itemUsed(3); break;
-                case "item4" : itemUsed(4); break;
-                case "item5" : itemUsed(5); break;
-                case "item6" : itemUsed(6); break;
-                case "item7" : itemUsed(7); break;
-                case "item8" : itemUsed(8); break;
-                case "item9" : itemUsed(9); break;
+                case "item0" : items.itemUsed(0); break;
+                case "item1" : items.itemUsed(1); break;
+                case "item2" : items.itemUsed(2); break;
+                case "item3" : items.itemUsed(3); break;
+                case "item4" : items.itemUsed(4); break;
+                case "item5" : items.itemUsed(5); break;
+                case "item6" : items.itemUsed(6); break;
+                case "item7" : items.itemUsed(7); break;
+                case "item8" : items.itemUsed(8); break;
+                case "item9" : items.itemUsed(9); break;
             }
         }
-        public void itemUsed(int slotNumber){
-            switch(playerItem[slotNumber]){
-                case "Potion" : ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
-            }
-        }
-    }
+
+    } //has all inventory effects in Items
     public class ChoiceHandler implements ActionListener{
         public void actionPerformed(ActionEvent event){
             String yourChoice = event.getActionCommand();
