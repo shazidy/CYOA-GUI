@@ -2,12 +2,15 @@ public class Story {
     Game game;
     UI ui;
     Characters cp;
-    Notes no = new Notes();
+    Notes no;
+    Items item;
 
-    public Story(Game g, UI userInterface, Characters cPict) {
+    public Story(Game g, UI userInterface, Characters cPict, Notes notes, Items items) {
         game = g;
         ui = userInterface;
         cp = cPict;
+        no = notes;
+        item = items;
     }
 /* Template
     game.storyText =
@@ -27,16 +30,16 @@ public class Story {
  */
 
     public void start() {
-        game.playerItem[0] = "Potion";
-        game.playerItem[1] = "Potion";
-        game.playerItem[2] = "Potion";
-        game.playerItem[3] = "Potion";
-        game.playerItem[4] = "Potion";
-        game.playerItem[5] = "Potion";
-        game.playerItem[6] = "";
-        game.playerItem[7] = "";
-        game.playerItem[8] = "";
-        game.playerItem[9] = "";
+        item.playerItem[0] = "Potion";
+        item.playerItem[1] = "Potion";
+        item.playerItem[2] = "Potion";
+        item.playerItem[3] = "Potion";
+        item.playerItem[4] = "Potion";
+        item.playerItem[5] = "Potion";
+        item.playerItem[6] = "";
+        item.playerItem[7] = "";
+        item.playerItem[8] = "";
+        item.playerItem[9] = "";
 
 
         //ui.noteText.setText(no.firstNote);

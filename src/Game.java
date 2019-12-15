@@ -18,12 +18,13 @@ public class Game {
     returnClick rClick = new returnClick();
     InventoryHandler iHandler = new InventoryHandler();
     ChoiceHandler cHandler = new ChoiceHandler();
+    Notes no = new Notes();
     Characters cp = new Characters();
     UI ui = new UI();
-    Story story = new Story(this, ui, cp);
     Items items = new Items(this, ui);
+    Story story = new Story(this, ui, cp, no, items);
     int i=0, di = 0, iLength = 0;
-    String[] playerItem = new String[10];
+    //String[] playerItem = new String[10];
 
     String nextPosition1, nextPosition2, nextPosition3,
     nextPosition4, nextPosition5, nextPosition6,
@@ -132,16 +133,16 @@ public class Game {
         if (ui.choice5.getText().equals("")){ ui.choice5.setVisible(false); }
         if (ui.choice6.getText().equals("")){ ui.choice6.setVisible(false); }
         if (ui.choice7.getText().equals("")){ ui.choice7.setVisible(false); }
-        ui.item0.setText(playerItem[0]);
-        ui.item1.setText(playerItem[1]);
-        ui.item2.setText(playerItem[2]);
-        ui.item3.setText(playerItem[3]);
-        ui.item4.setText(playerItem[4]);
-        ui.item5.setText(playerItem[5]);
-        ui.item6.setText(playerItem[6]);
-        ui.item7.setText(playerItem[7]);
-        ui.item8.setText(playerItem[8]);
-        ui.item9.setText(playerItem[9]);
+        ui.item0.setText(items.playerItem[0]);
+        ui.item1.setText(items.playerItem[1]);
+        ui.item2.setText(items.playerItem[2]);
+        ui.item3.setText(items.playerItem[3]);
+        ui.item4.setText(items.playerItem[4]);
+        ui.item5.setText(items.playerItem[5]);
+        ui.item6.setText(items.playerItem[6]);
+        ui.item7.setText(items.playerItem[7]);
+        ui.item8.setText(items.playerItem[8]);
+        ui.item9.setText(items.playerItem[9]);
         if (ui.item0.getText().equals("")){ ui.item0.setVisible(false); }
         if (ui.item1.getText().equals("")){ ui.item1.setVisible(false); }
         if (ui.item2.getText().equals("")){ ui.item2.setVisible(false); }
@@ -152,21 +153,14 @@ public class Game {
         if (ui.item7.getText().equals("")){ ui.item7.setVisible(false); }
         if (ui.item8.getText().equals("")){ ui.item8.setVisible(false); }
         if (ui.item9.getText().equals("")){ ui.item9.setVisible(false); }
-
-
-
-
-
-
-
     }
+
     public void singleUse(){
         ui.mainScrollPane.setVisible(false);
         ui.singleScrollPane.setVisible(true);
         ui.choicePanel.setVisible(false);
         ui.nextPanel.setVisible(false);
         ui.returnPanel.setVisible(true);
-        //TODO: set return button visible that reverses visibility
     }
     public void noteViewer(){
         ui.notePanel.setVisible(true);
