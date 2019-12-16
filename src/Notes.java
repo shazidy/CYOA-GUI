@@ -1,22 +1,6 @@
 public class Notes {
-    UI ui;
-    public Notes(UI userInterface){
-        ui = userInterface;
-    }
 
-    public void noteViewer(){
-        ui.notePanel.setVisible(true);
-        ui.choicePanel.setVisible(false);
-        ui.returnPanel.setVisible(false);
-        ui.nextPanel.setVisible(false);
-        ui.dialogueScrollPane.getVerticalScrollBar().setEnabled(false);
-        ui.dialogueScrollPane.setWheelScrollingEnabled(false);
-        ui.mainScrollPane.getVerticalScrollBar().setEnabled(false);
-        ui.mainScrollPane.setWheelScrollingEnabled(false);
-
-        //ui.optionScrollPane.getVerticalScrollBar().setEnabled(false);
-        //ui.optionScrollPane.setWheelScrollingEnabled(false);
-
+    public Notes(){
     }
 
     public String firstNote =

@@ -14,7 +14,7 @@ public class UI{
     JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane;
     JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel, optionPanel;
     JLabel chapterLabel, legendInfo;
-    JButton choice1, choice2, choice3, choice4, choice5;
+    JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7;
     Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
     Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
     Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
@@ -280,6 +280,28 @@ public class UI{
         choice5.addMouseListener(mHover);
         choice5.setBorder(BorderFactory.createLineBorder(Color.black, 4));
         choicePanel.add(choice5);
+
+        choice6 = new JButton();
+        choice6.setBackground(Color.white);
+        choice6.setForeground(Color.black);
+        choice6.setFont(asciiFont);
+        choice6.addActionListener(cHandler);
+        choice6.setActionCommand("c6");
+        choice6.setFocusPainted(false);
+        choice6.addMouseListener(mHover);
+        choice6.setBorder(BorderFactory.createLineBorder(Color.black, 4));
+        choicePanel.add(choice6);
+
+        choice7 = new JButton();
+        choice7.setBackground(Color.white);
+        choice7.setForeground(Color.black);
+        choice7.setFont(asciiFont);
+        choice7.addActionListener(cHandler);
+        choice7.setActionCommand("c7");
+        choice7.setFocusPainted(false);
+        choice7.addMouseListener(mHover);
+        choice7.setBorder(BorderFactory.createLineBorder(Color.black, 4));
+        choicePanel.add(choice7);
     }
     public void nextButton(){
         nextPanel = new JPanel();

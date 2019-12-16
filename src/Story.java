@@ -2,11 +2,11 @@ public class Story {
     Characters cp = new Characters();
     Game game;
     UI ui;
-    Notes no;
-    public Story(Game g, UI userInterface, Notes notes) {
+    Notes no = new Notes();
+    public Story(Game g, UI userInterface) {
         game = g;
         ui = userInterface;
-        no = notes;
+
     }
 
 
@@ -101,7 +101,7 @@ new Item("Potio", ui);
 
     public void choice3() {
         ui.noteText.setText(no.firstNote);
-        no.noteViewer();
+        game.noteViewer();
     }
 
     public void choice4() {
@@ -117,28 +117,5 @@ new Item("Potio", ui);
         game.prepareText();
 
     }
-
-    public void hall() {
-        ui.storyText ="hall•";
-        ui.dialogueText = "•\n";
-        game.prepareText();
-
-    }
-
-    public void office() {
-        ui.storyText = "office•";
-        ui.dialogueText = "•\n";
-        game.prepareText();
-
-    }
-
-    public void kitchen() {
-        ui.storyText = "kitchen•";
-        ui.dialogueText = "•\n";
-        game.prepareText();
-
-    }
-
-
 }
 

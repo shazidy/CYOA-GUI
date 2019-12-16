@@ -9,10 +9,10 @@ public class Item extends JButton implements MouseListener, ActionListener {
     UI ui;
     public Item(String name, UI userInterface){
         ui = userInterface;
-        customJButton(name);
+        itemButton(name);
     }
 
-    public void customJButton(String name) {
+    public void itemButton(String name) {
         this.setText(name);
         this.setBackground(Color.darkGray);
         this.setForeground(Color.white);

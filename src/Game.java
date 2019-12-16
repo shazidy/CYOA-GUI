@@ -15,12 +15,10 @@ public class Game {
 
     UI ui = new UI(this);
     Buttons buttons = new Buttons(ui);
-    Notes no = new Notes(ui);
     ChoiceHandler cHandler = new ChoiceHandler();
 
-
     String nextPosition1, nextPosition2, nextPosition3,
-    nextPosition4, nextPosition5;
+    nextPosition4, nextPosition5, nextPosition6, nextPosition7;
 
     public static void main(String[] args) {
         new UI(new Game());
@@ -50,6 +48,8 @@ public class Game {
         if (ui.choice3.getText().equals("")){ ui.choice3.setVisible(false); }
         if (ui.choice4.getText().equals("")){ ui.choice4.setVisible(false); }
         if (ui.choice5.getText().equals("")){ ui.choice5.setVisible(false); }
+        if (ui.choice6.getText().equals("")){ ui.choice6.setVisible(false); }
+        if (ui.choice7.getText().equals("")){ ui.choice7.setVisible(false); }
     }
     public void singleUse(){
         ui.mainScrollPane.setVisible(false);
@@ -58,9 +58,22 @@ public class Game {
         ui.nextPanel.setVisible(false);
         ui.returnPanel.setVisible(true);
     }
+    public void noteViewer(){
+        ui.notePanel.setVisible(true);
+        ui.choicePanel.setVisible(false);
+        ui.returnPanel.setVisible(false);
+        ui.nextPanel.setVisible(false);
+        ui.dialogueScrollPane.getVerticalScrollBar().setEnabled(false);
+        ui.dialogueScrollPane.setWheelScrollingEnabled(false);
+        ui.mainScrollPane.getVerticalScrollBar().setEnabled(false);
+        ui.mainScrollPane.setWheelScrollingEnabled(false);
+        //ui.optionScrollPane.getVerticalScrollBar().setEnabled(false);
+        //ui.optionScrollPane.setWheelScrollingEnabled(false);
+
+    }
 
 
-    Story story = new Story(this, ui, no);
+    Story story = new Story(this, ui);
     public class ChoiceHandler implements ActionListener{
         public void actionPerformed(ActionEvent event){
             String yourChoice = event.getActionCommand();
@@ -70,6 +83,8 @@ public class Game {
                 case "c3" : selectPosition(nextPosition3); break;
                 case "c4" : selectPosition(nextPosition4); break;
                 case "c5" : selectPosition(nextPosition5); break;
+                case "c6" : selectPosition(nextPosition6); break;
+                case "c7" : selectPosition(nextPosition7); break;
 
             }
         }
