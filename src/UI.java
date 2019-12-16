@@ -11,21 +11,18 @@ public class UI{
     Game game;
     JFrame window;
     JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea;
-    JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane, glassScrollPane;
+    JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane;
     JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel, optionPanel;
     JLabel chapterLabel, legendInfo;
-    JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7, next, returnB, returnNote,
-            item0, item1, item2, item3, item4, item5, item6, item7, item8, item9;
+    JButton choice1, choice2, choice3, choice4, choice5;
     Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
     Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
     Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
+    String dialogueText, storyText;
     Container container;
 
 
     MouseHover mHover = new MouseHover();
-    MouseTimer mTimer = new MouseTimer();
-    ReturnClick rClick = new ReturnClick();
-
     public UI(Game g){
         game = g;
         createUI();
@@ -283,28 +280,6 @@ public class UI{
         choice5.addMouseListener(mHover);
         choice5.setBorder(BorderFactory.createLineBorder(Color.black, 4));
         choicePanel.add(choice5);
-
-        choice6 = new JButton();
-        choice6.setBackground(Color.white);
-        choice6.setForeground(Color.black);
-        choice6.setFont(asciiFont);
-        choice6.addActionListener(cHandler);
-        choice6.setActionCommand("c6");
-        choice6.setFocusPainted(false);
-        choice6.addMouseListener(mHover);
-        choice6.setBorder(BorderFactory.createLineBorder(Color.black, 4));
-        choicePanel.add(choice6);
-
-        choice7 = new JButton();
-        choice7.setBackground(Color.white);
-        choice7.setForeground(Color.black);
-        choice7.setFont(asciiFont);
-        choice7.addActionListener(cHandler);
-        choice7.setActionCommand("c7");
-        choice7.setFocusPainted(false);
-        choice7.addMouseListener(mHover);
-        choice7.setBorder(BorderFactory.createLineBorder(Color.black, 4));
-        choicePanel.add(choice7);
     }
     public void nextButton(){
         nextPanel = new JPanel();
@@ -314,15 +289,9 @@ public class UI{
         nextPanel.setVisible(false);
         container.add(nextPanel);
 
-        next = new JButton("Continue");
-        next.setBackground(Color.white);
-        next.setForeground(Color.black);
-        next.setFont(asciiFont);
-        next.setFocusPainted(false);
-        next.addMouseListener(mHover);
-        next.addMouseListener(mTimer);
-        next.setBorder(BorderFactory.createLineBorder(Color.black, 3));
-        nextPanel.add(next);}
+
+
+    }
     public void returnButtons(){
         //returnbutton from single use textarea
         returnPanel = new JPanel();
@@ -332,27 +301,7 @@ public class UI{
         returnPanel.setVisible(false);
         container.add(returnPanel);
 
-        returnB = new JButton("Return");
-        returnB.setBackground(Color.white);
-        returnB.setForeground(Color.black);
-        returnB.setFont(asciiFont);
-        returnB.setFocusPainted(false);
-        returnB.addMouseListener(mHover);
-        returnB.addMouseListener(rClick);
-        returnB.setBorder(BorderFactory.createLineBorder(Color.black, 3));
-        returnPanel.add(returnB);
 
-        returnNote = new JButton("Return");
-        returnNote.setBackground(Color.white);
-        returnNote.setForeground(Color.black);
-        returnNote.setFont(asciiFont);
-        returnNote.setFocusPainted(false);
-        returnNote.addMouseListener(mHover);
-        returnNote.addMouseListener(rClick);
-        returnNote.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Color.black, 3),
-                BorderFactory.createEmptyBorder(3, 10, 3, 10)));
-        notePanel.add(returnNote);
     }
     public void dialogue(){
         //TODO: needs tweaking
@@ -433,90 +382,6 @@ public class UI{
             Component c = e.getComponent();
             c.setBackground(Color.white); }
     }
-    /*
-    public class ItemHover implements MouseListener{
-        @Override public void mouseClicked(MouseEvent e){ }
-        @Override public void mousePressed(MouseEvent e){ }
-        @Override public void mouseReleased(MouseEvent e){ }
-        @Override public void mouseEntered(MouseEvent e) {
-            //if (!ui.notePanel.isVisible()){
-            Component c = e.getComponent();
-            c.setBackground(Color.lightGray); }
-        //}
-        @Override public void mouseExited(MouseEvent e){
-            //if (!ui.notePanel.isVisible()){
-            Component c = e.getComponent();
-            c.setBackground(Color.darkGray); }
-        //}
-    }
-
-     */
-    public class MouseTimer implements MouseListener{
-        @Override public void mouseClicked(MouseEvent e){ }
-        @Override public void mousePressed(MouseEvent e){
-            game.dTimer.start();
-        }
-        @Override public void mouseReleased(MouseEvent e){ }
-        @Override public void mouseEntered(MouseEvent e){ }
-        @Override public void mouseExited(MouseEvent e){ }
-    }
-    public class ReturnClick implements MouseListener{
-        @Override public void mouseClicked(MouseEvent e){ }
-        @Override public void mousePressed(MouseEvent e){
-            returnPanel.setVisible(false);
-            choicePanel.setVisible(true);
-            singleScrollPane.setVisible(false);
-            notePanel.setVisible(false);
-            mainScrollPane.setVisible(true);
-            dialogueScrollPane.getVerticalScrollBar().setEnabled(true);
-            dialogueScrollPane.setWheelScrollingEnabled(true);
-            mainScrollPane.getVerticalScrollBar().setEnabled(true);
-            mainScrollPane.setWheelScrollingEnabled(true);
-            /*
-
-            item0.setEnabled(true);
-            item1.setEnabled(true);
-            item2.setEnabled(true);
-            item3.setEnabled(true);
-            item4.setEnabled(true);
-            item5.setEnabled(true);
-            item6.setEnabled(true);
-            item7.setEnabled(true);
-            item8.setEnabled(true);
-            item9.setEnabled(true);
-
-             */
-
-            //ui.optionScrollPane.getVerticalScrollBar().setEnabled(true);
-            //ui.optionScrollPane.setWheelScrollingEnabled(true);
-
-        }
-        @Override public void mouseReleased(MouseEvent e){ }
-        @Override public void mouseEntered(MouseEvent e){ }
-        @Override public void mouseExited(MouseEvent e){ }
-    }
-    /*
-    public class InventoryHandler implements ActionListener {
-        public void actionPerformed(ActionEvent event){
-            String yourChoice = event.getActionCommand();
-            switch (yourChoice){
-                case "item0" : game.items.itemUsed(0); break;
-                case "item1" : game.items.itemUsed(1); break;
-                case "item2" : game.items.itemUsed(2); break;
-                case "item3" : game.items.itemUsed(3); break;
-                case "item4" : game.items.itemUsed(4); break;
-                case "item5" : game.items.itemUsed(5); break;
-                case "item6" : game.items.itemUsed(6); break;
-                case "item7" : game.items.itemUsed(7); break;
-                case "item8" : game.items.itemUsed(8); break;
-                case "item9" : game.items.itemUsed(9); break;
-            }
-        }
-
-    } //has all inventory effects in Items
-*/
-
-
 }
 
 

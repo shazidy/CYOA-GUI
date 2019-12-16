@@ -14,15 +14,13 @@ public class Game {
 
 
     UI ui = new UI(this);
-    Characters cp = new Characters();
+    Buttons buttons = new Buttons(ui);
     Notes no = new Notes(ui);
-    Items items = new Items(ui);
     ChoiceHandler cHandler = new ChoiceHandler();
-    int i=0, di = 0, iLength = 0;
+
 
     String nextPosition1, nextPosition2, nextPosition3,
-    nextPosition4, nextPosition5, nextPosition6,
-    nextPosition7, storyText, dialogueText;
+    nextPosition4, nextPosition5;
 
     public static void main(String[] args) {
         new UI(new Game());
@@ -32,82 +30,19 @@ public class Game {
         ui.choiceButtons(cHandler);
         story.start();
         ui.window.setVisible(true);
+        buttons.buttons();
         buttonVisibility();
-        //items.check();
     }
-
-    Timer timer = new Timer(5, new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            char character[] = storyText.toCharArray();
-            int ArrayNumber = character.length;
-            iLength = ArrayNumber;
-
-            String addedCharacter = "";
-            String blank = "";
-
-            addedCharacter = blank + character[i];
-            ui.mainTextArea.append(addedCharacter);
-
-            i++;
-            if (addedCharacter.equals(">")) {
-                timer.stop();
-                dTimer.start();
-                ui.dialogueScrollPane.setVisible(true);
-                ui.nextPanel.setVisible(true);
-            }
-            if (addedCharacter.equals("•")) {
-                timer.stop();
-                dTimer.stop();
-                i = 0;
-                ui.nextPanel.setVisible(false);
-                ui.choicePanel.setVisible(true);
-            }
-        }
-    });
-    Timer dTimer = new Timer(10, new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-                char character[] = dialogueText.toCharArray();
-                int ArrayNumber = character.length;
-
-                String addedCharacter = "";
-                String blank = "";
-
-                addedCharacter = blank + character[di];
-                ui.dialogueTextArea.append(addedCharacter);
-
-                di++;
-
-            if (addedCharacter.equals(">")) {
-                dTimer.stop();
-            }
-
-            if (addedCharacter.equals("<")) {
-                dTimer.stop();
-                ui.nextPanel.setVisible(false);
-                if (iLength != i)
-                timer.start();
-            }
-            if (addedCharacter.equals("•")){
-                dTimer.stop();
-                timer.stop();
-                ui.nextPanel.setVisible(false);
-                ui.choicePanel.setVisible(true);
-            }
-        }
-    });
 
     public void prepareText(){
         ui.choicePanel.setVisible(false);
-        di = 0;
-        i = 0;
+        buttons.di = 0;
+        buttons.i = 0;
         ui.nextPanel.setVisible(false);
         ui.dialogueScrollPane.setVisible(true);
         ui.mainTextArea.setText("");
         ui.dialogueTextArea.setText("");
-        timer.start();
+        buttons.timer.start();
     }
     public void buttonVisibility(){
         if (ui.choice1.getText().equals("")){ ui.choice1.setVisible(false); }
@@ -115,8 +50,6 @@ public class Game {
         if (ui.choice3.getText().equals("")){ ui.choice3.setVisible(false); }
         if (ui.choice4.getText().equals("")){ ui.choice4.setVisible(false); }
         if (ui.choice5.getText().equals("")){ ui.choice5.setVisible(false); }
-        if (ui.choice6.getText().equals("")){ ui.choice6.setVisible(false); }
-        if (ui.choice7.getText().equals("")){ ui.choice7.setVisible(false); }
     }
     public void singleUse(){
         ui.mainScrollPane.setVisible(false);
@@ -127,7 +60,7 @@ public class Game {
     }
 
 
-    Story story = new Story(this, ui, cp, no, items);
+    Story story = new Story(this, ui, no);
     public class ChoiceHandler implements ActionListener{
         public void actionPerformed(ActionEvent event){
             String yourChoice = event.getActionCommand();
@@ -137,8 +70,7 @@ public class Game {
                 case "c3" : selectPosition(nextPosition3); break;
                 case "c4" : selectPosition(nextPosition4); break;
                 case "c5" : selectPosition(nextPosition5); break;
-                case "c6" : selectPosition(nextPosition6); break;
-                case "c7" : selectPosition(nextPosition7); break;
+
             }
         }
         public void selectPosition(String nextPosition) {

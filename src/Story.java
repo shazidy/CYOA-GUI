@@ -1,16 +1,12 @@
 public class Story {
+    Characters cp = new Characters();
     Game game;
     UI ui;
-    Characters cp;
     Notes no;
-    Items items;
-
-    public Story(Game g, UI userInterface, Characters cPict, Notes notes, Items item) {
+    public Story(Game g, UI userInterface, Notes notes) {
         game = g;
         ui = userInterface;
-        cp = cPict;
         no = notes;
-        items = item;
     }
 
 
@@ -40,13 +36,12 @@ new Item("Potio", ui);
 
         //ui.noteText.setText(no.firstNote);
         //game.noteViewer();
-        items.addItem("Potion");
         ui.dialoguePicture.setText(cp.maggi);
         ui.dialoguePicture2.setText(cp.hero);
         //ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
         ui.legendInfo.setText("<HTML><P align=right>LOCATION<BR/>Room</HTML>");
         //story-part of method
-        game.storyText =
+        ui.storyText =
                 "> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et" +
 
                 "\n> " +
@@ -58,7 +53,7 @@ new Item("Potio", ui);
                 " •";
 
         //dialogue-part of method
-        game.dialogueText =
+        ui.dialogueText =
                 "► lkjsdkfjlkdsj fije mlkjfl ksjfl skmlksm lkdjvlk smvljk klk fjlk jglkm lkdfj\n" +
                 "> lksdjflksdjflkjlko isoeohnjlm \n" +
                 "> lkjsdlfkjsdijlksdjflksdjflksjdflkdj" +
@@ -84,14 +79,14 @@ new Item("Potio", ui);
     }
 
     public void choice1() {
-        game.storyText ="► choice1choi ce1choice1choice1choi ce1ch oice1c hoice1choice1 choi ce1choice14" +
+        ui.storyText ="► choice1choi ce1choice1choice1choi ce1ch oice1c hoice1choice1 choi ce1choice14" +
                 "choice 1choic e1choi ce1choice1c hoice1c hoice1choi ce1choice1 ch ice1 cho ice1c hoice1choice1" +
                 "choice1c hoice1ch oice1c hoice1choi ce1choice1cho ice1choice1cho ice1ch oice1cho ice 1choice1" +
                 "\n>" +
                 "ksjd fhkjs dhfkksjdf hkjsdh fkksjdfhkj sdhfkk sjdfhkj sdhfk ksjdfhk j sdhfkksjdf hkjsdhfk" +
                 "ksjdf hkjsdhfkk sjdfhk jsdhfkks jdfhkj sdhfkk sjdfhkjs dhfkksjdfhkjsdhfk" +
                 "\n>";
-        game.dialogueText = "> HAllohallo hallo\n" +
+        ui.dialogueText = "> HAllohallo hallo\n" +
                 "> HAllohallo hallo\n" +
                 "> HAllohallo hallo\n" +
                 "> HAllohallo hallo" +
@@ -102,49 +97,44 @@ new Item("Potio", ui);
     public void choice2() {
         ui.singleTextArea.setText("this is single use");
         game.singleUse();
-
-       // ui.optionPanel.remove();
-        
-
     }
 
     public void choice3() {
-        items.addItem("Potion");
         ui.noteText.setText(no.firstNote);
         no.noteViewer();
     }
 
     public void choice4() {
-        game.storyText ="choice4•";
-        game.dialogueText = "•\n";
+        ui.storyText ="choice4•";
+        ui.dialogueText = "•\n";
         game.prepareText();
 
     }
 
     public void room() {
-        game.storyText = "room•";
-        game.dialogueText = "•\n";
+        ui.storyText = "room•";
+        ui.dialogueText = "•\n";
         game.prepareText();
 
     }
 
     public void hall() {
-        game.storyText ="hall•";
-        game.dialogueText = "•\n";
+        ui.storyText ="hall•";
+        ui.dialogueText = "•\n";
         game.prepareText();
 
     }
 
     public void office() {
-        game.storyText = "office•";
-        game.dialogueText = "•\n";
+        ui.storyText = "office•";
+        ui.dialogueText = "•\n";
         game.prepareText();
 
     }
 
     public void kitchen() {
-        game.storyText = "kitchen•";
-        game.dialogueText = "•\n";
+        ui.storyText = "kitchen•";
+        ui.dialogueText = "•\n";
         game.prepareText();
 
     }
