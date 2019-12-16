@@ -22,7 +22,7 @@ public class UI{
     Container container;
 
 
-    ItemHover iHover = new ItemHover();
+    //ItemHover iHover = new ItemHover();
     MouseHover mHover = new MouseHover();
     MouseTimer mTimer = new MouseTimer();
     ReturnClick rClick = new ReturnClick();
@@ -36,7 +36,7 @@ public class UI{
         mainArea();
         singleUse();
         nextButton();
-        inventory();
+        //inventory();
         dialogue();
         returnButtons();
 
@@ -423,141 +423,6 @@ public class UI{
         dialogueTextArea.setMargin(new Insets(3,3,0,0));
         dialogueScrollPane.getViewport().add(dialogueTextArea);
     }
-    public void inventory(){
-
-        item0 = new JButton();
-        item0.setBackground(Color.darkGray);
-        item0.setForeground(Color.white);
-        item0.setFont(asciiFont);
-        item0.addActionListener(iHandler);
-        item0.setActionCommand("item0");
-        item0.addMouseListener(iHover);
-        item0.setFocusPainted(false);
-        item0.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item0.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20, 26));
-        item0.setHorizontalAlignment(SwingConstants.LEFT);
-        optionPanel.add(item0);
-
-        item1 = new JButton();
-        item1.setBackground(Color.darkGray);
-        item1.setForeground(Color.white);
-        item1.setFont(asciiFont);
-        item1.addActionListener(iHandler);
-        item1.setActionCommand("item1");
-        item1.addMouseListener(iHover);
-        item1.setFocusPainted(false);
-        item1.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item1.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
-        item1.setHorizontalAlignment(SwingConstants.LEFT);
-        optionPanel.add(item1);
-
-        item2 = new JButton();
-        item2.setBackground(Color.darkGray);
-        item2.setForeground(Color.white);
-        item2.setFont(asciiFont);
-        item2.addActionListener(iHandler);
-        item2.setActionCommand("item2");
-        item2.addMouseListener(iHover);
-        item2.setFocusPainted(false);
-        item2.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item2.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
-        item2.setHorizontalAlignment(SwingConstants.LEFT);
-        optionPanel.add(item2);
-
-        item3 = new JButton();
-        item3.setBackground(Color.darkGray);
-        item3.setForeground(Color.white);
-        item3.setFont(asciiFont);
-        item3.addActionListener(iHandler);
-        item3.setActionCommand("item3");
-        item3.addMouseListener(iHover);
-        item3.setFocusPainted(false);
-        item3.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item3.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
-        item3.setHorizontalAlignment(SwingConstants.LEFT);
-        optionPanel.add(item3);
-
-        item4 = new JButton();
-        item4.setBackground(Color.darkGray);
-        item4.setForeground(Color.white);
-        item4.setFont(asciiFont);
-        item4.addActionListener(iHandler);
-        item4.setActionCommand("item4");
-        item4.addMouseListener(iHover);
-        item4.setFocusPainted(false);
-        item4.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item4.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
-        item4.setHorizontalAlignment(SwingConstants.LEFT);
-        optionPanel.add(item4);
-
-        item5 = new JButton();
-        item5.setBackground(Color.darkGray);
-        item5.setForeground(Color.white);
-        item5.setFont(asciiFont);
-        item5.addActionListener(iHandler);
-        item5.setActionCommand("item5");
-        item5.addMouseListener(iHover);
-        item5.setFocusPainted(false);
-        item5.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item5.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
-        item5.setHorizontalAlignment(SwingConstants.LEFT);
-        optionPanel.add(item5);
-
-        item6 = new JButton();
-        item6.setBackground(Color.darkGray);
-        item6.setForeground(Color.white);
-        item6.setFont(asciiFont);
-        item6.addActionListener(iHandler);
-        item6.setActionCommand("item6");
-        item6.addMouseListener(iHover);
-        item6.setFocusPainted(false);
-        item6.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item6.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
-        item6.setHorizontalAlignment(SwingConstants.LEFT);
-        optionPanel.add(item6);
-
-        item7 = new JButton();
-        item7.setBackground(Color.darkGray);
-        item7.setForeground(Color.white);
-        item7.setFont(asciiFont);
-        item7.addActionListener(iHandler);
-        item7.setActionCommand("item7");
-        item7.addMouseListener(iHover);
-        item7.setFocusPainted(false);
-        item7.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item7.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
-        item7.setHorizontalAlignment(SwingConstants.LEFT);
-        optionPanel.add(item7);
-
-        item8 = new JButton();
-        item8.setBackground(Color.darkGray);
-        item8.setForeground(Color.white);
-        item8.setFont(asciiFont);
-        item8.addActionListener(iHandler);
-        item8.setActionCommand("item8");
-        item8.addMouseListener(iHover);
-        item8.setFocusPainted(false);
-        item8.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item8.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
-        item8.setHorizontalAlignment(SwingConstants.LEFT);
-        optionPanel.add(item8);
-
-        item9 = new JButton();
-        item9.setBackground(Color.darkGray);
-        item9.setForeground(Color.white);
-        item9.setFont(asciiFont);
-        item9.addActionListener(iHandler);
-        item9.setActionCommand("item9");
-        item9.addMouseListener(iHover);
-        item9.setFocusPainted(false);
-        item9.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        item9.setPreferredSize(new Dimension(optionScrollPane.getWidth()-20,26));
-        item9.setHorizontalAlignment(SwingConstants.LEFT);
-        optionPanel.add(item9);
-
-
-    }
-
 
     public class MouseHover implements MouseListener {
         @Override public void mouseClicked(MouseEvent e){ }
@@ -570,6 +435,7 @@ public class UI{
             Component c = e.getComponent();
             c.setBackground(Color.white); }
     }
+    /*
     public class ItemHover implements MouseListener{
         @Override public void mouseClicked(MouseEvent e){ }
         @Override public void mousePressed(MouseEvent e){ }
@@ -585,6 +451,8 @@ public class UI{
             c.setBackground(Color.darkGray); }
         //}
     }
+
+     */
     public class MouseTimer implements MouseListener{
         @Override public void mouseClicked(MouseEvent e){ }
         @Override public void mousePressed(MouseEvent e){
@@ -643,6 +511,9 @@ public class UI{
         }
 
     } //has all inventory effects in Items
+
+
+
 }
 
 

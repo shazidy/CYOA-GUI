@@ -11,7 +11,7 @@ UI ui;
         ui = userInterface;
 
     }
-
+/*
     public void check(){
         ui.item0.setText(playerItem[0]);
         ui.item1.setText(playerItem[1]);
@@ -46,7 +46,7 @@ UI ui;
         if (!ui.item8.getText().equals("")){ ui.item8.setVisible(true); }
         if (!ui.item9.getText().equals("")){ ui.item9.setVisible(true); }
     }
-
+*/
     public void addItem(String item){
         int i = 0;
         while(!playerItem[i].equals("") && i < 9) {
@@ -59,7 +59,7 @@ UI ui;
             System.exit(0);
         }
             System.out.println(playerItem);
-        check();
+        //check();
 
 
 
@@ -72,6 +72,6 @@ UI ui;
             playerItem[slotNumber] = "";
                 break;
         }
-        check();
+        //check();
     }
 }

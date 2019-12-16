@@ -33,7 +33,7 @@ public class Game {
         story.start();
         ui.window.setVisible(true);
         buttonVisibility();
-        items.check();
+        //items.check();
     }
 
     Timer timer = new Timer(5, new ActionListener() {

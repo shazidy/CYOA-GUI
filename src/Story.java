@@ -33,7 +33,8 @@ public class Story {
 
     public void start() {
 
-
+new Item("Potion", ui);
+new Item("Potio", ui);
 
 
         //ui.noteText.setText(no.firstNote);
