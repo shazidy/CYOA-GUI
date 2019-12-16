@@ -13,16 +13,6 @@ public class Notes {
         ui.dialogueScrollPane.setWheelScrollingEnabled(false);
         ui.mainScrollPane.getVerticalScrollBar().setEnabled(false);
         ui.mainScrollPane.setWheelScrollingEnabled(false);
-        ui.item0.setEnabled(false);
-        ui.item1.setEnabled(false);
-        ui.item2.setEnabled(false);
-        ui.item3.setEnabled(false);
-        ui.item4.setEnabled(false);
-        ui.item5.setEnabled(false);
-        ui.item6.setEnabled(false);
-        ui.item7.setEnabled(false);
-        ui.item8.setEnabled(false);
-        ui.item9.setEnabled(false);
 
         //ui.optionScrollPane.getVerticalScrollBar().setEnabled(false);
         //ui.optionScrollPane.setWheelScrollingEnabled(false);

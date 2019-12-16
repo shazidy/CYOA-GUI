@@ -35,6 +35,7 @@ public class Story {
 
 new Item("Potion", ui);
 new Item("Potio", ui);
+new Item("Potio", ui);
 
 
         //ui.noteText.setText(no.firstNote);

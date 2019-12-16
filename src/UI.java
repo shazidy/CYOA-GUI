@@ -22,11 +22,10 @@ public class UI{
     Container container;
 
 
-    //ItemHover iHover = new ItemHover();
     MouseHover mHover = new MouseHover();
     MouseTimer mTimer = new MouseTimer();
     ReturnClick rClick = new ReturnClick();
-    InventoryHandler iHandler = new InventoryHandler();
+
     public UI(Game g){
         game = g;
         createUI();
@@ -36,7 +35,6 @@ public class UI{
         mainArea();
         singleUse();
         nextButton();
-        //inventory();
         dialogue();
         returnButtons();
 
@@ -474,6 +472,8 @@ public class UI{
             dialogueScrollPane.setWheelScrollingEnabled(true);
             mainScrollPane.getVerticalScrollBar().setEnabled(true);
             mainScrollPane.setWheelScrollingEnabled(true);
+            /*
+
             item0.setEnabled(true);
             item1.setEnabled(true);
             item2.setEnabled(true);
@@ -485,6 +485,8 @@ public class UI{
             item8.setEnabled(true);
             item9.setEnabled(true);
 
+             */
+
             //ui.optionScrollPane.getVerticalScrollBar().setEnabled(true);
             //ui.optionScrollPane.setWheelScrollingEnabled(true);
 
@@ -493,6 +495,7 @@ public class UI{
         @Override public void mouseEntered(MouseEvent e){ }
         @Override public void mouseExited(MouseEvent e){ }
     }
+    /*
     public class InventoryHandler implements ActionListener {
         public void actionPerformed(ActionEvent event){
             String yourChoice = event.getActionCommand();
@@ -511,7 +514,7 @@ public class UI{
         }
 
     } //has all inventory effects in Items
-
+*/
 
 
 }

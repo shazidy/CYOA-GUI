@@ -26,7 +26,6 @@ public class Item extends JButton implements MouseListener, ActionListener {
         this.setHorizontalAlignment(SwingConstants.LEFT);
         this.setVisible(true);
         ui.optionPanel.add(this);
-
     }
     @Override public void mouseClicked(MouseEvent e) { }
     @Override public void mousePressed(MouseEvent e) { }
@@ -51,6 +50,4 @@ public class Item extends JButton implements MouseListener, ActionListener {
             this.setVisible(false);
         }
     }
-
-
 }
