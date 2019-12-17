@@ -13,7 +13,7 @@ import java.awt.event.*;
 public class Game {
 
 
-    UI ui = new UI(this);
+    UI ui = new UI();
     Buttons buttons = new Buttons(ui);
     ChoiceHandler cHandler = new ChoiceHandler();
 
@@ -21,7 +21,8 @@ public class Game {
     nextPosition4, nextPosition5, nextPosition6, nextPosition7;
 
     public static void main(String[] args) {
-        new UI(new Game());
+        new Game();
+        new UI();
     }
 
     public Game(){

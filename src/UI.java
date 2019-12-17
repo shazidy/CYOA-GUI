@@ -8,7 +8,6 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.DefaultCaret;
 
 public class UI{
-    Game game;
     JFrame window;
     JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea;
     JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane;
@@ -23,8 +22,7 @@ public class UI{
 
 
     MouseHover mHover = new MouseHover();
-    public UI(Game g){
-        game = g;
+    public UI(){
         createUI();
         noteViewer();
         info();
