@@ -11,26 +11,29 @@ import java.awt.event.*;
  */
 
 public class Game {
-
-
     UI ui = new UI();
     Buttons buttons = new Buttons(ui);
-    ChoiceHandler cHandler = new ChoiceHandler();
-
-    String nextPosition1, nextPosition2, nextPosition3,
-    nextPosition4, nextPosition5, nextPosition6, nextPosition7;
-
+    Story story = new Story(this, ui);
     public static void main(String[] args) {
         new Game();
-        new UI();
     }
 
     public Game(){
-        ui.choiceButtons(cHandler);
-        story.start();
+        ui.createUI();
+        ui.noteViewer();
+        ui.info();
+        ui.options();
+        ui.mainArea();
+        ui.singleUse();
+        ui.choicePanel();
+        ui.nextButton();
+        ui.dialogue();
+        ui.returnButtons();
         ui.window.setVisible(true);
+
+        story.start();
         buttons.buttons();
-        buttonVisibility();
+        //buttonVisibility();
     }
 
     public void prepareText(){
@@ -42,62 +45,6 @@ public class Game {
         ui.mainTextArea.setText("");
         ui.dialogueTextArea.setText("");
         buttons.timer.start();
-    }
-    public void buttonVisibility(){
-        if (ui.choice1.getText().equals("")){ ui.choice1.setVisible(false); }
-        if (ui.choice2.getText().equals("")){ ui.choice2.setVisible(false); }
-        if (ui.choice3.getText().equals("")){ ui.choice3.setVisible(false); }
-        if (ui.choice4.getText().equals("")){ ui.choice4.setVisible(false); }
-        if (ui.choice5.getText().equals("")){ ui.choice5.setVisible(false); }
-        if (ui.choice6.getText().equals("")){ ui.choice6.setVisible(false); }
-        if (ui.choice7.getText().equals("")){ ui.choice7.setVisible(false); }
-    }
-    public void singleUse(){
-        ui.mainScrollPane.setVisible(false);
-        ui.singleScrollPane.setVisible(true);
-        ui.choicePanel.setVisible(false);
-        ui.nextPanel.setVisible(false);
-        ui.returnPanel.setVisible(true);
-    }
-    public void noteViewer(){
-        ui.notePanel.setVisible(true);
-        ui.choicePanel.setVisible(false);
-        ui.returnPanel.setVisible(false);
-        ui.nextPanel.setVisible(false);
-        ui.dialogueScrollPane.getVerticalScrollBar().setEnabled(false);
-        ui.dialogueScrollPane.setWheelScrollingEnabled(false);
-        ui.mainScrollPane.getVerticalScrollBar().setEnabled(false);
-        ui.mainScrollPane.setWheelScrollingEnabled(false);
-        //ui.optionScrollPane.getVerticalScrollBar().setEnabled(false);
-        //ui.optionScrollPane.setWheelScrollingEnabled(false);
-
-    }
-
-
-    Story story = new Story(this, ui);
-    public class ChoiceHandler implements ActionListener{
-        public void actionPerformed(ActionEvent event){
-            String yourChoice = event.getActionCommand();
-            switch (yourChoice){
-                case "c1" : selectPosition(nextPosition1); break;
-                case "c2" : selectPosition(nextPosition2); break;
-                case "c3" : selectPosition(nextPosition3); break;
-                case "c4" : selectPosition(nextPosition4); break;
-                case "c5" : selectPosition(nextPosition5); break;
-                case "c6" : selectPosition(nextPosition6); break;
-                case "c7" : selectPosition(nextPosition7); break;
-
-            }
-        }
-        public void selectPosition(String nextPosition) {
-            switch (nextPosition) {
-                case "choice1": story.choice1(); break;
-                case "choice2": story.choice2(); break;
-                case "choice3": story.choice3(); break;
-                case "choice4": story.choice4(); break;
-                case "room": story.room(); break;
-            }
-        }
     }
 }
 

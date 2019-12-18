@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.plaf.basic.BasicScrollBarUI;
@@ -21,18 +19,7 @@ public class UI{
     Container container;
 
 
-    MouseHover mHover = new MouseHover();
     public UI(){
-        createUI();
-        noteViewer();
-        info();
-        options();
-        mainArea();
-        singleUse();
-        nextButton();
-        dialogue();
-        returnButtons();
-
     }
 
     public void createUI() {
@@ -216,90 +203,13 @@ public class UI{
         singleTextArea.setMargin(new Insets(3,3,0,0));
         singleScrollPane.getViewport().add(singleTextArea);
     }
-    public void choiceButtons(Game.ChoiceHandler cHandler){
+    public void choicePanel(){
         //choice buttons
         choicePanel = new JPanel();
         choicePanel.setBounds(30, 435, 874, 35);
         choicePanel.setBackground(Color.black);
         choicePanel.setLayout(new GridLayout(1, 7));
         container.add(choicePanel);
-
-        choice1 = new JButton();
-        choice1.setBackground(Color.white);
-        choice1.setForeground(Color.black);
-        choice1.setFont(asciiFont);
-        choice1.addActionListener(cHandler);
-        choice1.setActionCommand("c1");
-        choice1.setFocusPainted(false);
-        choice1.addMouseListener(mHover);
-        choice1.setBorder(BorderFactory.createLineBorder(Color.black, 4));
-        choicePanel.add(choice1);
-
-        choice2 = new JButton();
-        choice2.setBackground(Color.white);
-        choice2.setForeground(Color.black);
-        choice2.setFont(asciiFont);
-        choice2.addActionListener(cHandler);
-        choice2.setActionCommand("c2");
-        choice2.setFocusPainted(false);
-        choice2.addMouseListener(mHover);
-        choice2.setBorder(BorderFactory.createLineBorder(Color.black, 4));
-        choicePanel.add(choice2);
-
-        choice3 = new JButton();
-        choice3.setBackground(Color.white);
-        choice3.setForeground(Color.black);
-        choice3.setFont(asciiFont);
-        choice3.addActionListener(cHandler);
-        choice3.setActionCommand("c3");
-        choice3.setFocusPainted(false);
-        choice3.addMouseListener(mHover);
-        choice3.setBorder(BorderFactory.createLineBorder(Color.black, 4));
-        choicePanel.add(choice3);
-
-        choice4 = new JButton();
-        choice4.setBackground(Color.white);
-        choice4.setForeground(Color.black);
-        choice4.setFont(asciiFont);
-        choice4.addActionListener(cHandler);
-        choice4.setActionCommand("c4");
-        choice4.setFocusPainted(false);
-        choice4.addMouseListener(mHover);
-        choice4.setBorder(BorderFactory.createLineBorder(Color.black, 4));
-        choicePanel.add(choice4);
-
-        choice5 = new JButton();
-        choice5.setBackground(Color.white);
-        choice5.setForeground(Color.black);
-        choice5.setFont(asciiFont);
-        choice5.addActionListener(cHandler);
-        choice5.setActionCommand("c5");
-        choice5.setFocusPainted(false);
-        choice5.addMouseListener(mHover);
-        choice5.setBorder(BorderFactory.createLineBorder(Color.black, 4));
-        choicePanel.add(choice5);
-
-        choice6 = new JButton();
-        choice6.setBackground(Color.white);
-        choice6.setForeground(Color.black);
-        choice6.setFont(asciiFont);
-        choice6.addActionListener(cHandler);
-        choice6.setActionCommand("c6");
-        choice6.setFocusPainted(false);
-        choice6.addMouseListener(mHover);
-        choice6.setBorder(BorderFactory.createLineBorder(Color.black, 4));
-        choicePanel.add(choice6);
-
-        choice7 = new JButton();
-        choice7.setBackground(Color.white);
-        choice7.setForeground(Color.black);
-        choice7.setFont(asciiFont);
-        choice7.addActionListener(cHandler);
-        choice7.setActionCommand("c7");
-        choice7.setFocusPainted(false);
-        choice7.addMouseListener(mHover);
-        choice7.setBorder(BorderFactory.createLineBorder(Color.black, 4));
-        choicePanel.add(choice7);
     }
     public void nextButton(){
         nextPanel = new JPanel();
@@ -308,9 +218,6 @@ public class UI{
         nextPanel.setLayout(new GridLayout(1, 1));
         nextPanel.setVisible(false);
         container.add(nextPanel);
-
-
-
     }
     public void returnButtons(){
         //returnbutton from single use textarea
@@ -320,8 +227,6 @@ public class UI{
         returnPanel.setLayout(new GridLayout(1, 1));
         returnPanel.setVisible(false);
         container.add(returnPanel);
-
-
     }
     public void dialogue(){
         //TODO: needs tweaking
@@ -390,17 +295,24 @@ public class UI{
         dialogueTextArea.setMargin(new Insets(3,3,0,0));
         dialogueScrollPane.getViewport().add(dialogueTextArea);
     }
-
-    public class MouseHover implements MouseListener {
-        @Override public void mouseClicked(MouseEvent e){ }
-        @Override public void mousePressed(MouseEvent e){ }
-        @Override public void mouseReleased(MouseEvent e){ }
-        @Override public void mouseEntered(MouseEvent e) {
-            Component c = e.getComponent();
-            c.setBackground(Color.lightGray); }
-        @Override public void mouseExited(MouseEvent e){
-            Component c = e.getComponent();
-            c.setBackground(Color.white); }
+    public void singleUseVisible(){
+        mainScrollPane.setVisible(false);
+        singleScrollPane.setVisible(true);
+        choicePanel.setVisible(false);
+        nextPanel.setVisible(false);
+        returnPanel.setVisible(true);
+    }
+    public void noteVisible(){
+        notePanel.setVisible(true);
+        choicePanel.setVisible(false);
+        returnPanel.setVisible(false);
+        nextPanel.setVisible(false);
+        dialogueScrollPane.getVerticalScrollBar().setEnabled(false);
+        dialogueScrollPane.setWheelScrollingEnabled(false);
+        mainScrollPane.getVerticalScrollBar().setEnabled(false);
+        mainScrollPane.setWheelScrollingEnabled(false);
+        //ui.optionScrollPane.getVerticalScrollBar().setEnabled(false);
+        //ui.optionScrollPane.setWheelScrollingEnabled(false);
     }
 }
 
