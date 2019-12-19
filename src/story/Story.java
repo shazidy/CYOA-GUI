@@ -94,8 +94,7 @@ public class Story {
         new Item("Potio", ui);
         new Item("Potion", ui);
         new Item("Potio", ui);
-        new Item("Potio", ui);
-        new Item("Potion", ui);
+
         /*
         new Item("Potio", ui);
         new Item("Potio", ui);
@@ -124,32 +123,28 @@ public class Story {
         ui.legendInfo.setText("<HTML><P align=right>LOCATION<BR/>Room</HTML>");
         //story-part of method
         ui.storyText =
-                "> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et" +
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n" +
 
-                "\n> " +
-                "At imperdiet dui accumsan sit" +
+                "At imperdiet dui accumsan sit\n" +
 
-                "\n> " +
-                " Risus viverra adipiscing at in tellus integer feugiat. Donec pretium vulputate sapien nec sagittis" +
-
+                "Risus viverra adipiscing at in tellus integer feugiat. Donec pretium vulputate sapien nec sagittis" +
                 " •";
 
         //dialogue-part of method
         ui.dialogueText =
                 "► lkjsdkfjlkdsj fije mlkjfl ksjfl skmlksm lkdjvlk smvljk klk fjlk jglkm lkdfj\n" +
-                "> lksdjflksdjflkjlko isoeohnjlm \n" +
-                "> lkjsdlfkjsdijlksdjflksdjflksjdflkdj" +
-                " <\n" +
-                "> yrteycjyyuifhiuvusfr \n" +
-                "> ipwåokvkrælkjlfkgjlm \n" +
-                "> lkirmvrirkmlvsr \n" +
-                "> åpeoitjbtbmn" +
-                " <\n" +
-                "> yrteycjyyuifhiuvusfr \n" +
-                "> ipwåokvkrælkjlfkgjlm \n" +
-                "> lkirmvrirkmlvsr \n" +
-                "> åpeoitjbtbmn" +
-                " <\n";
+                "lksdjflksdjflkjlko isoeohnjlm \n" +
+                "lkjsdlfkjsdijlksdjflksdjflksjdflkdj\r" +
+
+                "yrteycjyyuifhiuvusfr \n" +
+                "ipwåokvkrælkjlfkgjlm \n" +
+                "lkirmvrirkmlvsr \n" +
+                "åpeoitjbtbmn\r" +
+
+                "yrteycjyyuifhiuvusfr \n" +
+                "ipwåokvkrælkjlfkgjlm \n" +
+                "lkirmvrirkmlvsr \n" +
+                "åpeoitjbtbmn\r";
         game.prepareText();
 
         new Choice("FOLLOWEDS", "choice1", ui);
@@ -160,18 +155,19 @@ public class Story {
     }
 
     public void choice1() {
-        ui.storyText ="► choice1choi ce1choice1choice1choi ce1ch oice1c hoice1choice1 choi ce1choice14" +
+        ui.storyText =
+                "► choice1choi ce1choice1choice1choi ce1ch oice1c hoice1choice1 choi ce1choice14" +
                 "choice 1choic e1choi ce1choice1c hoice1c hoice1choi ce1choice1 ch ice1 cho ice1c hoice1choice1" +
-                "choice1c hoice1ch oice1c hoice1choi ce1choice1cho ice1choice1cho ice1ch oice1cho ice 1choice1" +
-                "\n>" +
+                "choice1c hoice1ch oice1c hoice1choi ce1choice1cho ice1choice1cho ice1ch oice1cho ice 1choice1\n" +
+
                 "ksjd fhkjs dhfkksjdf hkjsdh fkksjdfhkj sdhfkk sjdfhkj sdhfk ksjdfhk j sdhfkksjdf hkjsdhfk" +
-                "ksjdf hkjsdhfkk sjdfhk jsdhfkks jdfhkj sdhfkk sjdfhkjs dhfkksjdfhkjsdhfk" +
-                "\n>";
-        ui.dialogueText = "> HAllohallo hallo\n" +
-                "> HAllohallo hallo\n" +
-                "> HAllohallo hallo\n" +
-                "> HAllohallo hallo" +
-                " •";
+                "ksjdf hkjsdhfkk sjdfhk jsdhfkks jdfhkj sdhfkk sjdfhkjs dhfkksjdfhkjsdhfk •";
+        ui.dialogueText =
+                "HAllohallo hallo\n" +
+                "HAllohallo hallo\r" +
+                "HAllohallo hallo\n" +
+                "HAllohallo hallo\r";
+
         game.prepareText();
     }
 
@@ -181,6 +177,7 @@ public class Story {
     }
 
     public void choice3() {
+        new Item("Potio", ui);
         ui.noteText.setText(no.firstNote);
         ui.noteVisible();
     }

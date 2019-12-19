@@ -110,7 +110,8 @@ public class Buttons{
             ui.mainTextArea.append(addedCharacter);
 
             i++;
-            if (addedCharacter.equals(">")) {
+            //if (addedCharacter.equals(">")) {
+            if (addedCharacter.contains("\n") || addedCharacter.contains("►") ) {
                 timer.stop();
                 dTimer.start();
                 ui.dialogueScrollPane.setVisible(true);
@@ -140,11 +141,13 @@ public class Buttons{
 
             di++;
 
-            if (addedCharacter.equals(">")) {
+            //if (addedCharacter.equals(">")) {
+            if (addedCharacter.contains("\n") || addedCharacter.contains("►")) {
                 dTimer.stop();
             }
 
-            if (addedCharacter.equals("<")) {
+            //if (addedCharacter.equals("<")) {
+            if (addedCharacter.contains("\r")) {
                 dTimer.stop();
                 ui.nextPanel.setVisible(false);
                 if (iLength != i)

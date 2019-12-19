@@ -9,14 +9,14 @@ public class UI{
     public JFrame window;
     public JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea;
     public JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane;
-    public JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel, optionPanel;
+    public JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel, optionPanel, choicePromt;
     public JLabel chapterLabel, legendInfo;
     public Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
     public Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
     public Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
     public String dialogueText, storyText;
     public Container container;
-    public double i;
+    public double itemCount;
 
 
     public void createUI() {
@@ -31,6 +31,14 @@ public class UI{
         window.setTitle("METROPOLIS");
         window.setLayout(null);
         container = window.getContentPane();
+    }
+    public void choicePromt(){
+        choicePromt = new JPanel();
+        choicePromt.setBounds(650, 100, 250, 325);
+        choicePromt.setBackground(Color.white);
+        choicePromt.setVisible(false);
+        choicePromt.setBorder(BorderFactory.createLineBorder(Color.gray, 4));
+        container.add(choicePromt);
     }
     public void noteViewer(){
         notePanel = new JPanel();
@@ -119,6 +127,7 @@ public class UI{
                 return button;
             }
         });
+        optionScrollPane.getVerticalScrollBar().setUnitIncrement(16);
         container.add(optionScrollPane);
 
 
@@ -217,8 +226,7 @@ public class UI{
         nextPanel.setVisible(false);
         container.add(nextPanel);
     }
-    public void returnButtons(){
-        //returnbutton from single use textarea
+    public void returnPanel(){
         returnPanel = new JPanel();
         returnPanel.setBounds(230, 435, 200, 35);
         returnPanel.setBackground(Color.orange);

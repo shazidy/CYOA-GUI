@@ -2,11 +2,8 @@ package game;
 
 import story.*;
 
-/** dialogue and story-text work as follow: the one preceding the other does not have the symbol ">" in front of its
- * first paragraph. IF dialogue comes before story, story has the symbol ">" in front of its first entry and dialogue
- * has the symbol "►". To reset both dialogue and story, put the symbol "•" at the end of either. If there is more
- * story at the end of a piece of dialogue mark the break by using the symbol"<" at the end of the dialogue paragraph
- * to switch to more story. If there is more dialogue after af story-paragraph, mark it with the symbol ">".
+/** dialogue and story-text work as follow: if the symbol ► is at the start of either dialogue or story, it will not be
+ * the starting text, but the second. to go from one dialogue to another mark the end by \n. to change from dialogue to
  *
  */
 
@@ -20,6 +17,7 @@ public class Game {
 
     public Game(){
         ui.createUI();
+        ui.choicePromt();
         ui.noteViewer();
         ui.info();
         ui.options();
@@ -28,7 +26,7 @@ public class Game {
         ui.choicePanel();
         ui.nextButton();
         ui.dialogue();
-        ui.returnButtons();
+        ui.returnPanel();
         ui.window.setVisible(true);
 
         story.start();
