@@ -76,7 +76,7 @@ public class Buttons{
         @Override public void mouseEntered(MouseEvent e){ }
         @Override public void mouseExited(MouseEvent e){ }
     }
-    public class MouseHover implements MouseListener {
+    public static class MouseHover implements MouseListener {
         @Override public void mouseClicked(MouseEvent e){ }
         @Override public void mousePressed(MouseEvent e){ }
         @Override public void mouseReleased(MouseEvent e){ }

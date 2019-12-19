@@ -86,15 +86,14 @@ public class Story {
 
     public void start() {
 
-        new Item("Potion", ui);
-        new Item("Potio", ui);
-        new Item("Potio", ui);
-        new Item("Potion", ui);
-        new Item("Potio", ui);
-        new Item("Potio", ui);
-        new Item("Potion", ui);
-        new Item("Potio", ui);
-
+        new Item("•Potion", ui);
+        new Item("•Potia", ui);
+        new Item("•Potia", ui);
+        new Item("•Potion", ui);
+        new Item("•Potia", ui);
+        new Item("•Potia", ui);
+        new Item("•Potion", ui);
+        new Item("•Potia", ui);
         /*
         new Item("Potio", ui);
         new Item("Potio", ui);
@@ -112,6 +111,8 @@ public class Story {
         new Item("Potio", ui);
 
          */
+
+
 
 
 
@@ -177,7 +178,7 @@ public class Story {
     }
 
     public void choice3() {
-        new Item("Potio", ui);
+        new Item("•Potia", ui);
         ui.noteText.setText(no.firstNote);
         ui.noteVisible();
     }

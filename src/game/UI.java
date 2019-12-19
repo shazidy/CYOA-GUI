@@ -7,9 +7,9 @@ import javax.swing.text.DefaultCaret;
 
 public class UI{
     public JFrame window;
-    public JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea;
+    public JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea, itemText;
     public JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane;
-    public JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel, optionPanel, choicePromt;
+    public JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel, optionPanel, itemTextPanel;
     public JLabel chapterLabel, legendInfo;
     public Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
     public Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
@@ -33,12 +33,23 @@ public class UI{
         container = window.getContentPane();
     }
     public void choicePromt(){
-        choicePromt = new JPanel();
-        choicePromt.setBounds(650, 100, 250, 325);
-        choicePromt.setBackground(Color.white);
-        choicePromt.setVisible(false);
-        choicePromt.setBorder(BorderFactory.createLineBorder(Color.gray, 4));
-        container.add(choicePromt);
+        itemTextPanel = new JPanel();
+        itemTextPanel.setBounds(650, 100, 250, 325);
+        itemTextPanel.setBackground(Color.white);
+        itemTextPanel.setVisible(false);
+        itemTextPanel.setBorder(BorderFactory.createLineBorder(Color.gray, 4));
+        container.add(itemTextPanel);
+
+        itemText = new JTextArea("pølse");
+        itemText.setPreferredSize(new Dimension(230, 250));
+        itemText.setBackground(Color.white);
+        itemText.setForeground(Color.black);
+        itemText.setFont(asciiFont);
+        itemText.setEditable(false);
+        itemText.setLineWrap(true);
+        itemText.setWrapStyleWord(true);
+        itemText.setMargin(new Insets(3,13,0,0));
+        itemTextPanel.add(itemText);
     }
     public void noteViewer(){
         notePanel = new JPanel();
