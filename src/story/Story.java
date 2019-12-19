@@ -1,3 +1,7 @@
+package story;
+import game.*;
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class Story {
+
     Characters cp = new Characters();
     Notes no = new Notes();
     Game game;
@@ -48,16 +53,15 @@ public class Story {
             switch (yourChoice){
                 case "choice" : selectPosition(method); break;
             }
-
         }
 
         public void selectPosition(String nextPosition) {
             switch (nextPosition) {
-                case "choice1": choice1(); this.setEnabled(false);break;
+                case "choice1": ui.choicePanel.removeAll(); choice1(); break;
                 case "choice2": choice2(); break;
                 case "choice3": choice3(); break;
-                case "choice4": choice4(); break;
-                case "room": room(); break;
+                case "choice4": ui.choicePanel.removeAll(); choice4(); break;
+                case "room": room(); this.setEnabled(false); break;
             }
         }
     }
@@ -82,9 +86,34 @@ public class Story {
 
     public void start() {
 
-new Item("Potion", ui);
-new Item("Potio", ui);
-new Item("Potio", ui);
+        new Item("Potion", ui);
+        new Item("Potio", ui);
+        new Item("Potio", ui);
+        new Item("Potion", ui);
+        new Item("Potio", ui);
+        new Item("Potio", ui);
+        new Item("Potion", ui);
+        new Item("Potio", ui);
+        new Item("Potio", ui);
+        new Item("Potion", ui);
+        /*
+        new Item("Potio", ui);
+        new Item("Potio", ui);
+        new Item("Potion", ui);
+        new Item("Potio", ui);
+        new Item("Potio", ui);
+        new Item("Potion", ui);
+        new Item("Potio", ui);
+        new Item("Potio", ui);
+        new Item("Potion", ui);
+        new Item("Potio", ui);
+        new Item("Potio", ui);
+        new Item("Potion", ui);
+        new Item("Potio", ui);
+        new Item("Potio", ui);
+
+         */
+
 
 
         //ui.noteText.setText(no.firstNote);
@@ -123,22 +152,11 @@ new Item("Potio", ui);
                 " <\n";
         game.prepareText();
 
-        new Choice("FOLLOW", "choice1", ui);
+        new Choice("FOLLOWEDS", "choice1", ui);
         new Choice("2", "choice2", ui);
         new Choice("3", "choice3", ui);
         new Choice("4", "choice4", ui);
         new Choice("room", "room", ui);
-        new Choice("", "", ui);
-        new Choice("", "", ui);
-        //Choices and their method-calls
-        /*
-        ui.choice1.setText("FOLLOW"); game.nextPosition1 = "choice1";
-        ui.choice2.setText("2"); game.nextPosition2 = "choice2";
-        ui.choice3.setText("3"); game.nextPosition3 = "choice3";
-        ui.choice4.setText("4"); game.nextPosition4 = "choice4";
-        ui.choice5.setText("room"); game.nextPosition5 = "room";
-
-         */
     }
 
     public void choice1() {
@@ -171,6 +189,7 @@ new Item("Potio", ui);
         ui.storyText ="choice4•";
         ui.dialogueText = "•\n";
         game.prepareText();
+        new Choice("Hola", "room", ui);
 
     }
 

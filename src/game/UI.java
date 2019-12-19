@@ -1,26 +1,23 @@
+package game;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.DefaultCaret;
 
 public class UI{
-    JFrame window;
-    JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea;
-    JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane;
-    JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel, optionPanel;
-    JLabel chapterLabel, legendInfo;
-    JButton choice1, choice2, choice3, choice4, choice5, choice6, choice7;
-    Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
-    Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
-    Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
-    String dialogueText, storyText;
-    Container container;
+    public JFrame window;
+    public JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea;
+    public JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane;
+    public JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel, optionPanel;
+    public JLabel chapterLabel, legendInfo;
+    public Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
+    public Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
+    public Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
+    public String dialogueText, storyText;
+    public Container container;
+    public double i;
 
-
-    public UI(){
-    }
 
     public void createUI() {
         window = new JFrame();
@@ -96,13 +93,14 @@ public class UI{
         legendInfo.setForeground(Color.white);
         infoPanel.add(legendInfo);
     }
+
     public void options(){
 
         optionScrollPane = new JScrollPane();
-        optionScrollPane.setBounds(652, 100, 252, 325);
+        optionScrollPane.setBounds(650, 100, 250, 325);
         optionScrollPane.setBackground(Color.white);
-        //optionScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        //optionScrollPane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        optionScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        optionScrollPane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         optionScrollPane.setBorder(BorderFactory.createLineBorder(Color.white, 4));
         optionScrollPane.getVerticalScrollBar().setBackground(Color.black);
         optionScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
@@ -123,15 +121,16 @@ public class UI{
         });
         container.add(optionScrollPane);
 
+
         optionPanel = new JPanel();
-        optionPanel.setPreferredSize(new Dimension(227, 317));
         optionPanel.setBackground(Color.black);
-        // optionPanel.setLayout(new GridLayout(10,1));
         optionScrollPane.getViewport().add(optionPanel);
+
+
     }
     public void mainArea(){
         mainScrollPane = new JScrollPane();
-        mainScrollPane.setBounds(30, 100, 622, 325);
+        mainScrollPane.setBounds(30, 100, 620, 325);
         mainScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         mainScrollPane.setBorder(BorderFactory.createLineBorder(Color.white, 4));
         mainScrollPane.getVerticalScrollBar().setBackground(Color.black);
@@ -204,11 +203,10 @@ public class UI{
         singleScrollPane.getViewport().add(singleTextArea);
     }
     public void choicePanel(){
-        //choice buttons
         choicePanel = new JPanel();
-        choicePanel.setBounds(30, 435, 874, 35);
-        choicePanel.setBackground(Color.black);
-        choicePanel.setLayout(new GridLayout(1, 7));
+        choicePanel.setBounds(30, 435, 620, 35);
+        choicePanel.setBackground(Color.red);
+        choicePanel.setLayout(new GridLayout(1, 5));
         container.add(choicePanel);
     }
     public void nextButton(){
@@ -284,7 +282,7 @@ public class UI{
         });
         container.add(dialogueScrollPane);
 
-        dialogueTextArea = new JTextArea();// works for some reason
+        dialogueTextArea = new JTextArea();
         dialogueTextArea.setBackground(Color.black);
         dialogueTextArea.setForeground(Color.white);
         dialogueTextArea.setFont(asciiFont);

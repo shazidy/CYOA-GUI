@@ -1,6 +1,6 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+package game;
+
+import story.*;
 
 /** dialogue and story-text work as follow: the one preceding the other does not have the symbol ">" in front of its
  * first paragraph. IF dialogue comes before story, story has the symbol ">" in front of its first entry and dialogue

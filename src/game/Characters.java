@@ -1,3 +1,5 @@
+package game;
+
 public class Characters {
 
     public String chapter2 ="_________   ___ ___    _____ __________________________________________  .___.___  \n" +

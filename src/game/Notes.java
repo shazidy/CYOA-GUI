@@ -1,3 +1,5 @@
+package game;
+
 public class Notes {
 
     public String firstNote =

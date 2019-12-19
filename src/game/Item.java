@@ -1,3 +1,7 @@
+package game;
+
+import game.UI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,11 +11,11 @@ import java.awt.event.MouseListener;
 
 public class Item extends JButton implements MouseListener, ActionListener {
     UI ui;
+
     public Item(String name, UI userInterface){
         ui = userInterface;
         itemButton(name);
     }
-
     public void itemButton(String name) {
         this.setText(name);
         this.setBackground(Color.darkGray);
@@ -22,10 +26,14 @@ public class Item extends JButton implements MouseListener, ActionListener {
         this.addMouseListener(this);
         this.setFocusPainted(false);
         this.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        this.setPreferredSize(new Dimension(ui.optionScrollPane.getWidth() - 20, 26));
+        this.setPreferredSize(new Dimension(ui.optionPanel.getWidth() - 10, 26));
         this.setHorizontalAlignment(SwingConstants.LEFT);
+        this.setPreferredSize(new Dimension(225,26));
         this.setVisible(true);
         ui.optionPanel.add(this);
+        ui.i++;
+        ui.optionPanel.setPreferredSize(new Dimension(225, (int)Math.round(ui.i*31.7)));
+
     }
     @Override public void mouseClicked(MouseEvent e) { }
     @Override public void mousePressed(MouseEvent e) { }
@@ -40,6 +48,8 @@ public class Item extends JButton implements MouseListener, ActionListener {
     }
 
     public void actionPerformed(ActionEvent event) {
+        ui.i--;
+        ui.optionPanel.setPreferredSize(new Dimension(225, (int)Math.round(ui.i*31.7)));
         String yourChoice = event.getActionCommand();
         switch (yourChoice) {
             case "Potion" : ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>"); this.setText(""); break;
