@@ -13,7 +13,7 @@ public class UI{
     public JLabel chapterLabel, legendInfo;
     public Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
     public Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
-    public Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
+    public Font dialogueAsciiFont = new Font("Lucida Console", Font.BOLD, 3);
     public String dialogueText, storyText;
     public Container container;
     public double itemCount;
@@ -40,8 +40,8 @@ public class UI{
         itemTextPanel.setBorder(BorderFactory.createLineBorder(Color.gray, 4));
         container.add(itemTextPanel);
 
-        itemText = new JTextArea("pølse");
-        itemText.setPreferredSize(new Dimension(230, 250));
+        itemText = new JTextArea();
+        itemText.setPreferredSize(new Dimension(230, 240));
         itemText.setBackground(Color.white);
         itemText.setForeground(Color.black);
         itemText.setFont(asciiFont);
@@ -98,7 +98,7 @@ public class UI{
     public void info(){
         //TODO: needs reworking to display relevant information --- maybe legend or inventory
         infoPanel = new JPanel();
-        infoPanel.setBounds(30, 15, 620, 70);
+        infoPanel.setBounds(30, 15, 624, 70);
         infoPanel.setBackground(Color.black);
         infoPanel.setLayout(new GridLayout(1, 2));
         container.add(infoPanel);
@@ -150,7 +150,7 @@ public class UI{
     }
     public void mainArea(){
         mainScrollPane = new JScrollPane();
-        mainScrollPane.setBounds(30, 100, 620, 325);
+        mainScrollPane.setBounds(30, 100, 624, 325);
         mainScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         mainScrollPane.setBorder(BorderFactory.createLineBorder(Color.white, 4));
         mainScrollPane.getVerticalScrollBar().setBackground(Color.black);
@@ -187,7 +187,7 @@ public class UI{
     }
     public void singleUse(){
         singleScrollPane = new JScrollPane();
-        singleScrollPane.setBounds(30, 100, 622, 325);
+        singleScrollPane.setBounds(30, 100, 624, 325);
         singleScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         singleScrollPane.setBorder(BorderFactory.createLineBorder(Color.white, 4));
         singleScrollPane.getVerticalScrollBar().setBackground(Color.black);
@@ -224,7 +224,7 @@ public class UI{
     }
     public void choicePanel(){
         choicePanel = new JPanel();
-        choicePanel.setBounds(30, 435, 620, 35);
+        choicePanel.setBounds(30, 435, 624, 35);
         choicePanel.setBackground(Color.red);
         choicePanel.setLayout(new GridLayout(1, 5));
         container.add(choicePanel);
@@ -279,7 +279,7 @@ public class UI{
         dialoguePicturePanel2.add(dialoguePicture2);
 // dialogue
         dialogueScrollPane = new JScrollPane();
-        dialogueScrollPane.setBounds(190, 480, 550, 160);
+        dialogueScrollPane.setBounds(194, 480, 542, 160);
         dialogueScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         dialogueScrollPane.setBorder(BorderFactory.createLineBorder(Color.red, 4));
         dialogueScrollPane.getVerticalScrollBar().setBackground(Color.black);
@@ -328,8 +328,6 @@ public class UI{
         dialogueScrollPane.setWheelScrollingEnabled(false);
         mainScrollPane.getVerticalScrollBar().setEnabled(false);
         mainScrollPane.setWheelScrollingEnabled(false);
-        //ui.optionScrollPane.getVerticalScrollBar().setEnabled(false);
-        //ui.optionScrollPane.setWheelScrollingEnabled(false);
     }
 }
 

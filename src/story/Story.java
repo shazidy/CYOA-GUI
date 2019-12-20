@@ -65,25 +65,6 @@ public class Story {
             }
         }
     }
-
-
-/* Template
-    game.storyText =
-            "> " +
-            "\n> " +
-            "" +
-            "\n> " +
-            "" +
-            " •";
-    game.dialogueText =
-            "► " +
-            "> " +
-            " <\n" +
-            "> " +
-            "> " +
-            " <\n";
- */
-
     public void start() {
 
         new Item("•Potion", ui);

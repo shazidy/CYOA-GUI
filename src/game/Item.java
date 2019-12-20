@@ -10,17 +10,26 @@ public class Item implements MouseListener {
     ItemText iText = new ItemText();
     Buttons.MouseHover mHover = new Buttons.MouseHover();
     UI ui;
-    JButton item, use,r_B;
+    JButton item, use, r_B, d_B, e_B;
     public Item(String name, UI userInterface) {
         ui = userInterface;
         itemButton(name);
     }
+    public void removeItemPrompt(){
+        ui.itemTextPanel.remove(e_B);
+        ui.itemTextPanel.remove(d_B);
+        ui.itemTextPanel.remove(r_B);
+        ui.itemTextPanel.remove(use);
+        ui.itemTextPanel.setVisible(false);
+        ui.optionScrollPane.setVisible(true);
+    }
     public void itemButton(String name) {
-
         item = new JButton(new AbstractAction(name) {
             @Override
             public void actionPerformed(ActionEvent e) {
                 useButton(name);
+                discardButton();
+                equipButton();
                 returnButton();
                 ui.itemTextPanel.setVisible(true);
                 ui.optionScrollPane.setVisible(false);
@@ -31,7 +40,6 @@ public class Item implements MouseListener {
                         ui.itemText.setText(iText.itemText.get(i));
                     }
                 }
-
             }
         });
         item.setBackground(Color.darkGray);
@@ -40,7 +48,6 @@ public class Item implements MouseListener {
         item.addMouseListener(this);
         item.setFocusPainted(false);
         item.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        //item.setPreferredSize(new Dimension(ui.optionPanel.getWidth() - 20, 26));
         item.setHorizontalAlignment(SwingConstants.LEFT);
         item.setPreferredSize(new Dimension(215, 26));
         item.setVisible(true);
@@ -60,14 +67,34 @@ public class Item implements MouseListener {
         Component c = e.getComponent();
         c.setBackground(Color.darkGray);
     }
+    public void discardButton(){
+        d_B = new JButton(new AbstractAction("DISCARD") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeItemPrompt();
+                item.setText("");
+                ui.itemCount--;
+                ui.optionPanel.setPreferredSize(new Dimension(225, (int) Math.round(ui.itemCount * 31.7)));
+                if (item.getText().equals("")) {
+                    item.setVisible(false);
+                }
+            }
+        });
+        d_B.setBackground(Color.white);
+        d_B.setForeground(Color.black);
+        d_B.setFont(ui.asciiFont);
+        d_B.addMouseListener(mHover);
+        d_B.setFocusPainted(false);
+        d_B.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.black, 3),
+                BorderFactory.createEmptyBorder(0, 10, 0, 10)));
+        ui.itemTextPanel.add(d_B);
+    }
     public void returnButton(){
         r_B = new JButton(new AbstractAction("RETURN") {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ui.itemTextPanel.remove(r_B);
-                ui.itemTextPanel.remove(use);
-                ui.itemTextPanel.setVisible(false);
-                ui.optionScrollPane.setVisible(true);
+                removeItemPrompt();
             }
         });
         r_B.setBackground(Color.white);
@@ -77,19 +104,31 @@ public class Item implements MouseListener {
         r_B.setFocusPainted(false);
         r_B.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.black, 3),
-                BorderFactory.createEmptyBorder(3, 10, 3, 10)));
+                BorderFactory.createEmptyBorder(0, 10, 0, 10)));
         ui.itemTextPanel.add(r_B);
-
-
+    }
+    public void equipButton(){
+        e_B = new JButton(new AbstractAction("EQUIP") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeItemPrompt();
+            }
+        });
+        e_B.setBackground(Color.white);
+        e_B.setForeground(Color.black);
+        e_B.setFont(ui.asciiFont);
+        e_B.addMouseListener(mHover);
+        e_B.setFocusPainted(false);
+        e_B.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.black, 3),
+                BorderFactory.createEmptyBorder(0, 10, 0, 10)));
+        ui.itemTextPanel.add(e_B);
     }
     public void useButton(String name){
         use = new JButton(new AbstractAction("USE") {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ui.itemTextPanel.remove(use);
-                ui.itemTextPanel.remove(r_B);
-                ui.itemTextPanel.setVisible(false);
-                ui.optionScrollPane.setVisible(true);
+                removeItemPrompt();
                 ui.itemCount--;
                 ui.optionPanel.setPreferredSize(new Dimension(225, (int) Math.round(ui.itemCount * 31.7)));
                 String yourChoice = e.getActionCommand();
@@ -110,9 +149,8 @@ public class Item implements MouseListener {
         use.setFocusPainted(false);
         use.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.black, 3),
-                BorderFactory.createEmptyBorder(3, 10, 3, 10)));
+                BorderFactory.createEmptyBorder(0, 10, 0, 10)));
         ui.itemTextPanel.add(use);
     }
-
 }
 
