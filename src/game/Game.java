@@ -53,7 +53,7 @@ public class Game {
 
         ui.window.setVisible(true);
         JScrollBar sb = startScroll.getVerticalScrollBar();
-        sb.setValue( sb.getMaximum() );
+        sb.setValue(sb.getMaximum());
 
 
         //story.start();
@@ -70,9 +70,7 @@ public class Game {
         titlePane.setVisible(false);
         ui.container.add(titlePane);
 
-
         titleText = new JTextArea(splash.title);
-
         titleText.setFont(new Font("Lucida Console", Font.BOLD, 4));
         titleText.setBackground(Color.black);
         titleText.setForeground(Color.white);
@@ -97,7 +95,6 @@ public class Game {
         startText.setText(splash.intro + splash.intro2 + splash.intro3);
         startText.setFont(ui.dialogueAsciiFont);
         startText.setLineWrap(true);
-        //startText.setWrapStyleWord(true);
         startScroll.getViewport().add(startText);
 
         Timer t = new Timer((int)Math.round(13.7), new ActionListener() {
@@ -123,7 +120,6 @@ public class Game {
                         Timer t2 = new Timer(500, new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                //titlePane.repaint();
                                 startScroll.getVerticalScrollBar().setValue(startScroll.getVerticalScrollBar().getValue() + 1);
                                 if (startScroll.getVerticalScrollBar().getValue() >= startScroll.getVerticalScrollBar().getMaximum()) {
                                     ((Timer) e.getSource()).stop();
@@ -137,9 +133,6 @@ public class Game {
                 },
                 10000
         );
-
-
-
     }
 
 
