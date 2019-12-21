@@ -24,9 +24,9 @@ public class Game {
     Buttons buttons = new Buttons(ui);
     Story story = new Story(this, ui);
     Splash splash = new Splash();
-    JPanel start;
-    JScrollPane startScroll;
-    JTextArea startText;
+    JPanel start, titlePane;
+    JScrollPane startScroll, textScroll;
+    JTextArea startText, titleText;
     String sound;
     Audio audio = new Audio();
     public static void main(String[] args){
@@ -55,12 +55,29 @@ public class Game {
         JScrollBar sb = startScroll.getVerticalScrollBar();
         sb.setValue( sb.getMaximum() );
 
+
         //story.start();
         //buttons.buttons();
 
     }
 
     public void start(){
+
+        titlePane = new JPanel();
+        titlePane.setBounds(0,530,960,200);
+        titlePane.setBackground(Color.red);
+        titlePane.setOpaque(false);
+        titlePane.setVisible(false);
+        ui.container.add(titlePane);
+
+
+        titleText = new JTextArea(splash.title);
+
+        titleText.setFont(new Font("Lucida Console", Font.BOLD, 4));
+        titleText.setBackground(Color.black);
+        titleText.setForeground(Color.white);
+        titlePane.add(titleText);
+
         start = new JPanel();
         start.setBounds(0, 100, 960, 400);
         start.setSize(new Dimension(960, 410));
@@ -82,7 +99,6 @@ public class Game {
         startText.setLineWrap(true);
         //startText.setWrapStyleWord(true);
         startScroll.getViewport().add(startText);
-
 
         Timer t = new Timer(9, new ActionListener() {
 
@@ -107,15 +123,16 @@ public class Game {
                         Timer t2 = new Timer(500, new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
+                                //titlePane.repaint();
                                 startScroll.getVerticalScrollBar().setValue(startScroll.getVerticalScrollBar().getValue() + 1);
                                 if (startScroll.getVerticalScrollBar().getValue() >= startScroll.getVerticalScrollBar().getMaximum()) {
                                     ((Timer) e.getSource()).stop();
                                 }
                             }
                         });
+                        titlePane.setVisible(true);
                         t.stop();
                         t2.start();
-
                     }
                 },
                 10000
@@ -124,6 +141,7 @@ public class Game {
 
 
     }
+
 
 
     public void prepareText(){
