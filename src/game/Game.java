@@ -2,12 +2,16 @@ package game;
 
 import story.*;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 
 /** dialogue and story-text work as follow: if the symbol ► is at the start of either dialogue or story, it will not be
@@ -23,14 +27,16 @@ public class Game {
     JPanel start;
     JScrollPane startScroll;
     JTextArea startText;
+    String sound;
+    Audio audio = new Audio();
     public static void main(String[] args){
         new Game();
     }
 
     public Game(){
         ui.createUI();
-        //start();
-
+        start();
+/*
         ui.choicePromt();
         ui.noteViewer();
         ui.info();
@@ -42,14 +48,18 @@ public class Game {
         ui.dialogue();
         ui.returnPanel();
 
+ */
+
 
         ui.window.setVisible(true);
-        //JScrollBar sb = startScroll.getVerticalScrollBar();
-        //sb.setValue( sb.getMaximum() );
+        JScrollBar sb = startScroll.getVerticalScrollBar();
+        sb.setValue( sb.getMaximum() );
 
-        story.start();
-        buttons.buttons();
+        //story.start();
+        //buttons.buttons();
+
     }
+
     public void start(){
         start = new JPanel();
         start.setBounds(0, 100, 960, 400);
@@ -73,19 +83,48 @@ public class Game {
         //startText.setWrapStyleWord(true);
         startScroll.getViewport().add(startText);
 
-        Timer t = new Timer(50, new ActionListener() {
-            @Override
+
+        Timer t = new Timer(9, new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
-                startScroll.getVerticalScrollBar().setValue(startScroll.getVerticalScrollBar().getValue() - 2);
-                if (startScroll.getVerticalScrollBar().getValue() >= startScroll.getVerticalScrollBar().getMaximum()) {
+                startScroll.getVerticalScrollBar().setValue(startScroll.getVerticalScrollBar().getValue() - 1);
+                if (startScroll.getVerticalScrollBar().getValue() < startScroll.getVerticalScrollBar().getMinimum()) {
                     ((Timer) e.getSource()).stop();
                 }
             }
         });
         t.start();
 
+        sound = "src/audio/NS3ELPH-505_09 Final Word.wav";
+        audio.setFile(sound);
+
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        sound = "src/audio/GOTHIC-049_09 Serene Main.wav";
+                        audio.setFile(sound);
+                        Timer t2 = new Timer(500, new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                startScroll.getVerticalScrollBar().setValue(startScroll.getVerticalScrollBar().getValue() + 1);
+                                if (startScroll.getVerticalScrollBar().getValue() >= startScroll.getVerticalScrollBar().getMaximum()) {
+                                    ((Timer) e.getSource()).stop();
+                                }
+                            }
+                        });
+                        t.stop();
+                        t2.start();
+
+                    }
+                },
+                10000
+        );
+
+
 
     }
+
 
     public void prepareText(){
         ui.choicePanel.setVisible(false);
@@ -97,6 +136,7 @@ public class Game {
         ui.dialogueTextArea.setText("");
         buttons.timer.start();
     }
+
 }
 
 
