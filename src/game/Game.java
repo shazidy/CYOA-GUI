@@ -100,7 +100,7 @@ public class Game {
         //startText.setWrapStyleWord(true);
         startScroll.getViewport().add(startText);
 
-        Timer t = new Timer(9, new ActionListener() {
+        Timer t = new Timer((int)Math.round(13.7), new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 startScroll.getVerticalScrollBar().setValue(startScroll.getVerticalScrollBar().getValue() - 1);
