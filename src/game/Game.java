@@ -2,17 +2,10 @@ package game;
 
 import story.*;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.*;
-import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 
 /** dialogue and story-text work as follow: if the symbol ► is at the start of either dialogue or story, it will not be
  * the starting text, but the second. to go from one dialogue to another mark the end by \n. to change from dialogue to
@@ -24,8 +17,10 @@ public class Game {
     Buttons buttons = new Buttons(ui);
     Story story = new Story(this, ui);
     Splash splash = new Splash();
-    JPanel start, titlePane;
-    JScrollPane startScroll, textScroll;
+    JPanel start, titlePane, buttonPane;
+    JScrollPane startScroll;
+    JScrollBar sb;
+    JButton startButton;
     JTextArea startText, titleText;
     String sound;
     Audio audio = new Audio();
@@ -34,43 +29,36 @@ public class Game {
     }
 
     public Game(){
-        ui.createUI();
-        start();
-/*
-        ui.choicePromt();
-        ui.noteViewer();
-        ui.info();
-        ui.options();
-        ui.mainArea();
-        ui.singleUse();
-        ui.choicePanel();
-        ui.nextButton();
-        ui.dialogue();
-        ui.returnPanel();
 
- */
-
-
+        introSplash();
         ui.window.setVisible(true);
+
         JScrollBar sb = startScroll.getVerticalScrollBar();
         sb.setValue(sb.getMaximum());
 
-
-        //story.start();
-        //buttons.buttons();
-
     }
 
-    public void start(){
+    public void introSplash(){
+        ui.createUI();
 
         titlePane = new JPanel();
-        titlePane.setBounds(0,530,960,200);
+        titlePane.setBounds(180,520,600,120);
         titlePane.setBackground(Color.red);
-        titlePane.setOpaque(false);
+        titlePane.setOpaque(true);
         titlePane.setVisible(false);
         ui.container.add(titlePane);
 
+        buttonPane = new JPanel();
+        buttonPane.setBounds(30,520,120,120);
+        buttonPane.setBackground(Color.yellow);
+        buttonPane.setVisible(false);
+        buttonPane.setLayout(new GridLayout(3,1));
+        ui.container.add(buttonPane);
+
+        splashButtons();
+
         titleText = new JTextArea(splash.title);
+
         titleText.setFont(new Font("Lucida Console", Font.BOLD, 4));
         titleText.setBackground(Color.black);
         titleText.setForeground(Color.white);
@@ -126,7 +114,9 @@ public class Game {
                                 }
                             }
                         });
+
                         titlePane.setVisible(true);
+                        buttonPane.setVisible(true);
                         t.stop();
                         t2.start();
                     }
@@ -134,8 +124,33 @@ public class Game {
                 10000
         );
     }
-
-
+//TODO: take from choicebuttons instead
+    public void splashButtons(){
+        startButton = new JButton(new AbstractAction("START") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                audio.clip.stop();
+                titlePane.setVisible(false);
+                start.removeAll();
+                start.setVisible(false);
+                buttonPane.setVisible(false);
+                //
+                ui.choicePromt();
+                ui.noteViewer();
+                ui.info();
+                ui.options();
+                ui.mainArea();
+                ui.singleUse();
+                ui.choicePanel();
+                ui.nextButton();
+                ui.dialogue();
+                ui.returnPanel();
+                story.start();
+                buttons.buttons();
+            }
+        });
+        buttonPane.add(startButton);
+    }
 
     public void prepareText(){
         ui.choicePanel.setVisible(false);
