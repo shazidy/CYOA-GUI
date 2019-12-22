@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /** dialogue and story-text work as follow: if the symbol ► is at the start of either dialogue or story, it will not be
  * the starting text, but the second. to go from one dialogue to another mark the end by \n. to change from dialogue to
@@ -36,6 +38,7 @@ public class Game {
         JScrollBar sb = startScroll.getVerticalScrollBar();
         sb.setValue(sb.getMaximum());
 
+
     }
 
     public void introSplash(){
@@ -43,22 +46,18 @@ public class Game {
 
         titlePane = new JPanel();
         titlePane.setBounds(180,520,600,120);
-        titlePane.setBackground(Color.red);
-        titlePane.setOpaque(true);
+        titlePane.setBackground(Color.black);
         titlePane.setVisible(false);
         ui.container.add(titlePane);
 
         buttonPane = new JPanel();
-        buttonPane.setBounds(30,520,120,120);
+        buttonPane.setBounds(30,530,120,120);
         buttonPane.setBackground(Color.yellow);
         buttonPane.setVisible(false);
-        buttonPane.setLayout(new GridLayout(3,1));
+        buttonPane.setLayout(new GridLayout(4,1));
         ui.container.add(buttonPane);
 
-        splashButtons();
-
         titleText = new JTextArea(splash.title);
-
         titleText.setFont(new Font("Lucida Console", Font.BOLD, 4));
         titleText.setBackground(Color.black);
         titleText.setForeground(Color.white);
@@ -114,7 +113,6 @@ public class Game {
                                 }
                             }
                         });
-
                         titlePane.setVisible(true);
                         buttonPane.setVisible(true);
                         t.stop();
@@ -123,8 +121,74 @@ public class Game {
                 },
                 10000
         );
+        new Choice("START", "story.start",ui);
+        new Choice("LOAD", "story.start",ui);
+        new Choice("CREDITS", "story.start",ui);
+        new Choice("QUIT", "quit",ui);
+    }
+
+
+    public class Choice extends JButton implements ActionListener, MouseListener {
+        UI ui;
+        String method;
+        public Choice(String text, String methodCall, UI userI) {
+            method = methodCall;
+            ui = userI;
+            this.setText(text);
+            this.setBackground(Color.black);
+            this.setForeground(Color.white);
+            this.setFont(ui.asciiFont);
+            this.addActionListener(this::actionPerformed);
+            this.setActionCommand("choice");
+            this.setFocusPainted(false);
+            this.addMouseListener(this);
+            this.setBorder(BorderFactory.createLineBorder(Color.black, 0));
+            buttonPane.add(this);
+            if (this.getText().equals("")) {this.setVisible(false);}
+        }
+        @Override public void mouseClicked(MouseEvent e){ }
+        @Override public void mousePressed(MouseEvent e){ }
+        @Override public void mouseReleased(MouseEvent e){ }
+        @Override public void mouseEntered(MouseEvent e) {
+            Component c = e.getComponent();
+            c.setBackground(Color.darkGray); }
+        @Override public void mouseExited(MouseEvent e){
+            Component c = e.getComponent();
+            c.setBackground(Color.black); }
+
+        public void actionPerformed(ActionEvent event){
+            String yourChoice = event.getActionCommand();
+            switch (yourChoice){
+                case "choice" : selectPosition(method); break;
+            }
+        }
+
+        public void selectPosition(String nextPosition) {
+            switch (nextPosition) {
+                case "story.start": audio.clip.stop();
+                    titlePane.setVisible(false);
+                    start.removeAll();
+                    start.setVisible(false);
+                    buttonPane.setVisible(false);
+                    //
+                    ui.choicePromt();
+                    ui.noteViewer();
+                    ui.info();
+                    ui.options();
+                    ui.mainArea();
+                    ui.singleUse();
+                    ui.choicePanel();
+                    ui.nextButton();
+                    ui.dialogue();
+                    ui.returnPanel();
+                    buttons.buttons();
+                    story.start(); break;
+                case "quit" : System.exit(0); break;
+            }
+        }
     }
 //TODO: take from choicebuttons instead
+    /*
     public void splashButtons(){
         startButton = new JButton(new AbstractAction("START") {
             @Override
@@ -151,7 +215,7 @@ public class Game {
         });
         buttonPane.add(startButton);
     }
-
+*/
     public void prepareText(){
         ui.choicePanel.setVisible(false);
         buttons.di = 0;
