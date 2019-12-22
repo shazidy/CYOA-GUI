@@ -10,7 +10,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class Story {
-
+    Conditions conditions = new Conditions();
+    Audio audio = new Audio();
     Characters cp = new Characters();
     Notes no = new Notes();
     Game game;
@@ -100,10 +101,11 @@ public class Story {
         //ui.noteText.setText(no.firstNote);
         //game.noteViewer();
         ui.dialoguePicture.setText(cp.maggi);
-        ui.dialoguePicture2.setText(cp.hero);
+        ui.dialoguePicture2.setText(cp.amia);
         //ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
         ui.legendInfo.setText("<HTML><P align=right>LOCATION<BR/>Room</HTML>");
         //story-part of method
+        /*
         ui.storyText =
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n" +
 
@@ -128,6 +130,8 @@ public class Story {
                 "lkirmvrirkmlvsr \n" +
                 "åpeoitjbtbmn\r";
         game.prepareText();
+
+         */
 
         new Choice("FOLLOWEDS", "choice1", ui);
         new Choice("2", "choice2", ui);
@@ -154,7 +158,21 @@ public class Story {
     }
 
     public void choice2() {
-        ui.singleTextArea.setText("this is single use");
+        ui.singleTextArea.setText(
+                        "                  _____________\n" +
+                        "                 /\\           /\\\n" +
+                        "                /  \\   [4]   /  \\\n" +
+                        "               /    \\   ∆   /    \\\n" +
+                        "              /      \\  █  /      \\\n" +
+                        "             /   [3]  \\_█_/   [5]  \\\n" +
+                        "            /_▓▓______/▐█ \\_________\\\n" +
+                        "            \\  ▓▓     \\[7]/         /\n" +
+                        "             \\   [2]  /‾‾‾\\   [6]  /\n" +
+                        "              \\      /     \\      /\n" +
+                        "               \\    /       \\    /\n" +
+                        "                \\  /   [1]   \\  /\n" +
+                        "                 \\/           \\/\n" +
+                        "                  ‾‾‾‾‾‾‾‾‾‾‾‾‾");
         ui.singleUseVisible();
     }
 

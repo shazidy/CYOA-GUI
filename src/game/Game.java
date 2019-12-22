@@ -21,8 +21,6 @@ public class Game {
     Splash splash = new Splash();
     JPanel start, titlePane, buttonPane;
     JScrollPane startScroll;
-    JScrollBar sb;
-    JButton startButton;
     JTextArea startText, titleText;
     String sound;
     Audio audio = new Audio();
@@ -32,13 +30,26 @@ public class Game {
 
     public Game(){
 
-        introSplash();
+       // introSplash();
+        ui.createUI();
+
+        ui.choicePromt();
+        ui.noteViewer();
+        ui.info();
+        ui.options();
+        ui.mainArea();
+        ui.singleUse();
+        ui.choicePanel();
+        ui.nextButton();
+        ui.dialogue();
+        ui.returnPanel();
+        buttons.buttons();
+        story.start();
+
+        //JScrollBar sb = startScroll.getVerticalScrollBar();
+        //sb.setValue(sb.getMaximum());
+
         ui.window.setVisible(true);
-
-        JScrollBar sb = startScroll.getVerticalScrollBar();
-        sb.setValue(sb.getMaximum());
-
-
     }
 
     public void introSplash(){
@@ -80,7 +91,7 @@ public class Game {
         startText.setEditable(false);
         startText.setHighlighter(null);
         startText.setText(splash.intro + splash.intro2 + splash.intro3);
-        startText.setFont(ui.dialogueAsciiFont);
+        startText.setFont(new Font("Lucida Console", Font.BOLD, 3));
         startText.setLineWrap(true);
         startScroll.getViewport().add(startText);
 

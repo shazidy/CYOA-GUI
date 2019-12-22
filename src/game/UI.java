@@ -13,7 +13,7 @@ public class UI{
     public JLabel chapterLabel, legendInfo;
     public Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
     public Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
-    public Font dialogueAsciiFont = new Font("Lucida Console", Font.BOLD, 3);
+    public Font dialogueAsciiFont = new Font("Lucida Console", Font.BOLD, 2);
     public String dialogueText, storyText;
     public Container container;
     public double itemCount;
@@ -256,9 +256,11 @@ public class UI{
 
         dialoguePicture = new JTextArea();
         //dialoguePicture.setBounds(30, 480, 160, 160);
+        dialoguePicture.setPreferredSize(new Dimension(146,146));
         dialoguePicture.setBackground(Color.black);
         dialoguePicture.setForeground(Color.white);
         dialoguePicture.setFont(dialogueAsciiFont);
+        dialoguePicture.setHighlighter(null);
         dialoguePicture.setLineWrap(true);
         dialoguePicture.setEditable(false);
         dialoguePicturePanel.add(dialoguePicture);
@@ -271,9 +273,11 @@ public class UI{
 
         dialoguePicture2 = new JTextArea();
         //dialoguePicture2.setBounds(742, 480, 162, 160);
+        dialoguePicture2.setPreferredSize(new Dimension(146,146));
         dialoguePicture2.setBackground(Color.black);
         dialoguePicture2.setForeground(Color.white);
         dialoguePicture2.setFont(dialogueAsciiFont);
+        dialoguePicture2.setHighlighter(null);
         dialoguePicture2.setLineWrap(true);
         dialoguePicture2.setEditable(false);
         dialoguePicturePanel2.add(dialoguePicture2);

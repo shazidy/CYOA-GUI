@@ -1,5 +1,5 @@
 package game;
-
+//450 x 300
 public class Splash {
     public String title =
             "                                ,▓██▄▄\n" +
