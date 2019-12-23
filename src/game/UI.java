@@ -2,6 +2,7 @@ package game;
 
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.DefaultCaret;
 
@@ -9,7 +10,8 @@ public class UI{
     public JFrame window;
     public JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea, itemText;
     public JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane;
-    public JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel, optionPanel, itemTextPanel;
+    public JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel,
+            itemPanel, itemTextPanel, menuPanel, menuButtonPanel;
     public JLabel chapterLabel, legendInfo;
     public Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
     public Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
@@ -31,6 +33,27 @@ public class UI{
         window.setTitle("METROPOLIS");
         window.setLayout(null);
         container = window.getContentPane();
+    }
+    public void menu(){
+        menuPanel = new JPanel();
+        menuPanel.setBounds(650, 100, 250, 325);
+        menuPanel.setBackground(Color.black);
+        menuPanel.setVisible(true);
+        menuPanel.setBorder(BorderFactory.createLineBorder(Color.white, 4));
+        //menuPanel.setBorder(new EmptyBorder(20,20,20,20));
+        container.add(menuPanel);
+
+        menuButtonPanel = new JPanel();
+        menuButtonPanel.setBounds(700, 435, 150, 35);
+        menuButtonPanel.setBackground(Color.red);
+        menuButtonPanel.setLayout(new GridLayout(1,1));
+        container.add(menuButtonPanel);
+
+        new Menu("Status","Status", this);
+        new Menu("Items","Items", this);
+        new Menu("Logs","Logs", this);
+        new Menu("Maps","Maps", this);
+        new Menu("Quit","Quit", this);
     }
     public void choicePromt(){
         itemTextPanel = new JPanel();
@@ -122,6 +145,7 @@ public class UI{
         optionScrollPane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         optionScrollPane.setBorder(BorderFactory.createLineBorder(Color.white, 4));
         optionScrollPane.getVerticalScrollBar().setBackground(Color.black);
+        optionScrollPane.setVisible(false);
         optionScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
             @Override
             protected void configureScrollBarColors() {
@@ -141,12 +165,9 @@ public class UI{
         optionScrollPane.getVerticalScrollBar().setUnitIncrement(16);
         container.add(optionScrollPane);
 
-
-        optionPanel = new JPanel();
-        optionPanel.setBackground(Color.black);
-        optionScrollPane.getViewport().add(optionPanel);
-
-
+        itemPanel = new JPanel();
+        itemPanel.setBackground(Color.black);
+        optionScrollPane.getViewport().add(itemPanel);
     }
     public void mainArea(){
         mainScrollPane = new JScrollPane();
@@ -332,6 +353,9 @@ public class UI{
         dialogueScrollPane.setWheelScrollingEnabled(false);
         mainScrollPane.getVerticalScrollBar().setEnabled(false);
         mainScrollPane.setWheelScrollingEnabled(false);
+    }
+    public void menuVisible(){
+
     }
 }
 

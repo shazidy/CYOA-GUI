@@ -28,6 +28,8 @@ public class Dialogue extends JButton implements MouseListener{
         this.setBorder(BorderFactory.createLineBorder(Color.black, 3));
         ui.nextPanel.add(this);
 //
+        ui.menuPanel.setVisible(false);
+        ui.menuButtonPanel.setVisible(false);
         ui.choicePanel.setVisible(false);
         di = 0;
         i = 0;
@@ -38,11 +40,6 @@ public class Dialogue extends JButton implements MouseListener{
         timer.start();
     }
 
-    public void nextButton(){
-
-    }
-
-
         @Override public void mouseClicked(MouseEvent e){ }
         @Override public void mousePressed(MouseEvent e){
             dTimer.start();
@@ -50,8 +47,6 @@ public class Dialogue extends JButton implements MouseListener{
         @Override public void mouseReleased(MouseEvent e){ }
         @Override public void mouseEntered(MouseEvent e){ }
         @Override public void mouseExited(MouseEvent e){ }
-
-
 
     Timer timer = new Timer(5, new ActionListener() {
         @Override
@@ -75,6 +70,8 @@ public class Dialogue extends JButton implements MouseListener{
                 ui.nextPanel.setVisible(true);
             }
             if (addedCharacter.equals("•")) {
+                ui.menuPanel.setVisible(true);
+                ui.menuButtonPanel.setVisible(true);
                 timer.stop();
                 dTimer.stop();
                 i = 0;
@@ -88,7 +85,7 @@ public class Dialogue extends JButton implements MouseListener{
         public void actionPerformed(ActionEvent e) {
 
             char character[] = dialogue.toCharArray();
-            int ArrayNumber = character.length;
+            //int ArrayNumber = character.length;
 
             String addedCharacter = "";
             String blank = "";
@@ -109,6 +106,8 @@ public class Dialogue extends JButton implements MouseListener{
                     timer.start();
             }
             if (addedCharacter.equals("•")){
+                ui.menuPanel.setVisible(true);
+                ui.menuButtonPanel.setVisible(true);
                 dTimer.stop();
                 timer.stop();
                 ui.nextPanel.removeAll();

@@ -86,7 +86,7 @@ public class Story {
         //ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
         ui.legendInfo.setText("<HTML><P align=right>LOCATION<BR/>Room</HTML>");
         //story-part of method
-
+/*
         new Dialogue(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n" +
 
@@ -108,6 +108,8 @@ public class Story {
                 "\"lkirmvrirkmlvsr\" \n" +
                 "\"åpeoitjbtbmn\"" +
                 " •",ui);
+
+ */
 
         new Choice("FOLLOWEDS", "choice1", ui);
         new Choice("2", "choice2", ui);

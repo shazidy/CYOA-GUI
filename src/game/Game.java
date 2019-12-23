@@ -39,6 +39,7 @@ public class Game {
     }
     public void test(){
         ui.createUI();
+        ui.menu();
         ui.choicePromt();
         ui.noteViewer();
         ui.info();
@@ -185,6 +186,7 @@ public class Game {
                     start.setVisible(false);
                     buttonPane.setVisible(false);
                     //
+                    ui.menu();
                     ui.choicePromt();
                     ui.noteViewer();
                     ui.info();

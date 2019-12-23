@@ -51,9 +51,9 @@ public class Item implements MouseListener {
         item.setHorizontalAlignment(SwingConstants.LEFT);
         item.setPreferredSize(new Dimension(215, 26));
         item.setVisible(true);
-        ui.optionPanel.add(item);
+        ui.itemPanel.add(item);
         ui.itemCount++;
-        ui.optionPanel.setPreferredSize(new Dimension(225, (int) Math.round(ui.itemCount * 31.7)));
+        ui.itemPanel.setPreferredSize(new Dimension(225, (int) Math.round(ui.itemCount * 31.7)));
         if (ui.itemCount >= 50) {
         }
     }
@@ -74,7 +74,7 @@ public class Item implements MouseListener {
                 removeItemPrompt();
                 item.setText("");
                 ui.itemCount--;
-                ui.optionPanel.setPreferredSize(new Dimension(225, (int) Math.round(ui.itemCount * 31.7)));
+                ui.itemPanel.setPreferredSize(new Dimension(225, (int) Math.round(ui.itemCount * 31.7)));
                 if (item.getText().equals("")) {
                     item.setVisible(false);
                 }
@@ -130,7 +130,7 @@ public class Item implements MouseListener {
             public void actionPerformed(ActionEvent e) {
                 removeItemPrompt();
                 ui.itemCount--;
-                ui.optionPanel.setPreferredSize(new Dimension(225, (int) Math.round(ui.itemCount * 31.7)));
+                ui.itemPanel.setPreferredSize(new Dimension(225, (int) Math.round(ui.itemCount * 31.7)));
                 String yourChoice = e.getActionCommand();
                 switch (yourChoice) {
                     case "•Potion": ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>"); item.setText(""); break;

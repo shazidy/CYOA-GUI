@@ -11,7 +11,7 @@ import java.awt.event.MouseListener;
 
 public class Buttons{
 
-    JButton returnB, returnNote, next;
+    JButton returnB, returnNote, menuButton;
     ReturnClick rClick = new ReturnClick();
     MouseHover mHover = new MouseHover();
     int i = 0, di = 0, iLength;
@@ -31,6 +31,21 @@ public class Buttons{
         returnB.addMouseListener(rClick);
         returnB.setBorder(BorderFactory.createLineBorder(Color.black, 3));
         ui.returnPanel.add(returnB);
+
+        menuButton = new JButton(new AbstractAction("Menu") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ui.menuPanel.setVisible(true);
+                ui.optionScrollPane.setVisible(false);
+            }
+        });
+        menuButton.setBackground(Color.white);
+        menuButton.setForeground(Color.black);
+        menuButton.setFont(ui.asciiFont);
+        menuButton.setFocusPainted(false);
+        menuButton.addMouseListener(mHover);
+        menuButton.setBorder(BorderFactory.createLineBorder(Color.black, 3));
+        ui.menuButtonPanel.add(menuButton);
 
         returnNote = new JButton("Return");
         returnNote.setBackground(Color.white);
