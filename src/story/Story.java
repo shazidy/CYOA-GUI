@@ -16,10 +16,10 @@ public class Story {
     Audio audio = new Audio();
     Characters cp = new Characters();
     Notes no = new Notes();
-    Game game;
+
     UI ui;
-    public Story(Game g, UI userInterface) {
-        game = g;
+    public Story(UI userInterface) {
+
         ui = userInterface;
 
     }
@@ -81,22 +81,19 @@ public class Story {
 
 
         //ui.noteText.setText(no.firstNote);
-        //game.noteViewer();
         ui.dialoguePicture.setText(cp.maggi);
         ui.dialoguePicture2.setText(cp.amia);
         //ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
         ui.legendInfo.setText("<HTML><P align=right>LOCATION<BR/>Room</HTML>");
         //story-part of method
 
-        ui.storyText =
+        new Dialogue(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n" +
 
                 "At imperdiet dui accumsan sit\n" +
 
-                "Risus viverra adipiscing at in tellus integer feugiat. Donec pretium vulputate sapien nec sagittis\n";
+                "Risus viverra adipiscing at in tellus integer feugiat. Donec pretium vulputate sapien nec sagittis\n",
 
-        //dialogue-part of method
-        ui.dialogueText =
                 "►\"lkjsdkfjlkdsj fije mlkjfl ksjfl skmlksm lkdjvlk smvljk klk fjlk jglkm lkdfj\"\n" +
                 "\"lksdjflksdjflkjlko isoeohnjlm\" \n" +
                 "\"lkjsdlfkjsdijlksdjflksdjflksjdflkdj\"\r\n" +
@@ -110,10 +107,7 @@ public class Story {
                 "\"ipwåokvkrælkjlfkgjlm\" \n" +
                 "\"lkirmvrirkmlvsr\" \n" +
                 "\"åpeoitjbtbmn\"" +
-                        " •";
-        game.prepareText();
-
-
+                " •",ui);
 
         new Choice("FOLLOWEDS", "choice1", ui);
         new Choice("2", "choice2", ui);
@@ -123,21 +117,20 @@ public class Story {
     }
 
     public void choice1() {
-        ui.storyText =
-                "► choice1choi ce1choice1choice1choi ce1ch oice1c hoice1choice1 choi ce1choice14" +
+
+        new Dialogue("► choice1choi ce1choice1choice1choi ce1ch oice1c hoice1choice1 choi ce1choice14" +
                 "choice 1choic e1choi ce1choice1c hoice1c hoice1choi ce1choice1 ch ice1 cho ice1c hoice1choice1" +
                 "choice1c hoice1ch oice1c hoice1choi ce1choice1cho ice1choice1cho ice1ch oice1cho ice 1choice1\n" +
 
                 "ksjd fhkjs dhfkksjdf hkjsdh fkksjdfhkj sdhfkk sjdfhkj sdhfk ksjdfhk j sdhfkksjdf hkjsdhfk" +
-                "ksjdf hkjsdhfkk sjdfhk jsdhfkks jdfhkj sdhfkk sjdfhkjs dhfkksjdfhkjsdhfk •";
-        ui.dialogueText =
+                "ksjdf hkjsdhfkk sjdfhk jsdhfkks jdfhkj sdhfkk sjdfhkjs dhfkksjdfhkjsdhfk •",
+
                 "\"HAllohallo hallo\" \n" +
                 "\"HAllohallo hallo\" \r\n" +
 
                 "\"HAllohallo hallo\" \n" +
-                "\"HAllohallo hallo\" \r\n";
+                "\"HAllohallo hallo\" \r\n",ui);
 
-        game.prepareText();
     }
 
     public void choice2() {
@@ -152,9 +145,10 @@ public class Story {
     }
 
     public void choice4() {
+        new Dialogue("choice4\n","•\n",ui);
         ui.storyText ="choice4•";
         ui.dialogueText = "•\n";
-        game.prepareText();
+        //game.prepareText();
         new Choice("Hola", "room", ui);
 
     }
@@ -162,7 +156,7 @@ public class Story {
     public void room() {
         ui.storyText = "room•";
         ui.dialogueText = "•\n";
-        game.prepareText();
+        //game.prepareText();
 
     }
 }

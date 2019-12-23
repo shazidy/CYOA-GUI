@@ -17,7 +17,7 @@ import java.awt.event.MouseListener;
 public class Game {
     UI ui = new UI();
     Buttons buttons = new Buttons(ui);
-    Story story = new Story(this, ui);
+    Story story = new Story(ui);
     Splash splash = new Splash();
     JPanel start, titlePane, buttonPane;
     JScrollPane startScroll;
@@ -29,13 +29,11 @@ public class Game {
     }
 
     public Game(){
-/*
-        introSplash();
-        ui.window.setVisible(true);
-        JScrollBar sb = startScroll.getVerticalScrollBar();
-        sb.setValue(sb.getMaximum());
 
- */
+        //introSplash();
+        //ui.window.setVisible(true);
+        //JScrollBar sb = startScroll.getVerticalScrollBar();
+        //sb.setValue(sb.getMaximum());
 
         test();
     }
@@ -180,7 +178,8 @@ public class Game {
 
         public void selectPosition(String nextPosition) {
             switch (nextPosition) {
-                case "story.start": audio.clip.stop();
+                case "story.start":
+                    audio.clip.stop();
                     titlePane.setVisible(false);
                     start.removeAll();
                     start.setVisible(false);
@@ -202,18 +201,6 @@ public class Game {
             }
         }
     }
-
-    public void prepareText(){
-        ui.choicePanel.setVisible(false);
-        buttons.di = 0;
-        buttons.i = 0;
-        ui.nextPanel.setVisible(false);
-        ui.dialogueScrollPane.setVisible(true);
-        ui.mainTextArea.setText("");
-        ui.dialogueTextArea.setText("");
-        buttons.timer.start();
-    }
-
 }
 
 
