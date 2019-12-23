@@ -29,10 +29,18 @@ public class Game {
     }
 
     public Game(){
+/*
+        introSplash();
+        ui.window.setVisible(true);
+        JScrollBar sb = startScroll.getVerticalScrollBar();
+        sb.setValue(sb.getMaximum());
 
-       // introSplash();
+ */
+
+        test();
+    }
+    public void test(){
         ui.createUI();
-
         ui.choicePromt();
         ui.noteViewer();
         ui.info();
@@ -45,10 +53,6 @@ public class Game {
         ui.returnPanel();
         buttons.buttons();
         story.start();
-
-        //JScrollBar sb = startScroll.getVerticalScrollBar();
-        //sb.setValue(sb.getMaximum());
-
         ui.window.setVisible(true);
     }
 
@@ -198,35 +202,7 @@ public class Game {
             }
         }
     }
-//TODO: take from choicebuttons instead
-    /*
-    public void splashButtons(){
-        startButton = new JButton(new AbstractAction("START") {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                audio.clip.stop();
-                titlePane.setVisible(false);
-                start.removeAll();
-                start.setVisible(false);
-                buttonPane.setVisible(false);
-                //
-                ui.choicePromt();
-                ui.noteViewer();
-                ui.info();
-                ui.options();
-                ui.mainArea();
-                ui.singleUse();
-                ui.choicePanel();
-                ui.nextButton();
-                ui.dialogue();
-                ui.returnPanel();
-                story.start();
-                buttons.buttons();
-            }
-        });
-        buttonPane.add(startButton);
-    }
-*/
+
     public void prepareText(){
         ui.choicePanel.setVisible(false);
         buttons.di = 0;

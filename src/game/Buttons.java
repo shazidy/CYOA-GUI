@@ -110,7 +110,7 @@ public class Buttons{
             ui.mainTextArea.append(addedCharacter);
 
             i++;
-            //if (addedCharacter.equals(">")) {
+
             if (addedCharacter.contains("\n") || addedCharacter.contains("►") ) {
                 timer.stop();
                 dTimer.start();
@@ -141,7 +141,6 @@ public class Buttons{
 
             di++;
 
-            //if (addedCharacter.equals(">")) {
             if (addedCharacter.contains("\n") || addedCharacter.contains("►")) {
                 dTimer.stop();
             }

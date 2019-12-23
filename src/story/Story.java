@@ -1,5 +1,6 @@
 package story;
 import game.*;
+import maps.Metropolis;
 
 
 import javax.swing.*;
@@ -10,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class Story {
+    Metropolis metro = new Metropolis();
     Conditions conditions = new Conditions();
     Audio audio = new Audio();
     Characters cp = new Characters();
@@ -59,8 +61,8 @@ public class Story {
         public void selectPosition(String nextPosition) {
             switch (nextPosition) {
                 case "choice1": ui.choicePanel.removeAll(); choice1(); break;
-                case "choice2": choice2(); break;
-                case "choice3": choice3(); break;
+                case "choice2" : ui.singleTextArea.setText(metro.city); ui.singleUseVisible(); break;
+                case "choice3" : new Item("•Potia", ui); ui.noteText.setText(no.firstNote); ui.noteVisible(); break;
                 case "choice4": ui.choicePanel.removeAll(); choice4(); break;
                 case "room": room(); this.setEnabled(false); break;
             }
@@ -76,26 +78,6 @@ public class Story {
         new Item("•Potia", ui);
         new Item("•Potion", ui);
         new Item("•Potia", ui);
-        /*
-        new Item("Potio", ui);
-        new Item("Potio", ui);
-        new Item("Potion", ui);
-        new Item("Potio", ui);
-        new Item("Potio", ui);
-        new Item("Potion", ui);
-        new Item("Potio", ui);
-        new Item("Potio", ui);
-        new Item("Potion", ui);
-        new Item("Potio", ui);
-        new Item("Potio", ui);
-        new Item("Potion", ui);
-        new Item("Potio", ui);
-        new Item("Potio", ui);
-
-         */
-
-
-
 
 
         //ui.noteText.setText(no.firstNote);
@@ -105,33 +87,33 @@ public class Story {
         //ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
         ui.legendInfo.setText("<HTML><P align=right>LOCATION<BR/>Room</HTML>");
         //story-part of method
-        /*
+
         ui.storyText =
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n" +
 
                 "At imperdiet dui accumsan sit\n" +
 
-                "Risus viverra adipiscing at in tellus integer feugiat. Donec pretium vulputate sapien nec sagittis" +
-                " •";
+                "Risus viverra adipiscing at in tellus integer feugiat. Donec pretium vulputate sapien nec sagittis\n";
 
         //dialogue-part of method
         ui.dialogueText =
-                "► lkjsdkfjlkdsj fije mlkjfl ksjfl skmlksm lkdjvlk smvljk klk fjlk jglkm lkdfj\n" +
-                "lksdjflksdjflkjlko isoeohnjlm \n" +
-                "lkjsdlfkjsdijlksdjflksdjflksjdflkdj\r" +
+                "►\"lkjsdkfjlkdsj fije mlkjfl ksjfl skmlksm lkdjvlk smvljk klk fjlk jglkm lkdfj\"\n" +
+                "\"lksdjflksdjflkjlko isoeohnjlm\" \n" +
+                "\"lkjsdlfkjsdijlksdjflksdjflksjdflkdj\"\r\n" +
 
-                "yrteycjyyuifhiuvusfr \n" +
-                "ipwåokvkrælkjlfkgjlm \n" +
-                "lkirmvrirkmlvsr \n" +
-                "åpeoitjbtbmn\r" +
+                "\"yrteycjyyuifhiuvusfr\" \n" +
+                "\"ipwåokvkrælkjlfkgjlm\" \n" +
+                "\"lkirmvrirkmlvsr\" \n" +
+                "\"åpeoitjbtbmn\"\r\n" +
 
-                "yrteycjyyuifhiuvusfr \n" +
-                "ipwåokvkrælkjlfkgjlm \n" +
-                "lkirmvrirkmlvsr \n" +
-                "åpeoitjbtbmn\r";
+                "\"yrteycjyyuifhiuvusfr\" \n" +
+                "\"ipwåokvkrælkjlfkgjlm\" \n" +
+                "\"lkirmvrirkmlvsr\" \n" +
+                "\"åpeoitjbtbmn\"" +
+                        " •";
         game.prepareText();
 
-         */
+
 
         new Choice("FOLLOWEDS", "choice1", ui);
         new Choice("2", "choice2", ui);
@@ -149,30 +131,17 @@ public class Story {
                 "ksjd fhkjs dhfkksjdf hkjsdh fkksjdfhkj sdhfkk sjdfhkj sdhfk ksjdfhk j sdhfkksjdf hkjsdhfk" +
                 "ksjdf hkjsdhfkk sjdfhk jsdhfkks jdfhkj sdhfkk sjdfhkjs dhfkksjdfhkjsdhfk •";
         ui.dialogueText =
-                "HAllohallo hallo\n" +
-                "HAllohallo hallo\r" +
-                "HAllohallo hallo\n" +
-                "HAllohallo hallo\r";
+                "\"HAllohallo hallo\" \n" +
+                "\"HAllohallo hallo\" \r\n" +
+
+                "\"HAllohallo hallo\" \n" +
+                "\"HAllohallo hallo\" \r\n";
 
         game.prepareText();
     }
 
     public void choice2() {
-        ui.singleTextArea.setText(
-                        "                  _____________\n" +
-                        "                 /\\           /\\\n" +
-                        "                /  \\   [4]   /  \\\n" +
-                        "               /    \\   ∆   /    \\\n" +
-                        "              /      \\  █  /      \\\n" +
-                        "             /   [3]  \\_█_/   [5]  \\\n" +
-                        "            /_▓▓______/▐█ \\_________\\\n" +
-                        "            \\  ▓▓     \\[7]/         /\n" +
-                        "             \\   [2]  /‾‾‾\\   [6]  /\n" +
-                        "              \\      /     \\      /\n" +
-                        "               \\    /       \\    /\n" +
-                        "                \\  /   [1]   \\  /\n" +
-                        "                 \\/           \\/\n" +
-                        "                  ‾‾‾‾‾‾‾‾‾‾‾‾‾");
+        ui.singleTextArea.setText(metro.city);
         ui.singleUseVisible();
     }
 
