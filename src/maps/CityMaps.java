@@ -1,6 +1,6 @@
 package maps;
 
-public class Metropolis {
+public class CityMaps {
 
     public String city =
             "            ________________________\n" +

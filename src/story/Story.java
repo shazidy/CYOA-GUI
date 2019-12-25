@@ -1,6 +1,6 @@
 package story;
 import game.*;
-import maps.Metropolis;
+import maps.CityMaps;
 
 
 import javax.swing.*;
@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class Story {
-    Metropolis metro = new Metropolis();
+    CityMaps metro = new CityMaps();
     Conditions conditions = new Conditions();
     Audio audio = new Audio();
     Characters cp = new Characters();
@@ -19,9 +19,9 @@ public class Story {
 
     UI ui;
     public Story(UI userInterface) {
-
         ui = userInterface;
-
+        //ui.localMap = ;
+        ui.globalMap = metro.city;
     }
     public class Choice extends JButton implements ActionListener, MouseListener {
         UI ui;
@@ -62,7 +62,7 @@ public class Story {
             switch (nextPosition) {
                 case "choice1": ui.choicePanel.removeAll(); choice1(); break;
                 case "choice2" : ui.singleTextArea.setText(metro.city); ui.singleUseVisible(); break;
-                case "choice3" : new Item("•Potia", ui); ui.noteText.setText(no.firstNote); ui.noteVisible(); break;
+                //case "choice3" : new Item("•Potia", ui); ui.noteText.setText(no.firstNote); ui.noteVisible(); break;
                 case "choice4": ui.choicePanel.removeAll(); choice4(); break;
                 case "room": room(); this.setEnabled(false); break;
             }
@@ -70,15 +70,10 @@ public class Story {
     }
     public void start() {
 
-        new Item("•Potion", ui);
-        new Item("•Potia", ui);
-        new Item("•Potia", ui);
-        new Item("•Potion", ui);
-        new Item("•Potia", ui);
-        new Item("•Potia", ui);
-        new Item("•Potion", ui);
-        new Item("•Potia", ui);
-
+        new Item("[•]Potion", ui);
+        new Item("[•]Potia", ui);
+        new Item("[‡]Pants", ui);
+        new Item("[Ξ]EmploymentNotice", ui);
 
         //ui.noteText.setText(no.firstNote);
         ui.dialoguePicture.setText(cp.maggi);
@@ -142,7 +137,7 @@ public class Story {
 
     public void choice3() {
         new Item("•Potia", ui);
-        ui.noteText.setText(no.firstNote);
+        //ui.noteText.setText(no.firstNote);
         ui.noteVisible();
     }
 

@@ -8,9 +8,10 @@ import java.awt.event.MouseListener;
 
 public class Item implements MouseListener {
     ItemText iText = new ItemText();
+    Notes no = new Notes();
     Buttons.MouseHover mHover = new Buttons.MouseHover();
     UI ui;
-    JButton item, use, r_B, d_B, e_B;
+    JButton item, u_B, r_B, d_B, e_B;
     public Item(String name, UI userInterface) {
         ui = userInterface;
         itemButton(name);
@@ -19,7 +20,7 @@ public class Item implements MouseListener {
         ui.itemTextPanel.remove(e_B);
         ui.itemTextPanel.remove(d_B);
         ui.itemTextPanel.remove(r_B);
-        ui.itemTextPanel.remove(use);
+        ui.itemTextPanel.remove(u_B);
         ui.itemTextPanel.setVisible(false);
         ui.optionScrollPane.setVisible(true);
     }
@@ -27,24 +28,40 @@ public class Item implements MouseListener {
         item = new JButton(new AbstractAction(name) {
             @Override
             public void actionPerformed(ActionEvent e) {
-                useButton(name);
-                discardButton();
-                equipButton();
-                returnButton();
-                ui.itemTextPanel.setVisible(true);
-                ui.optionScrollPane.setVisible(false);
-                Object itemName = name;
-                iText.items();
-                for (int i = 0; i <iText.itemText.size() ; i++) {
-                    if(iText.itemText.get(i).contains(name)){
-                        ui.itemText.setText(iText.itemText.get(i));
+                if(name.contains("Ξ")){
+                    ui.noteVisible();
+                    no.notes();
+                    for (int i = 0; i < no.noteText.size(); i++) {
+                        if (no.noteText.get(i).contains(name)) {
+                            ui.noteText.setText(no.noteText.get(i));
+                        }
+                    }
+                } else {
+                    useButton(name);
+                    discardButton();
+                    equipButton();
+                    returnButton();
+                    ui.itemTextPanel.setVisible(true);
+                    ui.optionScrollPane.setVisible(false);
+
+                    iText.items();
+                    for (int i = 0; i < iText.itemText.size(); i++) {
+                        if (iText.itemText.get(i).contains(name)) {
+                            ui.itemText.setText(iText.itemText.get(i));
+                        }
+                    }
+                    if(name.contains("•")){
+                        e_B.setEnabled(false);
+                    }
+                    if(name.contains("‡")){
+                        u_B.setEnabled(false);
                     }
                 }
             }
         });
         item.setBackground(Color.darkGray);
         item.setForeground(Color.white);
-        item.setFont(ui.asciiFont);
+        item.setFont(ui.noteFont);
         item.addMouseListener(this);
         item.setFocusPainted(false);
         item.setBorder(BorderFactory.createLineBorder(Color.black, 2));
@@ -125,7 +142,7 @@ public class Item implements MouseListener {
         ui.itemTextPanel.add(e_B);
     }
     public void useButton(String name){
-        use = new JButton(new AbstractAction("USE") {
+        u_B = new JButton(new AbstractAction("USE") {
             @Override
             public void actionPerformed(ActionEvent e) {
                 removeItemPrompt();
@@ -135,22 +152,23 @@ public class Item implements MouseListener {
                 switch (yourChoice) {
                     case "•Potion": ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>"); item.setText(""); break;
                     case "•Potia": ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER25</HTML>"); item.setText(""); break;
+                   // case "ΞEmployment Notice" : ui.noteVisible(); ui.noteText.setText(no.firstNote); break;
                 }
                 if (item.getText().equals("")) {
                     item.setVisible(false);
                 }
             }
         });
-        use.setBackground(Color.white);
-        use.setForeground(Color.black);
-        use.setFont(ui.asciiFont);
-        use.addMouseListener(mHover);
-        use.setActionCommand(name);
-        use.setFocusPainted(false);
-        use.setBorder(BorderFactory.createCompoundBorder(
+        u_B.setBackground(Color.white);
+        u_B.setForeground(Color.black);
+        u_B.setFont(ui.asciiFont);
+        u_B.addMouseListener(mHover);
+        u_B.setActionCommand(name);
+        u_B.setFocusPainted(false);
+        u_B.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.black, 3),
                 BorderFactory.createEmptyBorder(0, 10, 0, 10)));
-        ui.itemTextPanel.add(use);
+        ui.itemTextPanel.add(u_B);
     }
 }
 

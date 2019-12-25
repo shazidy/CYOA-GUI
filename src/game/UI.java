@@ -2,7 +2,6 @@ package game;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.DefaultCaret;
 
@@ -11,7 +10,7 @@ public class UI{
     public JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea, itemText;
     public JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane;
     public JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel,
-            itemPanel, itemTextPanel, menuPanel, menuButtonPanel;
+            itemPanel, itemTextPanel, menuPanel, menuButtonPanel, mapPanel;
     public JLabel chapterLabel, legendInfo;
     public Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
     public Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
@@ -19,6 +18,7 @@ public class UI{
     public String dialogueText, storyText;
     public Container container;
     public double itemCount;
+    public String localMap, globalMap;
 
 
     public void createUI() {
@@ -55,7 +55,7 @@ public class UI{
         new Menu("Maps","Maps", this);
         new Menu("Quit","Quit", this);
     }
-    public void choicePromt(){
+    public void itemPrompt(){
         itemTextPanel = new JPanel();
         itemTextPanel.setBounds(650, 100, 250, 325);
         itemTextPanel.setBackground(Color.white);
@@ -67,7 +67,7 @@ public class UI{
         itemText.setPreferredSize(new Dimension(230, 240));
         itemText.setBackground(Color.white);
         itemText.setForeground(Color.black);
-        itemText.setFont(asciiFont);
+        itemText.setFont(noteFont);
         itemText.setEditable(false);
         itemText.setLineWrap(true);
         itemText.setWrapStyleWord(true);
@@ -135,7 +135,6 @@ public class UI{
         legendInfo.setForeground(Color.white);
         infoPanel.add(legendInfo);
     }
-
     public void options(){
 
         optionScrollPane = new JScrollPane();
@@ -243,28 +242,33 @@ public class UI{
         singleTextArea.setMargin(new Insets(3,3,0,0));
         singleScrollPane.getViewport().add(singleTextArea);
     }
-    public void choicePanel(){
+    public void buttonPanels(){
         choicePanel = new JPanel();
         choicePanel.setBounds(30, 435, 624, 35);
         choicePanel.setBackground(Color.red);
         choicePanel.setLayout(new GridLayout(1, 5));
         container.add(choicePanel);
-    }
-    public void nextButton(){
+
         nextPanel = new JPanel();
         nextPanel.setBounds(230, 435, 200, 35);
         nextPanel.setBackground(Color.orange);
         nextPanel.setLayout(new GridLayout(1, 1));
         nextPanel.setVisible(false);
         container.add(nextPanel);
-    }
-    public void returnPanel(){
+
         returnPanel = new JPanel();
         returnPanel.setBounds(230, 435, 200, 35);
         returnPanel.setBackground(Color.orange);
         returnPanel.setLayout(new GridLayout(1, 1));
         returnPanel.setVisible(false);
         container.add(returnPanel);
+
+        mapPanel = new JPanel();
+        mapPanel.setBounds(30, 435, 375, 35);
+        mapPanel.setBackground(Color.orange);
+        mapPanel.setLayout(new GridLayout(1, 3));
+        mapPanel.setVisible(false);
+        container.add(mapPanel);
     }
     public void dialogue(){
         //TODO: needs tweaking
@@ -353,9 +357,6 @@ public class UI{
         dialogueScrollPane.setWheelScrollingEnabled(false);
         mainScrollPane.getVerticalScrollBar().setEnabled(false);
         mainScrollPane.setWheelScrollingEnabled(false);
-    }
-    public void menuVisible(){
-
     }
 }
 

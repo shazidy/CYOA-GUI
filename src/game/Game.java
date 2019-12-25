@@ -40,16 +40,14 @@ public class Game {
     public void test(){
         ui.createUI();
         ui.menu();
-        ui.choicePromt();
+        ui.itemPrompt();
         ui.noteViewer();
         ui.info();
         ui.options();
         ui.mainArea();
         ui.singleUse();
-        ui.choicePanel();
-        ui.nextButton();
+        ui.buttonPanels();
         ui.dialogue();
-        ui.returnPanel();
         buttons.buttons();
         story.start();
         ui.window.setVisible(true);
@@ -187,16 +185,14 @@ public class Game {
                     buttonPane.setVisible(false);
                     //
                     ui.menu();
-                    ui.choicePromt();
+                    ui.itemPrompt();
                     ui.noteViewer();
                     ui.info();
                     ui.options();
                     ui.mainArea();
                     ui.singleUse();
-                    ui.choicePanel();
-                    ui.nextButton();
+                    ui.buttonPanels();
                     ui.dialogue();
-                    ui.returnPanel();
                     buttons.buttons();
                     story.start(); break;
                 case "quit" : System.exit(0); break;

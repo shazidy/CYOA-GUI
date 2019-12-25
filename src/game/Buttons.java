@@ -1,17 +1,14 @@
 package game;
 
-import game.UI;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class Buttons{
 
-    JButton returnB, returnNote, menuButton;
+    JButton returnB, returnNote, menuButton, localMapButton, globalMapButton;
     ReturnClick rClick = new ReturnClick();
     MouseHover mHover = new MouseHover();
     int i = 0, di = 0, iLength;
@@ -37,6 +34,10 @@ public class Buttons{
             public void actionPerformed(ActionEvent e) {
                 ui.menuPanel.setVisible(true);
                 ui.optionScrollPane.setVisible(false);
+                ui.singleScrollPane.setVisible(false);
+                ui.mainScrollPane.setVisible(true);
+                ui.mapPanel.setVisible(false);
+                ui.choicePanel.setVisible(true);
             }
         });
         menuButton.setBackground(Color.white);
@@ -46,6 +47,34 @@ public class Buttons{
         menuButton.addMouseListener(mHover);
         menuButton.setBorder(BorderFactory.createLineBorder(Color.black, 3));
         ui.menuButtonPanel.add(menuButton);
+
+        localMapButton = new JButton(new AbstractAction("Local Map") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ui.singleTextArea.setText(ui.localMap);
+            }
+        });
+        localMapButton.setBackground(Color.white);
+        localMapButton.setForeground(Color.black);
+        localMapButton.setFont(ui.asciiFont);
+        localMapButton.setFocusPainted(false);
+        localMapButton.addMouseListener(mHover);
+        localMapButton.setBorder(BorderFactory.createLineBorder(Color.black, 3));
+        ui.mapPanel.add(localMapButton);
+
+        globalMapButton = new JButton(new AbstractAction("Global Map") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ui.singleTextArea.setText(ui.globalMap);
+            }
+        });
+        globalMapButton.setBackground(Color.white);
+        globalMapButton.setForeground(Color.black);
+        globalMapButton.setFont(ui.asciiFont);
+        globalMapButton.setFocusPainted(false);
+        globalMapButton.addMouseListener(mHover);
+        globalMapButton.setBorder(BorderFactory.createLineBorder(Color.black, 3));
+        ui.mapPanel.add(globalMapButton);
 
         returnNote = new JButton("Return");
         returnNote.setBackground(Color.white);

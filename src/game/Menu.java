@@ -44,11 +44,23 @@ import java.awt.event.MouseListener;
         }
         public void selectPosition(String nextPosition) {
             switch (nextPosition) {
-                case "Items" : ui.menuPanel.setVisible(false); ui.optionScrollPane.setVisible(true); break;
+                case "Items" :
+                    ui.menuPanel.setVisible(false);
+                    ui.optionScrollPane.setVisible(true);
+                    if(ui.itemPanel.isVisible()){
+                        ui.choicePanel.setVisible(false);} break;
                 case "Player" : break;
-                case "Map" : ui.singleUseVisible(); break;
-                case "Quit" : System.exit(0);
+                case "Logs" : break;
+                case "Maps" : ui.singleUseVisible(); ui.returnPanel.setVisible(false);
+                ui.mapPanel.setVisible(true);
+                ui.singleTextArea.setText(ui.globalMap); break;
+                case "Quit" : System.exit(0); break;
+
+
+
+
             }
         }
+
     }
 
