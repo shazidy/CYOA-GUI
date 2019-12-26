@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 
 public class Buttons{
 
-    JButton returnB, returnNote, menuButton, localMapButton, globalMapButton;
+    JButton returnB, returnNote, menuButton, localMapButton, globalMapButton, closeMenuButton;
     ReturnClick rClick = new ReturnClick();
     MouseHover mHover = new MouseHover();
     int i = 0, di = 0, iLength;
@@ -33,11 +33,12 @@ public class Buttons{
             @Override
             public void actionPerformed(ActionEvent e) {
                 ui.menuPanel.setVisible(true);
-                ui.optionScrollPane.setVisible(false);
-                ui.singleScrollPane.setVisible(false);
                 ui.mainScrollPane.setVisible(true);
+                ui.itemScrollPane.setVisible(false);
+                ui.singleScrollPane.setVisible(false);
                 ui.mapPanel.setVisible(false);
-                ui.choicePanel.setVisible(true);
+                ui.choicePanel.setVisible(false);
+                ui.menuTextArea.setVisible(false);
             }
         });
         menuButton.setBackground(Color.white);
@@ -48,7 +49,27 @@ public class Buttons{
         menuButton.setBorder(BorderFactory.createLineBorder(Color.black, 3));
         ui.menuButtonPanel.add(menuButton);
 
-        localMapButton = new JButton(new AbstractAction("Local Map") {
+        closeMenuButton = new JButton(new AbstractAction("Х") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ui.itemScrollPane.setVisible(false);
+                ui.mapPanel.setVisible(false);
+                //TODO: fix if singleusearea is in effect.
+                ui.choicePanel.setVisible(true);
+                ui.menuPanel.setVisible(true);
+                ui.menuTextArea.setVisible(true);
+            }
+        });
+        closeMenuButton.setBackground(Color.white);
+        closeMenuButton.setForeground(Color.black);
+        closeMenuButton.setFont(ui.asciiFont);
+        closeMenuButton.setFocusPainted(false);
+        closeMenuButton.addMouseListener(mHover);
+        closeMenuButton.setBorder(BorderFactory.createLineBorder(Color.black, 3));
+        ui.closeMenuButtonPanel.add(closeMenuButton);
+
+
+        localMapButton = new JButton(new AbstractAction("Local") {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ui.singleTextArea.setText(ui.localMap);
@@ -62,7 +83,7 @@ public class Buttons{
         localMapButton.setBorder(BorderFactory.createLineBorder(Color.black, 3));
         ui.mapPanel.add(localMapButton);
 
-        globalMapButton = new JButton(new AbstractAction("Global Map") {
+        globalMapButton = new JButton(new AbstractAction("Global") {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ui.singleTextArea.setText(ui.globalMap);
@@ -87,8 +108,6 @@ public class Buttons{
                 BorderFactory.createLineBorder(Color.black, 3),
                 BorderFactory.createEmptyBorder(3, 10, 3, 10)));
         ui.notePanel.add(returnNote);
-
-
     }
     public class ReturnClick implements MouseListener {
         @Override public void mouseClicked(MouseEvent e){ }
@@ -117,7 +136,11 @@ public class Buttons{
         @Override public void mouseReleased(MouseEvent e){ }
         @Override public void mouseEntered(MouseEvent e) {
             Component c = e.getComponent();
-            c.setBackground(Color.lightGray); }
+            c.setBackground(Color.lightGray);
+        if (c instanceof JButton && ((JButton) c).getText().equals("Х")){
+            c.setBackground(Color.red);
+        }
+        }
         @Override public void mouseExited(MouseEvent e){
             Component c = e.getComponent();
             c.setBackground(Color.white); }

@@ -6,11 +6,12 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.DefaultCaret;
 
 public class UI{
+    Splash splash = new Splash();
     public JFrame window;
-    public JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea, itemText;
-    public JScrollPane mainScrollPane, dialogueScrollPane, optionScrollPane, singleScrollPane, noteScrollPane;
+    public JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea, itemText, menuTextArea;
+    public JScrollPane mainScrollPane, dialogueScrollPane, itemScrollPane, singleScrollPane, noteScrollPane;
     public JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel,
-            itemPanel, itemTextPanel, menuPanel, menuButtonPanel, mapPanel;
+            itemPanel, itemTextPanel, menuPanel, menuButtonPanel, mapPanel, closeMenuButtonPanel;
     public JLabel chapterLabel, legendInfo;
     public Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
     public Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
@@ -40,20 +41,35 @@ public class UI{
         menuPanel.setBackground(Color.black);
         menuPanel.setVisible(true);
         menuPanel.setBorder(BorderFactory.createLineBorder(Color.white, 4));
-        //menuPanel.setBorder(new EmptyBorder(20,20,20,20));
         container.add(menuPanel);
 
-        menuButtonPanel = new JPanel();
-        menuButtonPanel.setBounds(700, 435, 150, 35);
-        menuButtonPanel.setBackground(Color.red);
-        menuButtonPanel.setLayout(new GridLayout(1,1));
-        container.add(menuButtonPanel);
+        menuTextArea = new JTextArea(splash.menuSplash);
+        menuTextArea.setPreferredSize(new Dimension(230, 312));
+        menuTextArea.setLineWrap(true);
+        menuTextArea.setEditable(false);
+        menuTextArea.setHighlighter(null);
+        menuTextArea.setBackground(Color.black);
+        menuTextArea.setForeground(Color.white);
+        menuTextArea.setFont(dialogueAsciiFont);
+        menuPanel.add(menuTextArea);
 
         new Menu("Status","Status", this);
         new Menu("Items","Items", this);
         new Menu("Logs","Logs", this);
         new Menu("Maps","Maps", this);
         new Menu("Quit","Quit", this);
+
+        menuButtonPanel = new JPanel();
+        menuButtonPanel.setBounds(700, 435, 115, 35);
+        menuButtonPanel.setBackground(Color.red);
+        menuButtonPanel.setLayout(new GridLayout(1,1));
+        container.add(menuButtonPanel);
+
+        closeMenuButtonPanel = new JPanel();
+        closeMenuButtonPanel.setBounds(815, 435, 35, 35);
+        closeMenuButtonPanel.setBackground(Color.red);
+        closeMenuButtonPanel.setLayout(new GridLayout(1,1));
+        container.add(closeMenuButtonPanel);
     }
     public void itemPrompt(){
         itemTextPanel = new JPanel();
@@ -135,17 +151,16 @@ public class UI{
         legendInfo.setForeground(Color.white);
         infoPanel.add(legendInfo);
     }
-    public void options(){
-
-        optionScrollPane = new JScrollPane();
-        optionScrollPane.setBounds(650, 100, 250, 325);
-        optionScrollPane.setBackground(Color.white);
-        optionScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        optionScrollPane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        optionScrollPane.setBorder(BorderFactory.createLineBorder(Color.white, 4));
-        optionScrollPane.getVerticalScrollBar().setBackground(Color.black);
-        optionScrollPane.setVisible(false);
-        optionScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+    public void items(){
+        itemScrollPane = new JScrollPane();
+        itemScrollPane.setBounds(650, 100, 250, 325);
+        itemScrollPane.setBackground(Color.white);
+        itemScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        itemScrollPane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        itemScrollPane.setBorder(BorderFactory.createLineBorder(Color.white, 4));
+        itemScrollPane.getVerticalScrollBar().setBackground(Color.black);
+        itemScrollPane.setVisible(false);
+        itemScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
             @Override
             protected void configureScrollBarColors() {
                 this.thumbColor = Color.white;
@@ -161,12 +176,12 @@ public class UI{
                 return button;
             }
         });
-        optionScrollPane.getVerticalScrollBar().setUnitIncrement(16);
-        container.add(optionScrollPane);
+        itemScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        container.add(itemScrollPane);
 
         itemPanel = new JPanel();
         itemPanel.setBackground(Color.black);
-        optionScrollPane.getViewport().add(itemPanel);
+        itemScrollPane.getViewport().add(itemPanel);
     }
     public void mainArea(){
         mainScrollPane = new JScrollPane();
@@ -280,7 +295,6 @@ public class UI{
         container.add(dialoguePicturePanel);
 
         dialoguePicture = new JTextArea();
-        //dialoguePicture.setBounds(30, 480, 160, 160);
         dialoguePicture.setPreferredSize(new Dimension(146,146));
         dialoguePicture.setBackground(Color.black);
         dialoguePicture.setForeground(Color.white);
@@ -297,7 +311,6 @@ public class UI{
         container.add(dialoguePicturePanel2);
 
         dialoguePicture2 = new JTextArea();
-        //dialoguePicture2.setBounds(742, 480, 162, 160);
         dialoguePicture2.setPreferredSize(new Dimension(146,146));
         dialoguePicture2.setBackground(Color.black);
         dialoguePicture2.setForeground(Color.white);

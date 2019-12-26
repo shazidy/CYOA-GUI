@@ -46,15 +46,22 @@ import java.awt.event.MouseListener;
             switch (nextPosition) {
                 case "Items" :
                     ui.menuPanel.setVisible(false);
-                    ui.optionScrollPane.setVisible(true);
+                    ui.itemScrollPane.setVisible(true);
                     if(ui.itemPanel.isVisible()){
                         ui.choicePanel.setVisible(false);} break;
                 case "Player" : break;
                 case "Logs" : break;
-                case "Maps" : ui.singleUseVisible(); ui.returnPanel.setVisible(false);
-                ui.mapPanel.setVisible(true);
-                ui.singleTextArea.setText(ui.globalMap); break;
-                case "Quit" : System.exit(0); break;
+                case "Maps" :
+                    ui.singleUseVisible();
+                    ui.singleTextArea.setText(ui.globalMap);
+                    ui.returnPanel.setVisible(false);
+                    ui.menuButtonPanel.setVisible(true);
+                    ui.menuTextArea.setVisible(true);
+                    ui.mapPanel.setVisible(true);
+                    break;
+
+                case "Quit" : System.exit(0);
+                    break;
 
 
 

@@ -43,7 +43,7 @@ public class Game {
         ui.itemPrompt();
         ui.noteViewer();
         ui.info();
-        ui.options();
+        ui.items();
         ui.mainArea();
         ui.singleUse();
         ui.buttonPanels();
@@ -188,7 +188,7 @@ public class Game {
                     ui.itemPrompt();
                     ui.noteViewer();
                     ui.info();
-                    ui.options();
+                    ui.items();
                     ui.mainArea();
                     ui.singleUse();
                     ui.buttonPanels();

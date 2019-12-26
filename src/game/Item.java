@@ -22,7 +22,7 @@ public class Item implements MouseListener {
         ui.itemTextPanel.remove(r_B);
         ui.itemTextPanel.remove(u_B);
         ui.itemTextPanel.setVisible(false);
-        ui.optionScrollPane.setVisible(true);
+        ui.itemScrollPane.setVisible(true);
     }
     public void itemButton(String name) {
         item = new JButton(new AbstractAction(name) {
@@ -42,7 +42,7 @@ public class Item implements MouseListener {
                     equipButton();
                     returnButton();
                     ui.itemTextPanel.setVisible(true);
-                    ui.optionScrollPane.setVisible(false);
+                    ui.itemScrollPane.setVisible(false);
 
                     iText.items();
                     for (int i = 0; i < iText.itemText.size(); i++) {
@@ -150,8 +150,8 @@ public class Item implements MouseListener {
                 ui.itemPanel.setPreferredSize(new Dimension(225, (int) Math.round(ui.itemCount * 31.7)));
                 String yourChoice = e.getActionCommand();
                 switch (yourChoice) {
-                    case "•Potion": ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>"); item.setText(""); break;
-                    case "•Potia": ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER25</HTML>"); item.setText(""); break;
+                    case "[•]Potion": ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>"); item.setText(""); break;
+                    case "[•]Potia": ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER25</HTML>"); item.setText(""); break;
                    // case "ΞEmployment Notice" : ui.noteVisible(); ui.noteText.setText(no.firstNote); break;
                 }
                 if (item.getText().equals("")) {
