@@ -73,7 +73,7 @@ public class Story {
         new Item("[•]Potion", ui);
         new Item("[•]Potia", ui);
         new Item("[‡]Pants", ui);
-        new Item("[Ξ]EmploymentNotice", ui);
+        new Item("[Ξ]Employment-Notice", ui);
 
         //ui.noteText.setText(no.firstNote);
         ui.dialoguePicture.setText(cp.maggi);

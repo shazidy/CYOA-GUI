@@ -8,8 +8,8 @@ import javax.swing.text.DefaultCaret;
 public class UI{
     Splash splash = new Splash();
     public JFrame window;
-    public JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea, itemText, menuTextArea;
-    public JScrollPane mainScrollPane, dialogueScrollPane, itemScrollPane, singleScrollPane, noteScrollPane;
+    public JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea, itemText, menuTextArea, mapTextArea;
+    public JScrollPane mainScrollPane, dialogueScrollPane, itemScrollPane, singleScrollPane, noteScrollPane, mapScrollPane;
     public JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel,
             itemPanel, itemTextPanel, menuPanel, menuButtonPanel, mapPanel, closeMenuButtonPanel;
     public JLabel chapterLabel, legendInfo;
@@ -257,6 +257,43 @@ public class UI{
         singleTextArea.setMargin(new Insets(3,3,0,0));
         singleScrollPane.getViewport().add(singleTextArea);
     }
+    public void map(){
+        mapScrollPane = new JScrollPane();
+        mapScrollPane.setBounds(30, 100, 624, 325);
+        mapScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        mapScrollPane.setBorder(BorderFactory.createLineBorder(Color.white, 4));
+        mapScrollPane.getVerticalScrollBar().setBackground(Color.black);
+        mapScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = Color.white;
+            }
+            protected JButton createDecreaseButton(int orientation) {
+                JButton button = super.createDecreaseButton(orientation);
+                button.setBackground(Color.WHITE);
+                return button;
+            }
+            protected JButton createIncreaseButton(int orientation) {
+                JButton button = super.createDecreaseButton(orientation);
+                button.setBackground(Color.WHITE);
+                return button;
+            }
+        });
+        container.add(mapScrollPane);
+
+        mapTextArea = new JTextArea();
+        DefaultCaret caret = (DefaultCaret) mapTextArea.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+        mapTextArea.setBackground(Color.black);
+        mapTextArea.setForeground(Color.white);
+        mapTextArea.setFont(asciiFont);
+        mapTextArea.setLineWrap(true);
+        mapTextArea.setWrapStyleWord(true);
+        mapTextArea.setEditable(false);
+        mapTextArea.setHighlighter(null);
+        mapTextArea.setMargin(new Insets(3,3,0,0));
+        mapScrollPane.getViewport().add(mapTextArea);
+    }
     public void buttonPanels(){
         choicePanel = new JPanel();
         choicePanel.setBounds(30, 435, 624, 35);
@@ -355,14 +392,26 @@ public class UI{
         dialogueScrollPane.getViewport().add(dialogueTextArea);
     }
     public void singleUseVisible(){
-        mainScrollPane.setVisible(false);
         singleScrollPane.setVisible(true);
+        returnPanel.setVisible(true);
+        mainScrollPane.setVisible(false);
+        mapScrollPane.setVisible(false);
         choicePanel.setVisible(false);
         nextPanel.setVisible(false);
-        returnPanel.setVisible(true);
+        menuButtonPanel.setVisible(false);
+        closeMenuButtonPanel.setVisible(false);
+    }
+    public void mapVisible(){
+        mainScrollPane.setVisible(false);
+        singleScrollPane.setVisible(false);
+        choicePanel.setVisible(false);
+        nextPanel.setVisible(false);
+        returnPanel.setVisible(false);
     }
     public void noteVisible(){
         notePanel.setVisible(true);
+        menuButtonPanel.setVisible(false);
+        closeMenuButtonPanel.setVisible(false);
         choicePanel.setVisible(false);
         returnPanel.setVisible(false);
         nextPanel.setVisible(false);
@@ -371,6 +420,7 @@ public class UI{
         mainScrollPane.getVerticalScrollBar().setEnabled(false);
         mainScrollPane.setWheelScrollingEnabled(false);
     }
+
 }
 
 

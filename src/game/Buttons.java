@@ -19,6 +19,7 @@ public class Buttons{
 
 
     public void buttons(){
+
         returnB = new JButton("Return");
         returnB.setBackground(Color.white);
         returnB.setForeground(Color.black);
@@ -39,6 +40,7 @@ public class Buttons{
                 ui.mapPanel.setVisible(false);
                 ui.choicePanel.setVisible(false);
                 ui.menuTextArea.setVisible(false);
+                ui.itemTextPanel.setVisible(false);
             }
         });
         menuButton.setBackground(Color.white);
@@ -54,6 +56,8 @@ public class Buttons{
             public void actionPerformed(ActionEvent e) {
                 ui.itemScrollPane.setVisible(false);
                 ui.mapPanel.setVisible(false);
+                ui.mapScrollPane.setVisible(false);
+                ui.itemTextPanel.setVisible(false);
                 //TODO: fix if singleusearea is in effect.
                 ui.choicePanel.setVisible(true);
                 ui.menuPanel.setVisible(true);
@@ -68,11 +72,10 @@ public class Buttons{
         closeMenuButton.setBorder(BorderFactory.createLineBorder(Color.black, 3));
         ui.closeMenuButtonPanel.add(closeMenuButton);
 
-
         localMapButton = new JButton(new AbstractAction("Local") {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ui.singleTextArea.setText(ui.localMap);
+                ui.mapTextArea.setText(ui.localMap);
             }
         });
         localMapButton.setBackground(Color.white);
@@ -86,7 +89,7 @@ public class Buttons{
         globalMapButton = new JButton(new AbstractAction("Global") {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ui.singleTextArea.setText(ui.globalMap);
+                ui.mapTextArea.setText(ui.globalMap);
             }
         });
         globalMapButton.setBackground(Color.white);
@@ -112,15 +115,22 @@ public class Buttons{
     public class ReturnClick implements MouseListener {
         @Override public void mouseClicked(MouseEvent e){ }
         @Override public void mousePressed(MouseEvent e){
-            ui.returnPanel.setVisible(false);
-            ui.choicePanel.setVisible(true);
-            ui.singleScrollPane.setVisible(false);
-            ui.notePanel.setVisible(false);
-            ui.mainScrollPane.setVisible(true);
-            ui.dialogueScrollPane.getVerticalScrollBar().setEnabled(true);
-            ui.dialogueScrollPane.setWheelScrollingEnabled(true);
-            ui.mainScrollPane.getVerticalScrollBar().setEnabled(true);
-            ui.mainScrollPane.setWheelScrollingEnabled(true);
+            if (ui.itemScrollPane.isVisible()){
+                ui.choicePanel.setVisible(false);
+            } else {
+                ui.choicePanel.setVisible(true);
+            }
+                ui.mainScrollPane.setVisible(true);
+                ui.dialogueScrollPane.getVerticalScrollBar().setEnabled(true);
+                ui.dialogueScrollPane.setWheelScrollingEnabled(true);
+                ui.mainScrollPane.getVerticalScrollBar().setEnabled(true);
+                ui.mainScrollPane.setWheelScrollingEnabled(true);
+                ui.menuButtonPanel.setVisible(true);
+                ui.closeMenuButtonPanel.setVisible(true);
+                ui.returnPanel.setVisible(false);
+                ui.singleScrollPane.setVisible(false);
+                ui.notePanel.setVisible(false);
+
 
             //ui.optionScrollPane.getVerticalScrollBar().setEnabled(true);
             //ui.optionScrollPane.setWheelScrollingEnabled(true);

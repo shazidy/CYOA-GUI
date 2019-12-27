@@ -52,8 +52,8 @@ import java.awt.event.MouseListener;
                 case "Player" : break;
                 case "Logs" : break;
                 case "Maps" :
-                    ui.singleUseVisible();
-                    ui.singleTextArea.setText(ui.globalMap);
+                    ui.mapVisible();
+                    ui.mapTextArea.setText(ui.globalMap);
                     ui.returnPanel.setVisible(false);
                     ui.menuButtonPanel.setVisible(true);
                     ui.menuTextArea.setVisible(true);

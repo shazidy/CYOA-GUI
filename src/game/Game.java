@@ -46,6 +46,7 @@ public class Game {
         ui.items();
         ui.mainArea();
         ui.singleUse();
+        ui.map();
         ui.buttonPanels();
         ui.dialogue();
         buttons.buttons();
@@ -191,6 +192,7 @@ public class Game {
                     ui.items();
                     ui.mainArea();
                     ui.singleUse();
+                    ui.map();
                     ui.buttonPanels();
                     ui.dialogue();
                     buttons.buttons();
