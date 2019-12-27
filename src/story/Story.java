@@ -61,8 +61,8 @@ public class Story {
         public void selectPosition(String nextPosition) {
             switch (nextPosition) {
                 case "choice1": ui.choicePanel.removeAll(); choice1(); break;
-                case "choice2" : ui.singleTextArea.setText(metro.city); ui.singleUseVisible(); break;
-                //case "choice3" : new Item("•Potia", ui); ui.noteText.setText(no.firstNote); ui.noteVisible(); break;
+                case "choice2" : ui.singleTextArea.setText("This is single use"); ui.singleUseVisible(); break;
+                case "choice3" : new Item("•Potia", ui); ui.noteVisible(); break; //TODO: access arraylist or do something cleverer
                 case "choice4": ui.choicePanel.removeAll(); choice4(); break;
                 case "room": room(); this.setEnabled(false); break;
             }
@@ -79,9 +79,10 @@ public class Story {
         ui.dialoguePicture.setText(cp.maggi);
         ui.dialoguePicture2.setText(cp.amia);
         //ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
-        ui.legendInfo.setText("<HTML><P align=right>LOCATION<BR/>Room</HTML>");
-        //story-part of method
-/*
+        ui.locationLabel.setText("<HTML>LOCATION<BR/>Room</HTML>");
+
+
+        /*
         new Dialogue(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n" +
 
@@ -103,8 +104,7 @@ public class Story {
                 "\"lkirmvrirkmlvsr\" \n" +
                 "\"åpeoitjbtbmn\"" +
                 " •",ui);
-
- */
+         */
 
         new Choice("FOLLOWEDS", "choice1", ui);
         new Choice("2", "choice2", ui);

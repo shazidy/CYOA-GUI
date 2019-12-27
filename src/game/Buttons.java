@@ -35,6 +35,7 @@ public class Buttons{
             public void actionPerformed(ActionEvent e) {
                 ui.menuPanel.setVisible(true);
                 ui.mainScrollPane.setVisible(true);
+                ui.closeMenuButtonPanel.setVisible(true);
                 ui.itemScrollPane.setVisible(false);
                 ui.singleScrollPane.setVisible(false);
                 ui.mapPanel.setVisible(false);
@@ -58,7 +59,7 @@ public class Buttons{
                 ui.mapPanel.setVisible(false);
                 ui.mapScrollPane.setVisible(false);
                 ui.itemTextPanel.setVisible(false);
-                //TODO: fix if singleusearea is in effect.
+                ui.mainScrollPane.setVisible(true);
                 ui.choicePanel.setVisible(true);
                 ui.menuPanel.setVisible(true);
                 ui.menuTextArea.setVisible(true);

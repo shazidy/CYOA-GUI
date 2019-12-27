@@ -37,6 +37,7 @@ public class Item implements MouseListener {
                         }
                     }
                 } else {
+                    ui.closeMenuButtonPanel.setVisible(false);
                     useButton(name);
                     discardButton();
                     equipButton();

@@ -12,7 +12,7 @@ public class UI{
     public JScrollPane mainScrollPane, dialogueScrollPane, itemScrollPane, singleScrollPane, noteScrollPane, mapScrollPane;
     public JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel,
             itemPanel, itemTextPanel, menuPanel, menuButtonPanel, mapPanel, closeMenuButtonPanel;
-    public JLabel chapterLabel, legendInfo;
+    public JLabel chapterLabel, locationLabel;
     public Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
     public Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
     public Font dialogueAsciiFont = new Font("Lucida Console", Font.BOLD, 2);
@@ -92,7 +92,7 @@ public class UI{
     }
     public void noteViewer(){
         notePanel = new JPanel();
-        notePanel.setBounds(100, 30, 425, 580);
+        notePanel.setBounds(100, 30, 475, 580);
         notePanel.setBackground(Color.white);
         notePanel.setBorder(BorderFactory.createLineBorder(Color.gray, 4));
         notePanel.setVisible(false);
@@ -120,7 +120,7 @@ public class UI{
             }
         });
 
-        noteText = new JTextArea(30,40);
+        noteText = new JTextArea(30,45);
         DefaultCaret caret1 = (DefaultCaret) noteText.getCaret();
         caret1.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
         noteText.setBackground(Color.white);
@@ -138,18 +138,19 @@ public class UI{
         //TODO: needs reworking to display relevant information --- maybe legend or inventory
         infoPanel = new JPanel();
         infoPanel.setBounds(30, 15, 624, 70);
-        infoPanel.setBackground(Color.black);
-        infoPanel.setLayout(new GridLayout(1, 2));
+        infoPanel.setBackground(Color.red);
+        infoPanel.setLayout(new GridLayout(1, 1));
         container.add(infoPanel);
 
         chapterLabel = new JLabel();
         chapterLabel.setFont(asciiFont);
         chapterLabel.setForeground(Color.WHITE);
         infoPanel.add(chapterLabel);
-        legendInfo = new JLabel();
-        legendInfo.setFont(asciiFont);
-        legendInfo.setForeground(Color.white);
-        infoPanel.add(legendInfo);
+
+        locationLabel = new JLabel();
+        locationLabel.setFont(asciiFont);
+        locationLabel.setForeground(Color.white);
+        infoPanel.add(locationLabel);
     }
     public void items(){
         itemScrollPane = new JScrollPane();
@@ -402,6 +403,7 @@ public class UI{
         closeMenuButtonPanel.setVisible(false);
     }
     public void mapVisible(){
+        mapScrollPane.setVisible(true);
         mainScrollPane.setVisible(false);
         singleScrollPane.setVisible(false);
         choicePanel.setVisible(false);
