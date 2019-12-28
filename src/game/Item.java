@@ -5,16 +5,30 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Item implements MouseListener {
+    public static ArrayList<JButton> buttonArrayList = new ArrayList<JButton>();
     ItemText iText = new ItemText();
     Notes no = new Notes();
     Buttons.MouseHover mHover = new Buttons.MouseHover();
     UI ui;
     JButton item, u_B, r_B, d_B, e_B;
+
     public Item(String name, UI userInterface) {
         ui = userInterface;
         itemButton(name);
+        if (name.contains("Ξ")){
+            ui.noteVisible();
+            no.notes();
+            for (int i = 0; i < no.noteText.size(); i++) {
+                if (no.noteText.get(i).contains(name)) {
+                    ui.noteText.setText(no.noteText.get(i));
+                }
+            }
+        }
     }
     public void removeItemPrompt(){
         ui.itemTextPanel.remove(e_B);
@@ -69,7 +83,20 @@ public class Item implements MouseListener {
         item.setHorizontalAlignment(SwingConstants.LEFT);
         item.setPreferredSize(new Dimension(215, 26));
         item.setVisible(true);
-        ui.itemPanel.add(item);
+        buttonArrayList.add(item);
+
+        for (int i = 0; i < buttonArrayList.size() ; i++) {
+            //System.out.println(buttonArrayList.get(i).getText());
+            //System.out.println(buttonArrayList.size());
+            ui.itemPanel.add(buttonArrayList.get(i));
+            Collections.sort(buttonArrayList,new Comparator<JButton>() {
+                @Override
+                public int compare(JButton o1, JButton o2) {
+                    return o2.getText().compareTo(o1.getText());
+                }
+            });
+        }
+
         ui.itemCount++;
         ui.itemPanel.setPreferredSize(new Dimension(225, (int) Math.round(ui.itemCount * 31.7)));
         if (ui.itemCount >= 50) {

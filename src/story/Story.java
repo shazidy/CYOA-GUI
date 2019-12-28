@@ -2,7 +2,6 @@ package story;
 import game.*;
 import maps.CityMaps;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -32,7 +31,7 @@ public class Story {
             this.setText(text);
             this.setBackground(Color.white);
             this.setForeground(Color.black);
-            this.setFont(ui.asciiFont);
+            this.setFont(ui.noteFont);
             this.addActionListener(this::actionPerformed);
             this.setActionCommand("choice");
             this.setFocusPainted(false);
@@ -62,7 +61,7 @@ public class Story {
             switch (nextPosition) {
                 case "choice1": ui.choicePanel.removeAll(); choice1(); break;
                 case "choice2" : ui.singleTextArea.setText("This is single use"); ui.singleUseVisible(); break;
-                case "choice3" : new Item("•Potia", ui); ui.noteVisible(); break; //TODO: access arraylist or do something cleverer
+                case "choice3" : new Item("[•]Potia", ui); new Item("[Ξ]Employment-Notice", ui); new Item("[‡]Pants", ui); break; //TODO: access arraylist or do something cleverer
                 case "choice4": ui.choicePanel.removeAll(); choice4(); break;
                 case "room": room(); this.setEnabled(false); break;
             }
@@ -80,7 +79,6 @@ public class Story {
         ui.dialoguePicture2.setText(cp.amia);
         //ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>");
         ui.locationLabel.setText("<HTML>LOCATION<BR/>Room</HTML>");
-
 
         /*
         new Dialogue(
@@ -136,7 +134,7 @@ public class Story {
     }
 
     public void choice3() {
-        new Item("•Potia", ui);
+        new Item("[•]Potia", ui);
         //ui.noteText.setText(no.firstNote);
         ui.noteVisible();
     }
