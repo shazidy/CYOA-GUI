@@ -101,17 +101,7 @@ public class Buttons{
         globalMapButton.setBorder(BorderFactory.createLineBorder(Color.black, 3));
         ui.mapPanel.add(globalMapButton);
 
-        returnNote = new JButton("Return");
-        returnNote.setBackground(Color.white);
-        returnNote.setForeground(Color.black);
-        returnNote.setFont(ui.asciiFont);
-        returnNote.setFocusPainted(false);
-        returnNote.addMouseListener(mHover);
-        returnNote.addMouseListener(rClick);
-        returnNote.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Color.black, 3),
-                BorderFactory.createEmptyBorder(3, 10, 3, 10)));
-        ui.notePanel.add(returnNote);
+
     }
     public class ReturnClick implements MouseListener {
         @Override public void mouseClicked(MouseEvent e){ }

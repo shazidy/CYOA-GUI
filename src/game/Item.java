@@ -15,12 +15,13 @@ public class Item implements MouseListener {
     Notes no = new Notes();
     Buttons.MouseHover mHover = new Buttons.MouseHover();
     UI ui;
-    JButton item, u_B, r_B, d_B, e_B;
+    JButton item, u_B, r_B, d_B, e_B, returnNote, discardNote;
 
     public Item(String name, UI userInterface) {
         ui = userInterface;
         itemButton(name);
-        if (name.contains("Ξ")){
+        if (name.contains("Ξ")) {
+            noteButtons();
             ui.noteVisible();
             no.notes();
             for (int i = 0; i < no.noteText.size(); i++) {
@@ -29,6 +30,10 @@ public class Item implements MouseListener {
                 }
             }
         }
+    }
+    public void removeNote(){
+        ui.notePanel.remove(returnNote);
+        ui.notePanel.remove(discardNote);
     }
     public void removeItemPrompt(){
         ui.itemTextPanel.remove(e_B);
@@ -42,7 +47,9 @@ public class Item implements MouseListener {
         item = new JButton(new AbstractAction(name) {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ui.menuButtonPanel.setVisible(false);
                 if(name.contains("Ξ")){
+                    noteButtons();
                     ui.noteVisible();
                     no.notes();
                     for (int i = 0; i < no.noteText.size(); i++) {
@@ -112,6 +119,75 @@ public class Item implements MouseListener {
         Component c = e.getComponent();
         c.setBackground(Color.darkGray);
     }
+    public void noteButtons(){
+        returnNote = new JButton(new AbstractAction("Return") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeNote();
+                if (ui.itemScrollPane.isVisible()){
+                    ui.choicePanel.setVisible(false);
+                } else {
+                    ui.choicePanel.setVisible(true);
+                }
+                ui.mainScrollPane.setVisible(true);
+                ui.dialogueScrollPane.getVerticalScrollBar().setEnabled(true);
+                ui.dialogueScrollPane.setWheelScrollingEnabled(true);
+                ui.mainScrollPane.getVerticalScrollBar().setEnabled(true);
+                ui.mainScrollPane.setWheelScrollingEnabled(true);
+                ui.menuButtonPanel.setVisible(true);
+                ui.closeMenuButtonPanel.setVisible(true);
+                ui.returnPanel.setVisible(false);
+                ui.singleScrollPane.setVisible(false);
+                ui.notePanel.setVisible(false);
+            }
+        });
+        returnNote.setBackground(Color.white);
+        returnNote.setForeground(Color.black);
+        returnNote.setFont(ui.asciiFont);
+        returnNote.setFocusPainted(false);
+        returnNote.addMouseListener(mHover);
+        returnNote.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.black, 3),
+                BorderFactory.createEmptyBorder(3, 10, 3, 10)));
+        ui.notePanel.add(returnNote);
+
+        discardNote = new JButton(new AbstractAction("Discard") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeNote();
+                item.setText("");
+                ui.itemCount--;
+                ui.itemPanel.setPreferredSize(new Dimension(225, (int) Math.round(ui.itemCount * 31.7)));
+                if (item.getText().equals("")) {
+                    item.setVisible(false);
+                }
+                if (ui.itemScrollPane.isVisible()){
+                    ui.choicePanel.setVisible(false);
+                } else {
+                    ui.choicePanel.setVisible(true);
+                }
+                ui.mainScrollPane.setVisible(true);
+                ui.dialogueScrollPane.getVerticalScrollBar().setEnabled(true);
+                ui.dialogueScrollPane.setWheelScrollingEnabled(true);
+                ui.mainScrollPane.getVerticalScrollBar().setEnabled(true);
+                ui.mainScrollPane.setWheelScrollingEnabled(true);
+                ui.menuButtonPanel.setVisible(true);
+                ui.closeMenuButtonPanel.setVisible(true);
+                ui.returnPanel.setVisible(false);
+                ui.singleScrollPane.setVisible(false);
+                ui.notePanel.setVisible(false);
+            }
+        });
+        discardNote.setBackground(Color.white);
+        discardNote.setForeground(Color.black);
+        discardNote.setFont(ui.asciiFont);
+        discardNote.setFocusPainted(false);
+        discardNote.addMouseListener(mHover);
+        discardNote.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.black, 3),
+                BorderFactory.createEmptyBorder(3, 10, 3, 10)));
+        ui.notePanel.add(discardNote);
+    }
     public void discardButton(){
         d_B = new JButton(new AbstractAction("DISCARD") {
             @Override
@@ -140,6 +216,7 @@ public class Item implements MouseListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 removeItemPrompt();
+                ui.menuButtonPanel.setVisible(true);
             }
         });
         r_B.setBackground(Color.white);
@@ -151,6 +228,7 @@ public class Item implements MouseListener {
                 BorderFactory.createLineBorder(Color.black, 3),
                 BorderFactory.createEmptyBorder(0, 10, 0, 10)));
         ui.itemTextPanel.add(r_B);
+
     }
     public void equipButton(){
         e_B = new JButton(new AbstractAction("EQUIP") {
