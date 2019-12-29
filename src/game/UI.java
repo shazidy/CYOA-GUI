@@ -15,7 +15,7 @@ public class UI{
     public JLabel chapterLabel, locationLabel;
     public Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
     public Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
-    public Font dialogueAsciiFont = new Font("Lucida Console", Font.BOLD, 2);
+    public Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
     public String dialogueText, storyText;
     public Container container;
     public double itemCount;
