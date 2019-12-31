@@ -8,13 +8,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.AffineTransform;
+import java.sql.DriverPropertyInfo;
 
 /** dialogue and story-text work as follow: if the symbol ► is at the start of either dialogue or story, it will not be
  * the starting text, but the second. to go from one dialogue to another mark the end by \n. to change from dialogue to
  *
  */
 
-public class Game {
+public class    Game {
     UI ui = new UI();
     Buttons buttons = new Buttons(ui);
     Story story = new Story(ui);
@@ -24,6 +26,13 @@ public class Game {
     JTextArea startText, titleText;
     String sound;
     Audio audio = new Audio();
+    Characters ch = new Characters();
+
+    GraphicsConfiguration asdf = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
+    AffineTransform asfd2 = asdf.getDefaultTransform();
+    double scaleX = asfd2.getScaleX();
+    double scaleY = asfd2.getScaleY();
+
     public static void main(String[] args){
         new Game();
     }
@@ -31,12 +40,15 @@ public class Game {
     public Game(){
         System.setProperty("sun.java2d.uiScale", "1.0"); //prevents scaling !!! VERY IMPORTANT!!!
 
-        //introSplash();
-        //ui.window.setVisible(true);
-        //JScrollBar sb = startScroll.getVerticalScrollBar();
-        //sb.setValue(sb.getMaximum());
+        System.out.println(scaleX);
 
-        test();
+        introSplash();
+        ui.window.setVisible(true);
+        JScrollBar sb = startScroll.getVerticalScrollBar();
+        sb.setValue(sb.getMaximum());
+        System.out.println(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode());
+
+        //test();
     }
     public void test(){
         ui.createUI();
