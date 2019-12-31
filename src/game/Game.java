@@ -39,16 +39,15 @@ public class    Game {
 
     public Game(){
         System.setProperty("sun.java2d.uiScale", "1.0"); //prevents scaling !!! VERY IMPORTANT!!!
-
+        System.out.println(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode());
         System.out.println(scaleX);
 
-        introSplash();
-        ui.window.setVisible(true);
-        JScrollBar sb = startScroll.getVerticalScrollBar();
-        sb.setValue(sb.getMaximum());
-        System.out.println(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode());
+        //introSplash();
+        //ui.window.setVisible(true);
+        //JScrollBar sb = startScroll.getVerticalScrollBar();
+        //sb.setValue(sb.getMaximum());
 
-        //test();
+        test();
     }
     public void test(){
         ui.createUI();

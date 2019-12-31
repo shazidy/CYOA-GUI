@@ -36,6 +36,7 @@ public class Item implements MouseListener {
         ui.notePanel.remove(discardNote);
     }
     public void removeItemPrompt(){
+        ui.menuButtonPanel.setVisible(true);
         ui.itemTextPanel.remove(e_B);
         ui.itemTextPanel.remove(d_B);
         ui.itemTextPanel.remove(r_B);
@@ -58,7 +59,7 @@ public class Item implements MouseListener {
                         }
                     }
                 } else {
-                    ui.closeMenuButtonPanel.setVisible(false);
+                    ui.closeMenuButtonPanel.setVisible(false); //TODO something with return button that makes closebutton disappear
                     useButton(name);
                     discardButton();
                     equipButton();
@@ -216,7 +217,6 @@ public class Item implements MouseListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 removeItemPrompt();
-                ui.menuButtonPanel.setVisible(true);
             }
         });
         r_B.setBackground(Color.white);
