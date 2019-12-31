@@ -29,6 +29,7 @@ public class Game {
     }
 
     public Game(){
+        System.setProperty("sun.java2d.uiScale", "1.0"); //prevents scaling !!! VERY IMPORTANT!!!
 
         //introSplash();
         //ui.window.setVisible(true);
