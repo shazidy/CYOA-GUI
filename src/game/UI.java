@@ -7,24 +7,25 @@ import javax.swing.text.DefaultCaret;
 
 public class UI{
     Splash splash = new Splash();
-    public JFrame window;
-    public JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea, itemText, menuTextArea, mapTextArea;
-    public JScrollPane mainScrollPane, dialogueScrollPane, itemScrollPane, singleScrollPane, noteScrollPane, mapScrollPane;
-    public JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel,
-            itemPanel, itemTextPanel, menuPanel, menuButtonPanel, mapPanel, closeMenuButtonPanel;
-    public JLabel chapterLabel, locationLabel;
-    public Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
-    public Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
-    public Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
+    public static Container container;
+    public static JFrame window;
+    public static JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea, itemText, menuTextArea, mapTextArea;
+    public static JScrollPane mainScrollPane, dialogueScrollPane, itemScrollPane, singleScrollPane, noteScrollPane, mapScrollPane;
+    public static JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel,
+    itemPanel, itemTextPanel, menuPanel, menuButtonPanel, mapPanel, closeMenuButtonPanel;
+    public static JLabel chapterLabel, locationLabel;
+    public static Font noteFont = new Font("Lucida Console", Font.PLAIN, 15);
+    public static Font asciiFont = new Font("Lucida Console", Font.PLAIN, 20);
+    public static Font dialogueAsciiFont = new Font("Lucida Console", Font.PLAIN, 2);
     public String dialogueText, storyText;
-    public Container container;
     public double itemCount;
     public String localMap, globalMap;
 
 
-    public void createUI() {
+    public void createUI()  {
         window = new JFrame();
-        window.setSize(960, 720);
+        //window.setSize(960, 720);
+        window.setSize(1600, 900);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         window.setLocation(dim.width / 2 - window.getSize().width / 2, dim.height / 2 - window.getSize().height / 2);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -221,7 +222,7 @@ public class UI{
         mainTextArea.setMargin(new Insets(3,3,0,0));
         mainScrollPane.getViewport().add(mainTextArea);
     }
-    public void singleUse(){
+    public static void singleUse(){
         singleScrollPane = new JScrollPane();
         singleScrollPane.setBounds(30, 100, 624, 325);
         singleScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);

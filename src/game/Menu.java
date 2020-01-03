@@ -49,7 +49,13 @@ import java.awt.event.MouseListener;
                     ui.itemScrollPane.setVisible(true);
                     if(ui.itemPanel.isVisible()){
                         ui.choicePanel.setVisible(false);} break;
-                case "Player" : break;
+                case "Status" :
+                    ui.singleUseVisible();
+                    Player.status();
+                    ui.returnPanel.setVisible(false);
+                    ui.menuButtonPanel.setVisible(true);
+                    ui.closeMenuButtonPanel.setVisible(true);
+                    break;
                 case "Logs" : break;
                 case "Maps" :
                     ui.mapVisible();

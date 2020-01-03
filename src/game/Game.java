@@ -34,7 +34,6 @@ public class    Game {
     double scaleY = asfd2.getScaleY();
 
     public static void main(String[] args){
-
         System.setProperty("sun.java2d.uiScale", "1.0"); //prevents scaling !!! VERY IMPORTANT!!!
         new Game();
     }

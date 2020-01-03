@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 
 public class Buttons{
 
-    JButton returnB, returnNote, menuButton, localMapButton, globalMapButton, closeMenuButton;
+    JButton returnB, menuButton, localMapButton, globalMapButton, closeMenuButton;
     ReturnClick rClick = new ReturnClick();
     MouseHover mHover = new MouseHover();
     int i = 0, di = 0, iLength;

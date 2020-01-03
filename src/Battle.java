@@ -1,9 +1,10 @@
-
+/*
 
 //Behavior of battle once initiated. Alters stats for player and enemy accordingly and sets conditions when threshold is reached.
 //the try/catch for inputmismatch wasn't fixed in time. Type only A, B or C
 
-import java.util.InputMismatchException;
+import game.Player;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -63,5 +64,7 @@ public class Battle {
         }
     }
 }
+
+ */
 
 

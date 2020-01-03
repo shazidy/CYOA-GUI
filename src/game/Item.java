@@ -11,6 +11,7 @@ import java.util.Comparator;
 
 public class Item implements MouseListener {
     public static ArrayList<JButton> buttonArrayList = new ArrayList<JButton>();
+    //Player player = new Player();
     ItemText iText = new ItemText();
     Notes no = new Notes();
     Buttons.MouseHover mHover = new Buttons.MouseHover();
@@ -36,8 +37,8 @@ public class Item implements MouseListener {
         ui.notePanel.remove(discardNote);
     }
     public void removeItemPrompt(){
+        ui.closeMenuButtonPanel.setVisible(true);
         ui.menuButtonPanel.setVisible(true);
-        ui.itemTextPanel.remove(e_B);
         ui.itemTextPanel.remove(d_B);
         ui.itemTextPanel.remove(r_B);
         ui.itemTextPanel.remove(u_B);
@@ -62,7 +63,6 @@ public class Item implements MouseListener {
                     ui.closeMenuButtonPanel.setVisible(false); //TODO something with return button that makes closebutton disappear
                     useButton(name);
                     discardButton();
-                    equipButton();
                     returnButton();
                     ui.itemTextPanel.setVisible(true);
                     ui.itemScrollPane.setVisible(false);
@@ -74,10 +74,11 @@ public class Item implements MouseListener {
                         }
                     }
                     if(name.contains("•")){
-                        e_B.setEnabled(false);
+                        u_B.setText("USE");
                     }
                     if(name.contains("‡")){
-                        u_B.setEnabled(false);
+                        u_B.setText("EQUIP");
+                        //u_B.setEnabled(false);
                     }
                 }
             }
@@ -230,23 +231,7 @@ public class Item implements MouseListener {
         ui.itemTextPanel.add(r_B);
 
     }
-    public void equipButton(){
-        e_B = new JButton(new AbstractAction("EQUIP") {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                removeItemPrompt();
-            }
-        });
-        e_B.setBackground(Color.white);
-        e_B.setForeground(Color.black);
-        e_B.setFont(ui.asciiFont);
-        e_B.addMouseListener(mHover);
-        e_B.setFocusPainted(false);
-        e_B.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Color.black, 3),
-                BorderFactory.createEmptyBorder(0, 10, 0, 10)));
-        ui.itemTextPanel.add(e_B);
-    }
+
     public void useButton(String name){
         u_B = new JButton(new AbstractAction("USE") {
             @Override
@@ -256,13 +241,14 @@ public class Item implements MouseListener {
                 ui.itemPanel.setPreferredSize(new Dimension(225, (int) Math.round(ui.itemCount * 31.7)));
                 String yourChoice = e.getActionCommand();
                 switch (yourChoice) {
-                    case "[•]Potion": ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER</HTML>"); item.setText(""); break;
-                    case "[•]Potia": ui.chapterLabel.setText("<HTML>CHAPTER II:<BR/>THE TOWER25</HTML>"); item.setText(""); break;
-                   // case "ΞEmployment Notice" : ui.noteVisible(); ui.noteText.setText(no.firstNote); break;
+                    case "[•]Potion": Player.maxHP += 25; item.setText(""); item.setText(""); break;
+                    case "[•]Potia": Player.HP += 50; item.setText(""); item.setText(""); break;
+                    case "[‡]Pants": Player.maxHP -= 25; item.setText(""); break;
                 }
                 if (item.getText().equals("")) {
                     item.setVisible(false);
                 }
+                if (ui.singleScrollPane.isVisible()){Player.status();}
             }
         });
         u_B.setBackground(Color.white);
