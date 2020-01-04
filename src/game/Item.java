@@ -16,7 +16,7 @@ public class Item implements MouseListener {
     Notes no = new Notes();
     Buttons.MouseHover mHover = new Buttons.MouseHover();
     UI ui;
-    JButton item, u_B, r_B, d_B, e_B, returnNote, discardNote;
+    JButton item, u_B, r_B, d_B, returnNote, discardNote;
 
     public Item(String name, UI userInterface) {
         ui = userInterface;
@@ -50,6 +50,7 @@ public class Item implements MouseListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ui.menuButtonPanel.setVisible(false);
+                if (ui.noteScrollPane.isVisible()){}
                 if(name.contains("Ξ")){
                     noteButtons();
                     ui.noteVisible();
@@ -85,12 +86,12 @@ public class Item implements MouseListener {
         });
         item.setBackground(Color.darkGray);
         item.setForeground(Color.white);
-        item.setFont(ui.noteFont);
+        item.setFont(ui.asciiFont);
         item.addMouseListener(this);
         item.setFocusPainted(false);
         item.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         item.setHorizontalAlignment(SwingConstants.LEFT);
-        item.setPreferredSize(new Dimension(215, 26));
+        item.setPreferredSize(new Dimension(310, 26));
         item.setVisible(true);
         buttonArrayList.add(item);
 
@@ -107,7 +108,7 @@ public class Item implements MouseListener {
         }
 
         ui.itemCount++;
-        ui.itemPanel.setPreferredSize(new Dimension(225, (int) Math.round(ui.itemCount * 31.7)));
+        ui.itemPanel.setPreferredSize(new Dimension(322, (int) Math.round(ui.itemCount * 31.7)));
         if (ui.itemCount >= 50) {
         }
     }

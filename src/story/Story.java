@@ -31,12 +31,14 @@ public class Story {
             this.setText(text);
             this.setBackground(Color.white);
             this.setForeground(Color.black);
-            this.setFont(ui.noteFont);
+            this.setFont(ui.asciiFont);
             this.addActionListener(this::actionPerformed);
             this.setActionCommand("choice");
             this.setFocusPainted(false);
             this.addMouseListener(this);
-            this.setBorder(BorderFactory.createLineBorder(Color.black, 4));
+            this.setHorizontalAlignment(SwingConstants.LEFT);
+            this.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.black, 5),
+                    BorderFactory.createEmptyBorder(5,10,5,10)));
             ui.choicePanel.add(this);
             if (this.getText().equals("")) {this.setVisible(false);}
         }
@@ -104,7 +106,7 @@ public class Story {
                 " •",ui);
          */
 
-        new Choice("FOLLOWEDS", "choice1", ui);
+        new Choice("<HTML>FOLLOWEDS<BR>TWO</HTML>", "choice1", ui);
         new Choice("2", "choice2", ui);
         new Choice("3", "choice3", ui);
         new Choice("4", "choice4", ui);

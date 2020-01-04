@@ -38,12 +38,14 @@ public class UI{
     }
     public void menu(){
         menuPanel = new JPanel();
-        menuPanel.setBounds(650, 100, 250, 325);
+        menuPanel.setBounds(1100, 100, 360, 420);
         menuPanel.setBackground(Color.black);
         menuPanel.setVisible(true);
+        //menuPanel.setBorder(BorderFactory.createEmptyBorder(50, 0, 50, 0));
         menuPanel.setBorder(BorderFactory.createLineBorder(Color.white, 4));
+        menuPanel.setLayout(new GridLayout(3,2));
         container.add(menuPanel);
-
+/*
         menuTextArea = new JTextArea(splash.menuSplash);
         menuTextArea.setPreferredSize(new Dimension(230, 312));
         menuTextArea.setLineWrap(true);
@@ -54,37 +56,40 @@ public class UI{
         menuTextArea.setFont(dialogueAsciiFont);
         menuPanel.add(menuTextArea);
 
+ */
+
         new Menu("Status","Status", this);
         new Menu("Items","Items", this);
         new Menu("Logs","Logs", this);
         new Menu("Maps","Maps", this);
+        new Menu("Save","Save", this);
         new Menu("Quit","Quit", this);
 
         menuButtonPanel = new JPanel();
-        menuButtonPanel.setBounds(700, 435, 115, 35);
+        menuButtonPanel.setBounds(1190, 528, 125, 45);
         menuButtonPanel.setBackground(Color.red);
         menuButtonPanel.setLayout(new GridLayout(1,1));
         container.add(menuButtonPanel);
 
         closeMenuButtonPanel = new JPanel();
-        closeMenuButtonPanel.setBounds(815, 435, 35, 35);
+        closeMenuButtonPanel.setBounds(1315, 528, 45, 45);
         closeMenuButtonPanel.setBackground(Color.red);
         closeMenuButtonPanel.setLayout(new GridLayout(1,1));
         container.add(closeMenuButtonPanel);
     }
     public void itemPrompt(){
         itemTextPanel = new JPanel();
-        itemTextPanel.setBounds(650, 100, 250, 325);
+        itemTextPanel.setBounds(1100, 100, 360, 420);
         itemTextPanel.setBackground(Color.white);
         itemTextPanel.setVisible(false);
         itemTextPanel.setBorder(BorderFactory.createLineBorder(Color.gray, 4));
         container.add(itemTextPanel);
 
         itemText = new JTextArea();
-        itemText.setPreferredSize(new Dimension(230, 240));
+        itemText.setPreferredSize(new Dimension(350, 240));
         itemText.setBackground(Color.white);
         itemText.setForeground(Color.black);
-        itemText.setFont(noteFont);
+        itemText.setFont(asciiFont);
         itemText.setEditable(false);
         itemText.setLineWrap(true);
         itemText.setWrapStyleWord(true);
@@ -93,7 +98,7 @@ public class UI{
     }
     public void noteViewer(){
         notePanel = new JPanel();
-        notePanel.setBounds(100, 30, 475, 580);
+        notePanel.setBounds(310, 50, 620, 750);
         notePanel.setBackground(Color.white);
         notePanel.setBorder(BorderFactory.createLineBorder(Color.gray, 4));
         notePanel.setVisible(false);
@@ -121,12 +126,12 @@ public class UI{
             }
         });
 
-        noteText = new JTextArea(30,45);
+        noteText = new JTextArea(30,46);
         DefaultCaret caret1 = (DefaultCaret) noteText.getCaret();
         caret1.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
         noteText.setBackground(Color.white);
         noteText.setForeground(Color.black);
-        noteText.setFont(noteFont);
+        noteText.setFont(asciiFont);
         noteText.setEditable(false);
         noteText.setLineWrap(true);
         noteText.setWrapStyleWord(true);
@@ -155,12 +160,13 @@ public class UI{
     }
     public void items(){
         itemScrollPane = new JScrollPane();
-        itemScrollPane.setBounds(650, 100, 250, 325);
+        itemScrollPane.setBounds(1100, 100, 360, 420);
         itemScrollPane.setBackground(Color.white);
         itemScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         itemScrollPane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         itemScrollPane.setBorder(BorderFactory.createLineBorder(Color.white, 4));
         itemScrollPane.getVerticalScrollBar().setBackground(Color.black);
+        itemScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(30, 0));
         itemScrollPane.setVisible(false);
         itemScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
             @Override
@@ -187,10 +193,11 @@ public class UI{
     }
     public void mainArea(){
         mainScrollPane = new JScrollPane();
-        mainScrollPane.setBounds(30, 100, 624, 325);
+        mainScrollPane.setBounds(140, 100, 950, 420);
         mainScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         mainScrollPane.setBorder(BorderFactory.createLineBorder(Color.white, 4));
         mainScrollPane.getVerticalScrollBar().setBackground(Color.black);
+        mainScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(30, 0));
         mainScrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
             @Override
             protected void configureScrollBarColors() {
@@ -224,7 +231,7 @@ public class UI{
     }
     public static void singleUse(){
         singleScrollPane = new JScrollPane();
-        singleScrollPane.setBounds(30, 100, 624, 325);
+        singleScrollPane.setBounds(140, 100, 950, 420);
         singleScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         singleScrollPane.setBorder(BorderFactory.createLineBorder(Color.white, 4));
         singleScrollPane.getVerticalScrollBar().setBackground(Color.black);
@@ -261,7 +268,7 @@ public class UI{
     }
     public void map(){
         mapScrollPane = new JScrollPane();
-        mapScrollPane.setBounds(30, 100, 624, 325);
+        mapScrollPane.setBounds(140, 100, 950, 420);
         mapScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         mapScrollPane.setBorder(BorderFactory.createLineBorder(Color.white, 4));
         mapScrollPane.getVerticalScrollBar().setBackground(Color.black);
@@ -298,20 +305,21 @@ public class UI{
     }
     public void buttonPanels(){
         choicePanel = new JPanel();
-        choicePanel.setBounds(30, 435, 624, 35);
-        choicePanel.setBackground(Color.red);
-        choicePanel.setLayout(new GridLayout(1, 5));
+        choicePanel.setBounds(1100, 100, 360, 420);
+        choicePanel.setBackground(Color.black);
+        choicePanel.setBorder(BorderFactory.createLineBorder(Color.white, 4));
+        choicePanel.setLayout(new GridLayout(7, 1));
         container.add(choicePanel);
 
         nextPanel = new JPanel();
-        nextPanel.setBounds(230, 435, 200, 35);
+        nextPanel.setBounds(515, 528, 200, 45);
         nextPanel.setBackground(Color.orange);
         nextPanel.setLayout(new GridLayout(1, 1));
         nextPanel.setVisible(false);
         container.add(nextPanel);
 
         returnPanel = new JPanel();
-        returnPanel.setBounds(230, 435, 200, 35);
+        returnPanel.setBounds(515, 528, 200, 45);
         returnPanel.setBackground(Color.orange);
         returnPanel.setLayout(new GridLayout(1, 1));
         returnPanel.setVisible(false);
@@ -328,13 +336,13 @@ public class UI{
         //TODO: needs tweaking
         //dialogue-picture 1
         dialoguePicturePanel = new JPanel();
-        dialoguePicturePanel.setBounds(30, 480, 160, 160);
+        dialoguePicturePanel.setBounds(140, 580, 240, 240);
         dialoguePicturePanel.setBackground(Color.black);
         dialoguePicturePanel.setBorder(BorderFactory.createLineBorder(Color.red, 4));
         container.add(dialoguePicturePanel);
 
         dialoguePicture = new JTextArea();
-        dialoguePicture.setPreferredSize(new Dimension(146,146));
+        dialoguePicture.setPreferredSize(new Dimension(226,226));
         dialoguePicture.setBackground(Color.black);
         dialoguePicture.setForeground(Color.white);
         dialoguePicture.setFont(dialogueAsciiFont);
@@ -344,13 +352,13 @@ public class UI{
         dialoguePicturePanel.add(dialoguePicture);
 //dialogue-picture 2
         dialoguePicturePanel2 = new JPanel();
-        dialoguePicturePanel2.setBounds(740, 480, 160, 160);
+        dialoguePicturePanel2.setBounds(850, 580, 240, 240);
         dialoguePicturePanel2.setBackground(Color.black);
         dialoguePicturePanel2.setBorder(BorderFactory.createLineBorder(Color.red, 4));
         container.add(dialoguePicturePanel2);
 
         dialoguePicture2 = new JTextArea();
-        dialoguePicture2.setPreferredSize(new Dimension(146,146));
+        dialoguePicture2.setPreferredSize(new Dimension(226,226));
         dialoguePicture2.setBackground(Color.black);
         dialoguePicture2.setForeground(Color.white);
         dialoguePicture2.setFont(dialogueAsciiFont);
@@ -360,7 +368,7 @@ public class UI{
         dialoguePicturePanel2.add(dialoguePicture2);
 // dialogue
         dialogueScrollPane = new JScrollPane();
-        dialogueScrollPane.setBounds(194, 480, 542, 160);
+        dialogueScrollPane.setBounds(390, 580, 450, 240);
         dialogueScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         dialogueScrollPane.setBorder(BorderFactory.createLineBorder(Color.red, 4));
         dialogueScrollPane.getVerticalScrollBar().setBackground(Color.black);

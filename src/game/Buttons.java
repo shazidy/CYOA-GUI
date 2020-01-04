@@ -40,7 +40,7 @@ public class Buttons{
                 ui.singleScrollPane.setVisible(false);
                 ui.mapPanel.setVisible(false);
                 ui.choicePanel.setVisible(false);
-                ui.menuTextArea.setVisible(false);
+                //ui.menuTextArea.setVisible(false);
                 ui.itemTextPanel.setVisible(false);
             }
         });
@@ -61,8 +61,8 @@ public class Buttons{
                 ui.itemTextPanel.setVisible(false);
                 ui.mainScrollPane.setVisible(true);
                 ui.choicePanel.setVisible(true);
-                ui.menuPanel.setVisible(true);
-                ui.menuTextArea.setVisible(true);
+                ui.menuPanel.setVisible(false);
+                //ui.menuTextArea.setVisible(true);
             }
         });
         closeMenuButton.setBackground(Color.white);

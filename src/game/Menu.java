@@ -21,8 +21,8 @@ import java.awt.event.MouseListener;
             this.setActionCommand("choice");
             this.setFocusPainted(false);
             this.addMouseListener(this);
-            this.setPreferredSize(new Dimension(200,55));
-            this.setBorder(BorderFactory.createLineBorder(Color.black, 10));
+            this.setPreferredSize(new Dimension(200,50));
+            this.setBorder(BorderFactory.createLineBorder(Color.black, 5));
             ui.menuPanel.add(this);
             if (this.getText().equals("")) {this.setVisible(false);}
         }
@@ -62,7 +62,7 @@ import java.awt.event.MouseListener;
                     ui.mapTextArea.setText(ui.globalMap);
                     ui.returnPanel.setVisible(false);
                     ui.menuButtonPanel.setVisible(true);
-                    ui.menuTextArea.setVisible(true);
+                    //ui.menuTextArea.setVisible(true);
                     ui.mapPanel.setVisible(true);
                     break;
 
