@@ -7,7 +7,19 @@ import java.io.File;
 
 public class Audio {
 
-    Clip clip;
+    public static Clip clip;
+
+    public Audio(String soundFileName){
+        try{
+            File file = new File(soundFileName);
+            AudioInputStream sound = AudioSystem.getAudioInputStream(file);
+            clip = AudioSystem.getClip();
+            clip.open(sound);
+        } catch (Exception e){}
+        clip.setFramePosition(0);
+        clip.start();
+    }
+
 
     public void setFile(String soundFileName){
 

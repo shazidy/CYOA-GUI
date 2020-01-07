@@ -22,6 +22,7 @@ public class Item implements MouseListener {
         ui = userInterface;
         itemButton(name);
         if (name.contains("Ξ")) {
+            new Audio("src/audio/Page_Turn-Mark_DiAngelo-1304638748.wav");
             noteButtons();
             ui.noteVisible();
             no.notes();
@@ -55,6 +56,7 @@ public class Item implements MouseListener {
                 ui.menuButtonPanel.setVisible(false);
                 if (ui.noteScrollPane.isVisible()){}
                 if(name.contains("Ξ")){
+                    new Audio("src/audio/Page_Turn-Mark_DiAngelo-1304638748.wav");
                     noteButtons();
                     ui.noteVisible();
                     no.notes();

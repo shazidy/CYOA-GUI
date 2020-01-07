@@ -12,7 +12,7 @@ import java.awt.event.MouseListener;
 public class Story {
     CityMaps metro = new CityMaps();
     Conditions conditions = new Conditions();
-    Audio audio = new Audio();
+    //Audio audio = new Audio();
     Characters cp = new Characters();
     Notes no = new Notes();
 

@@ -25,7 +25,6 @@ public class    Game {
     JScrollPane startScroll;
     JTextArea startText, titleText;
     String sound;
-    Audio audio = new Audio();
     Characters ch = new Characters();
 
     GraphicsConfiguration asdf = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
@@ -121,15 +120,15 @@ public class    Game {
         });
         t.start();
 
-        sound = "src/audio/NS3ELPH-505_09 Final Word.wav";
-        audio.setFile(sound);
+
+        new Audio("src/audio/NS3ELPH-505_09 Final Word.wav"); //intro-sound
 
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     @Override
                     public void run() {
-                        sound = "src/audio/GOTHIC-049_09 Serene Main.wav";
-                        audio.setFile(sound);
+
+                        new Audio("src/audio/GOTHIC-049_09 Serene Main.wav"); //intro-music
                         Timer t2 = new Timer(500, new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
@@ -192,7 +191,7 @@ public class    Game {
         public void selectPosition(String nextPosition) {
             switch (nextPosition) {
                 case "story.start":
-                    audio.clip.stop();
+                    Audio.clip.stop();
                     titlePane.setVisible(false);
                     start.removeAll();
                     start.setVisible(false);
