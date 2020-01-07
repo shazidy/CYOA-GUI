@@ -9,7 +9,7 @@ public class UI{
     Splash splash = new Splash();
     public static Container container;
     public static JFrame window;
-    public static JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea, itemText, menuTextArea, mapTextArea;
+    public static JTextArea mainTextArea, dialoguePicture, dialoguePicture2, dialogueTextArea, noteText, singleTextArea, itemText, mapTextArea;
     public static JScrollPane mainScrollPane, dialogueScrollPane, itemScrollPane, singleScrollPane, noteScrollPane, mapScrollPane;
     public static JPanel choicePanel,nextPanel, returnPanel, infoPanel, dialoguePicturePanel, dialoguePicturePanel2, notePanel,
     itemPanel, itemTextPanel, menuPanel, menuButtonPanel, mapPanel, closeMenuButtonPanel;
@@ -40,23 +40,11 @@ public class UI{
         menuPanel = new JPanel();
         menuPanel.setBounds(1100, 100, 360, 420);
         menuPanel.setBackground(Color.black);
-        menuPanel.setVisible(true);
+        menuPanel.setVisible(false);
         //menuPanel.setBorder(BorderFactory.createEmptyBorder(50, 0, 50, 0));
         menuPanel.setBorder(BorderFactory.createLineBorder(Color.white, 4));
         menuPanel.setLayout(new GridLayout(3,2));
         container.add(menuPanel);
-/*
-        menuTextArea = new JTextArea(splash.menuSplash);
-        menuTextArea.setPreferredSize(new Dimension(230, 312));
-        menuTextArea.setLineWrap(true);
-        menuTextArea.setEditable(false);
-        menuTextArea.setHighlighter(null);
-        menuTextArea.setBackground(Color.black);
-        menuTextArea.setForeground(Color.white);
-        menuTextArea.setFont(dialogueAsciiFont);
-        menuPanel.add(menuTextArea);
-
- */
 
         new Menu("Status","Status", this);
         new Menu("Items","Items", this);
@@ -86,7 +74,7 @@ public class UI{
         container.add(itemTextPanel);
 
         itemText = new JTextArea();
-        itemText.setPreferredSize(new Dimension(350, 240));
+        itemText.setPreferredSize(new Dimension(350, 345));
         itemText.setBackground(Color.white);
         itemText.setForeground(Color.black);
         itemText.setFont(asciiFont);
@@ -326,9 +314,9 @@ public class UI{
         container.add(returnPanel);
 
         mapPanel = new JPanel();
-        mapPanel.setBounds(30, 435, 375, 35);
+        mapPanel.setBounds(140, 528, 375, 45);
         mapPanel.setBackground(Color.orange);
-        mapPanel.setLayout(new GridLayout(1, 3));
+        mapPanel.setLayout(new GridLayout(1, 2));
         mapPanel.setVisible(false);
         container.add(mapPanel);
     }

@@ -71,13 +71,13 @@ public class    Game {
         ui.createUI();
 
         titlePane = new JPanel();
-        titlePane.setBounds(180,520,600,120);
+        titlePane.setBounds(500,550,600,120);
         titlePane.setBackground(Color.black);
         titlePane.setVisible(false);
         ui.container.add(titlePane);
 
         buttonPane = new JPanel();
-        buttonPane.setBounds(30,530,120,120);
+        buttonPane.setBounds(740,700,120,120);
         buttonPane.setBackground(Color.yellow);
         buttonPane.setVisible(false);
         buttonPane.setLayout(new GridLayout(4,1));
@@ -90,8 +90,8 @@ public class    Game {
         titlePane.add(titleText);
 
         start = new JPanel();
-        start.setBounds(0, 100, 960, 400);
-        start.setSize(new Dimension(960, 410));
+        start.setBounds(0, 100, 1600, 400);
+        start.setSize(new Dimension(1600, 410));
         start.setBackground(Color.white);
         ui.container.add(start);
         startScroll = new JScrollPane();

@@ -35,6 +35,9 @@ public class Item implements MouseListener {
     public void removeNote(){
         ui.notePanel.remove(returnNote);
         ui.notePanel.remove(discardNote);
+        for (int i = 0; i < buttonArrayList.size() ; i++) {
+            buttonArrayList.get(i).setEnabled(true);
+        }
     }
     public void removeItemPrompt(){
         ui.closeMenuButtonPanel.setVisible(true);
@@ -59,6 +62,9 @@ public class Item implements MouseListener {
                         if (no.noteText.get(i).contains(name)) {
                             ui.noteText.setText(no.noteText.get(i));
                         }
+                    }
+                    for (int i = 0; i < buttonArrayList.size() ; i++) {
+                        buttonArrayList.get(i).setEnabled(false);
                     }
                 } else {
                     ui.closeMenuButtonPanel.setVisible(false); //TODO something with return button that makes closebutton disappear
@@ -211,7 +217,7 @@ public class Item implements MouseListener {
         d_B.setFocusPainted(false);
         d_B.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.black, 3),
-                BorderFactory.createEmptyBorder(0, 10, 0, 10)));
+                BorderFactory.createEmptyBorder(5, 10, 5, 10)));
         ui.itemTextPanel.add(d_B);
     }
     public void returnButton(){
@@ -228,11 +234,10 @@ public class Item implements MouseListener {
         r_B.setFocusPainted(false);
         r_B.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.black, 3),
-                BorderFactory.createEmptyBorder(0, 10, 0, 10)));
+                BorderFactory.createEmptyBorder(5, 10, 5, 10)));
         ui.itemTextPanel.add(r_B);
 
     }
-
     public void useButton(String name){
         u_B = new JButton(new AbstractAction("USE") {
             @Override
@@ -260,7 +265,7 @@ public class Item implements MouseListener {
         u_B.setFocusPainted(false);
         u_B.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.black, 3),
-                BorderFactory.createEmptyBorder(0, 10, 0, 10)));
+                BorderFactory.createEmptyBorder(5, 10, 5, 10)));
         ui.itemTextPanel.add(u_B);
     }
 }
